@@ -12,4 +12,8 @@ public class Boots extends Item {
         super(ItemType.boots, xPos, yPos);
         this.bootType = bootType;
     }
+
+    public BootType getBootType() {
+        return bootType;
+    }
 }
