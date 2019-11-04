@@ -1,3 +1,5 @@
+package game;
+
 public class Boots extends Item {
     public enum BootType{
         fire,
@@ -6,7 +8,7 @@ public class Boots extends Item {
 
     private BootType bootType;
 
-    public Boots(BootType bootType, int xPos, int yPos) {
+    public Boots(BootType bootType, int xPos, int yPos) throws Exception {
         super(ItemType.boots, xPos, yPos);
         this.bootType = bootType;
     }

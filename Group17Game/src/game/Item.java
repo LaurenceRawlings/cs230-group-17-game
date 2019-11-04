@@ -1,3 +1,5 @@
+package game;
+
 public class Item extends GameObject {
     public enum ItemType{
         key,
