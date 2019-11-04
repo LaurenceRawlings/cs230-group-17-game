@@ -1,5 +1,3 @@
-package game;
-
 public class Main {
     public static void main(String[] args) {
         Player p = new Player(1,1);
@@ -8,6 +6,6 @@ public class Main {
         p.pickUp(k);
         p.pickUp(k);
 
-        System.out.println(p.checkInventory(Key.KeyType.blue));
+        System.out.println(p.checkKey(Key.KeyType.blue));
     }
 }

@@ -1,5 +1,3 @@
-package game;
-
 public class Boots extends Item {
     public enum BootType{
         fire,

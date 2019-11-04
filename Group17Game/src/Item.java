@@ -1,6 +1,4 @@
-package game;
-
-public class Item extends GameObject {
+public abstract class Item extends GameObject {
     public enum ItemType{
         key,
         token,

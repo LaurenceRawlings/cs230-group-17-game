@@ -1,5 +1,3 @@
-package game;
-
 public class GameObject {
     private int xPos;
     private int yPos;

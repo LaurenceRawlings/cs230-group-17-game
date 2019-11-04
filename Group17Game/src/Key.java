@@ -1,5 +1,3 @@
-package game;
-
 public class Key extends Item {
     public enum KeyType{
         red,
