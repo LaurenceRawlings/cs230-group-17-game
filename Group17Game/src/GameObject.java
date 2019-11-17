@@ -1,4 +1,4 @@
-public class GameObject {
+public abstract class GameObject {
     private int xPos;
     private int yPos;
 

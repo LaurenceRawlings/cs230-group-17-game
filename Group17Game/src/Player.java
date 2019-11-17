@@ -37,11 +37,15 @@ public class Player extends GameObject {
 
     public boolean checkKey(Key.KeyType keyType) {
         if(inventory.get(keyType) != null) {
-            return true;
+            if ((int)inventory.get(keyType) < 1){
+                inventory.remove(keyType);
+                return false;
+            } else {
+                return true;
+            }
         } else {
             return false;
         }
-
     }
 
     public boolean checkBoots(Boots.BootType bootType) {
@@ -56,6 +60,12 @@ public class Player extends GameObject {
         int keyCount = 0;
         if(inventory.get(keyType) != null) {
             keyCount = (int)inventory.get(keyType);
+        }
+
+        if (--keyCount > 0) {
+            inventory.put(keyType, keyCount);
+        } else {
+            inventory.remove(keyType);
         }
     }
 }
