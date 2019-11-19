@@ -6,8 +6,8 @@ public class Boots extends Item {
 
     private BootType bootType;
 
-    public Boots(BootType bootType, int xPos, int yPos) throws Exception {
-        super(ItemType.boots, xPos, yPos);
+    public Boots(BootType bootType, Position position) {
+        super(ItemType.boots, position);
         this.bootType = bootType;
     }
 

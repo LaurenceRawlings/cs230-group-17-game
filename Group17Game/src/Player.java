@@ -4,8 +4,8 @@ import java.util.Hashtable;
 public class Player extends GameObject {
     private Dictionary inventory = new Hashtable();
 
-    public Player(int xPos, int yPos) {
-        super(xPos, yPos);
+    public Player(Position position) {
+        super(position);
     }
 
     public void pickUp(Item item) {

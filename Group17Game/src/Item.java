@@ -7,8 +7,8 @@ public abstract class Item extends GameObject {
 
     private ItemType itemType;
 
-    public Item(ItemType itemType, int xPos, int yPos) {
-        super(xPos, yPos);
+    public Item(ItemType itemType, Position position) {
+        super(position);
         this.itemType = itemType;
     }
 

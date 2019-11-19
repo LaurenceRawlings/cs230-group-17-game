@@ -7,8 +7,8 @@ public class Key extends Item {
 
     private KeyType keyType;
 
-    public Key(KeyType keyType, int xPos, int yPos) {
-        super(ItemType.key, xPos, yPos);
+    public Key(KeyType keyType, Position position) {
+        super(ItemType.key, position);
         this.keyType = keyType;
     }
 

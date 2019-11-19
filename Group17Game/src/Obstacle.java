@@ -4,11 +4,11 @@ public class Obstacle extends Cell {
         water
     }
 
-    private ObstacleType obstcleType;
+    private ObstacleType obstacleType;
     private Item.ItemType counterItem;
 
-    public Obstacle(int xPos, int yPos, ObstacleType obstacleType) {
-        super(xPos, yPos, true);
-        this.obstcleType = obstacleType;
+    public Obstacle(Position position, ObstacleType obstacleType) {
+        super(position, true);
+        this.obstacleType = obstacleType;
     }
 }

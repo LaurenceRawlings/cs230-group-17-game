@@ -1,5 +1,5 @@
 public class KeyDoor extends Door {
-    public KeyDoor(int xPos, int yPos) {
-        super(xPos, yPos);
+    public KeyDoor(Position position) {
+        super(position);
     }
 }
