@@ -1,3 +1,3 @@
-# cs230
+# Group 17 Game
 
-CS230 assignment 2 game
+CS230 Assignment 2
