@@ -6,16 +6,16 @@ import com.group17.model.entity.Item;
 import com.group17.model.entity.Player;
 
 public class Level implements Comparable<Level> {
-    private Player player;
+    private Position playerPosition;
     private Cell[][] cells;
     private Item[][] items;
     private Enemy[][] enemies;
     private int levelNumber;
     private String levelName;
 
-    public Level(Player player, int levelNumber, String levelName,
-                 int width, int height, Position startPosition, int tokens) {
-        this.player = player;
+    public Level(Position playerStart, int levelNumber, String levelName,
+                 int width, int height, int tokens) {
+        this.playerPosition = playerStart;
         this.levelNumber = levelNumber;
         this.levelName = levelName;
 
