@@ -9,7 +9,7 @@ public class Player extends GameObject {
     }
 
     public void pickUp(Item item) {
-        Object inventoryItem = null;
+        GameObject inventoryItem = null;
         int addAmount = 1;
         int currentAmount = 0;
 
