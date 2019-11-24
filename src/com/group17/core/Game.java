@@ -1,4 +1,7 @@
-package com.group17.model;
+package com.group17.core;
+
+import com.group17.model.entity.*;
+import com.group17.model.world.Level;
 
 import java.io.File;
 import java.io.IOException;

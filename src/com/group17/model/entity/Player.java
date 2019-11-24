@@ -1,6 +1,7 @@
-package com.group17.model;
+package com.group17.model.entity;
 
-import com.sun.org.apache.xpath.internal.objects.XObject;
+import com.group17.core.Position;
+import com.group17.model.GameObject;
 
 import java.util.Dictionary;
 import java.util.Hashtable;

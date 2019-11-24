@@ -1,4 +1,4 @@
-package com.group17.model;
+package com.group17.core;
 
 import java.io.Serializable;
 

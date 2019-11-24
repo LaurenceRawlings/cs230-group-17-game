@@ -1,4 +1,7 @@
-package com.group17.model;
+package com.group17.model.world;
+
+import com.group17.core.Position;
+import com.group17.model.GameObject;
 
 public abstract class Cell extends GameObject {
     private boolean walkable;

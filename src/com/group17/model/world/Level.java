@@ -1,4 +1,9 @@
-package com.group17.model;
+package com.group17.model.world;
+
+import com.group17.core.Position;
+import com.group17.model.entity.Enemy;
+import com.group17.model.entity.Item;
+import com.group17.model.entity.Player;
 
 public class Level implements Comparable<Level> {
     private Player player;
