@@ -7,7 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-
+    private Game game;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../com/group17/view/sample.fxml"));
@@ -16,7 +16,26 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    public void processKeyEvent(KeyEvent event) {
+    switch (event.getCode()) {
 
+        case RIGHT:
+            game.move("right");
+            break;
+         case LEFT:
+            Player.move("left");
+            break;
+         case UP:
+            Player.move("up");
+            break;
+         case DOWN:
+            Player.move("down");
+            break;
+         default:
+            break;
+    }
+
+  }
     public static void main(String[] args) {
         launch(args);
     }

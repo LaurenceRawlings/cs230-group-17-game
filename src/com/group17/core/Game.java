@@ -20,6 +20,9 @@ public class Game {
         this.profile = profile;
         LevelReader.readLevels();
     }
+    /*I handle the key in this method and depending on the pressed key call the move
+     fnctuins with different inputs */
+     
 
 
 }

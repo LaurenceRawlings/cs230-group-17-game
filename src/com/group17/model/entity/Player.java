@@ -73,4 +73,22 @@ public class Player extends GameObject {
             inventory.remove(keyType);
         }
     }
+    public void move(String direction){
+      int currentX= this.x();
+      int currentY= this.y();
+      switch(direction){
+        case "up":
+            this.setY(currentY-1);
+            break;
+        case "down":
+            this.setY(currentY+1);
+            break;
+        case "right":
+            this.setX(currentX+1);
+            break;
+        case "left":
+            this.setX(currentX-1);
+            break;
+      }
+    }
 }
