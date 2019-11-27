@@ -160,7 +160,7 @@ public class LevelReader {
                 String[] enemyDetails = enemy.split(",");
 
                 if (enemyMap.containsKey(enemyDetails[2]) && enemyMap.containsKey(enemyDetails[3])) {
-                    Movable.Direction direction = (Movable.Direction) enemyMap.get(enemyDetails[2]);
+                    Movable.Direction direction = (Movable.Direction) enemyMap.get(enemyDetails[3]);
                     Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
                     switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
                         case smart:
@@ -193,7 +193,7 @@ public class LevelReader {
 
                 if (itemMap.containsKey(itemDetails[2])) {
                     newLevel.setItem(new Position(Integer.parseInt(itemDetails[0]),
-                            Integer.parseInt(itemDetails[1])), (Item) cellMap.get(itemDetails[2]));
+                            Integer.parseInt(itemDetails[1])), (Item) itemMap.get(itemDetails[2]));
                 }
             }
 
