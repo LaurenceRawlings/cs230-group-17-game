@@ -19,6 +19,26 @@ public class Level implements Comparable<Level> {
     private int width;
     private int height;
 
+    public String getLevelName() {
+        return levelName;
+    }
+
+    public Position getStart() {
+        return start;
+    }
+
+    public Position getFinish() {
+        return finish;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public Level(Position start, Position finish, int levelNumber, String levelName, int width, int height) {
         this.levelNumber = levelNumber;
         this.levelName = levelName;

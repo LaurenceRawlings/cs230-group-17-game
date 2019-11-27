@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        Game game = new Game(new Profile());
+        Game game = new Game();
 
         FireBoots fb = new FireBoots();
         FireBoots fb2 = new FireBoots();
@@ -23,8 +23,5 @@ public class TestMain {
         Key k = new Key(Key.KeyType.blue);
         System.out.println(k.toString());
 
-        System.out.println(game.levelQueue.poll().getLevelNumber());
-        System.out.println(game.levelQueue.poll().getLevelNumber());
-        System.out.println(game.levelQueue.poll().getLevelNumber());
     }
 }

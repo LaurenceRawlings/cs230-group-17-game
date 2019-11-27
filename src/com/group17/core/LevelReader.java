@@ -33,7 +33,7 @@ import java.util.*;
 */
 
 public class LevelReader {
-    private static final String LEVEL_DIR = "./levels";
+    private static final String LEVEL_DIR = "./res/levels";
     private static final String LEVEL_FILE_DECLARATOR = "<Level File>";
     private static final String LEVEL_FILE_EXTENSION = "txt";
 

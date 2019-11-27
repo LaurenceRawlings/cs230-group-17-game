@@ -9,7 +9,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
-    private Game game;
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("../com/group17/view/sample.fxml"));
@@ -21,13 +20,14 @@ public class Main extends Application {
     public void processKeyEvent(KeyEvent event) {
     switch (event.getCode()) {
 
-        case RIGHT:
+        case UP:
+
+            break;
+         case DOWN:
             break;
          case LEFT:
             break;
-         case UP:
-            break;
-         case DOWN:
+        case RIGHT:
             break;
          default:
             break;
