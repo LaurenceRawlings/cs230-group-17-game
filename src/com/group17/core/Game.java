@@ -6,14 +6,15 @@ import com.group17.model.world.Level;
 import java.util.PriorityQueue;
 
 public class Game {
-    private PriorityQueue<Level> levelQueue;
+    public PriorityQueue<Level> levelQueue;
     private Level currentLevel;
     private Player player;
     private Profile profile;
 
     public Game(Profile profile) {
         this.profile = profile;
-        LevelReader.readLevels();
+        levelQueue = new PriorityQueue<>();
+        levelQueue.addAll(LevelReader.readLevels());
     }
 
 }

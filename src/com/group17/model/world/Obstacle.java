@@ -10,6 +10,11 @@ public abstract class Obstacle extends Cell {
         this.counterItem = counterItem;
     }
 
+    public Obstacle() {
+        super(true);
+        counterItem = null;
+    }
+
     public Item getCounterItem() {
         return counterItem;
     }

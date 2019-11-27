@@ -22,5 +22,9 @@ public class TestMain {
 
         Key k = new Key(Key.KeyType.blue);
         System.out.println(k.toString());
+
+        System.out.println(game.levelQueue.poll().getLevelNumber());
+        System.out.println(game.levelQueue.poll().getLevelNumber());
+        System.out.println(game.levelQueue.poll().getLevelNumber());
     }
 }

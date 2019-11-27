@@ -95,7 +95,7 @@ public class LevelReader {
                                 while (scanner.hasNextLine()) {
                                     levelData.add(scanner.nextLine());
                                 }
-                                levels.add(createLevel(levelData.toArray(new String[0])));
+                                levels.add(buildLevel(levelData.toArray(new String[0])));
                             }
                         }
                         scanner.close();
@@ -110,7 +110,7 @@ public class LevelReader {
         return levels;
     }
 
-    private static Level createLevel(String[] levelData) {
+    private static Level buildLevel(String[] levelData) {
         try {
             String[] details = levelData[LEVEL_DETAILS].split(";");
             String[] positions = levelData[LEVEL_POSITIONS].split(";");
