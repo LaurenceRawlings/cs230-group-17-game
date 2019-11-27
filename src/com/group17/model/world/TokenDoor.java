@@ -6,4 +6,8 @@ public class TokenDoor extends Door {
     public TokenDoor(int tokenCost) {
         this.tokenCost = tokenCost;
     }
+
+    public int getTokenCost() {
+        return tokenCost;
+    }
 }

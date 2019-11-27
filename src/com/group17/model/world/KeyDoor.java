@@ -8,4 +8,8 @@ public class KeyDoor extends Door {
     public KeyDoor(Key.KeyType key) {
         this.key = key;
     }
+
+    public Key.KeyType getKey() {
+        return key;
+    }
 }
