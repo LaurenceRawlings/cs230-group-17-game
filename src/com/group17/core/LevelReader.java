@@ -69,6 +69,9 @@ public class LevelReader {
         put("dumb", Enemy.EnemyType.dumb);
         put("wall", Enemy.EnemyType.wall);
         put("line", Enemy.EnemyType.line);
+    }});
+
+    private static final Map directionMap = Collections.unmodifiableMap(new HashMap() {{
         put("up", Movable.Direction.up);
         put("down", Movable.Direction.down);
         put("left", Movable.Direction.left);
@@ -159,8 +162,8 @@ public class LevelReader {
             for (String enemy : enemies) {
                 String[] enemyDetails = enemy.split(",");
 
-                if (enemyMap.containsKey(enemyDetails[2]) && enemyMap.containsKey(enemyDetails[3])) {
-                    Movable.Direction direction = (Movable.Direction) enemyMap.get(enemyDetails[3]);
+                if (enemyMap.containsKey(enemyDetails[2]) && directionMap.containsKey(enemyDetails[3])) {
+                    Movable.Direction direction = (Movable.Direction) directionMap.get(enemyDetails[3]);
                     Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
                     switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
                         case smart:
