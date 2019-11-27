@@ -22,7 +22,7 @@ public class Teleporter extends Cell {
         return position;
     }
 
-    public Position getDestination() {
-        return destination.getPosition();
+    public Teleporter getDestination() {
+        return destination;
     }
 }

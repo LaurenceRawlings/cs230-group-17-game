@@ -4,10 +4,19 @@ import com.group17.core.Position;
 import com.group17.model.entity.Movable;
 
 public abstract class Enemy implements Movable {
-    private Position position;
+    public enum EnemyType {
+        smart,
+        dumb,
+        wall,
+        line
+    }
 
-    public Enemy(Position position) {
+    private Position position;
+    private Direction direction;
+
+    public Enemy(Position position, Direction direction) {
         this.position = position;
+        this.direction = direction;
     }
 
     @Override

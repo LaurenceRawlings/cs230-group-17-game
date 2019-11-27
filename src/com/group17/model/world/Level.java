@@ -4,19 +4,33 @@ import com.group17.core.Position;
 import com.group17.model.entity.enemy.Enemy;
 import com.group17.model.entity.item.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Level implements Comparable<Level> {
     private Cell[][] cells;
     private Item[][] items;
+    private Boolean[][] enemyPositions;
+    private List<Enemy> enemies;
     private int levelNumber;
     private String levelName;
+    private Position start;
+    private Position finish;
+    private int width;
+    private int height;
 
-    public Level(Position start, int levelNumber, String levelName,
-                 int width, int height) {
+    public Level(Position start, Position finish, int levelNumber, String levelName, int width, int height) {
         this.levelNumber = levelNumber;
         this.levelName = levelName;
+        this.start = start;
+        this.finish = finish;
+        this.width = width;
+        this.height = height;
 
         cells = new Cell[height][width];
         items = new Item[height][width];
+        enemyPositions = new Boolean[height][width];
+        enemies = new ArrayList<>();
     }
 
     public int getLevelNumber() {
@@ -47,6 +61,17 @@ public class Level implements Comparable<Level> {
             return 1;
         } else {
             return -1;
+        }
+    }
+
+    public void addEnemy(Enemy enemy) {
+        enemies.add(enemy);
+    }
+
+    public void updateEnemyPositions() {
+        enemyPositions = new Boolean[height][width];
+        for (Enemy enemy : enemies) {
+            enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = true;
         }
     }
 }

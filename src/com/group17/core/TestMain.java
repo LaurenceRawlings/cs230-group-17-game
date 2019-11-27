@@ -3,7 +3,6 @@ package com.group17.core;
 import com.group17.model.entity.item.FireBoots;
 import com.group17.model.entity.item.Item;
 import com.group17.model.entity.item.Key;
-import com.group17.model.entity.item.WaterBoots;
 
 import java.util.ArrayList;
 import java.util.List;
