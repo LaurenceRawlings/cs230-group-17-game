@@ -1,6 +1,4 @@
-package com.group17.model.entity;
-
-import com.group17.core.Position;
+package com.group17.model.entity.item;
 
 public class Key extends Item {
     public enum KeyType{
@@ -11,8 +9,7 @@ public class Key extends Item {
 
     private KeyType keyType;
 
-    public Key(KeyType keyType, Position position) {
-        super(ItemType.key, position);
+    public Key(KeyType keyType) {
         this.keyType = keyType;
     }
 

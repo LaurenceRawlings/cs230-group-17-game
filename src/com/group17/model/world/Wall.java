@@ -3,7 +3,7 @@ package com.group17.model.world;
 import com.group17.core.Position;
 
 public class Wall extends Cell {
-    public Wall(Position position) {
-        super(position, false);
+    public Wall() {
+        super(false);
     }
 }

@@ -1,9 +1,9 @@
 package com.group17.core;
 
-import com.group17.model.entity.DumbFollowingEnemy;
-import com.group17.model.entity.SmartFollowingEnemy;
-import com.group17.model.entity.StraightLineEnemy;
-import com.group17.model.entity.WallFollowingEnemy;
+import com.group17.model.entity.enemy.DumbFollowingEnemy;
+import com.group17.model.entity.enemy.SmartFollowingEnemy;
+import com.group17.model.entity.enemy.StraightLineEnemy;
+import com.group17.model.entity.enemy.WallFollowingEnemy;
 import com.group17.model.world.Level;
 
 import java.io.File;

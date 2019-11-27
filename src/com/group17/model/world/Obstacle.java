@@ -1,25 +1,16 @@
 package com.group17.model.world;
 
-import com.group17.core.Position;
-import com.group17.model.entity.Boots;
-import com.group17.model.entity.Item;
+import com.group17.model.entity.item.Item;
 
-public class Obstacle extends Cell {
-    public enum ObstacleType {
-        fire,
-        water
+public abstract class Obstacle extends Cell {
+    private Item counterItem;
+
+    public Obstacle(Item counterItem) {
+        super(true);
+        this.counterItem = counterItem;
     }
 
-    private ObstacleType obstacleType;
-    private Boots.BootType counterBoots;
-
-    public Obstacle(Position position, ObstacleType obstacleType, Boots.BootType counterBoots) {
-        super(position, true);
-        this.obstacleType = obstacleType;
-        this.counterBoots = counterBoots;
-    }
-
-    public Boots.BootType getCounterBoots() {
-        return counterBoots;
+    public Item getCounterItem() {
+        return counterItem;
     }
 }

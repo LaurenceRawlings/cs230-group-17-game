@@ -1,9 +1,12 @@
 package com.group17;
 
+import com.group17.core.Game;
+import com.group17.model.entity.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -20,16 +23,12 @@ public class Main extends Application {
     switch (event.getCode()) {
 
         case RIGHT:
-            game.move("right");
             break;
          case LEFT:
-            Player.move("left");
             break;
          case UP:
-            Player.move("up");
             break;
          case DOWN:
-            Player.move("down");
             break;
          default:
             break;

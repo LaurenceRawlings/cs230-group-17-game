@@ -1,12 +1,13 @@
-package com.group17.model.entity;
+package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
+import com.group17.model.entity.Movable;
 
-public class Player implements Movable {
+public abstract class Enemy implements Movable {
     private Position position;
 
-    public Player(Position position) {
-
+    public Enemy(Position position) {
+        this.position = position;
     }
 
     @Override

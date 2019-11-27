@@ -1,9 +1,24 @@
 package com.group17.model.world;
 
-import com.group17.core.Position;
-
 public abstract class Door extends Cell{
-    public Door(Position position) {
-        super(position, false);
+    private boolean state;
+
+    public Door() {
+        super(false);
+        state = false;
     }
+
+    public boolean getState() {
+        return state;
+    }
+
+    public void open() {
+        state = true;
+    }
+
+    public void close() {
+        state = false;
+    }
+
+    public void toggle() { state = !state; }
 }
