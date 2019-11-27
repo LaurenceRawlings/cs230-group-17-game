@@ -1,9 +1,5 @@
 package com.group17.core;
 
-import com.group17.model.entity.enemy.DumbFollowingEnemy;
-import com.group17.model.entity.enemy.SmartFollowingEnemy;
-import com.group17.model.entity.enemy.StraightLineEnemy;
-import com.group17.model.entity.enemy.WallFollowingEnemy;
 import com.group17.model.world.Level;
 
 import java.io.File;
@@ -11,6 +7,30 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+//File Layout
+/*
+
+<Level File>                    //Declarator
+1; Level 1                      //Level Number; Level Name
+10,10;1,1;8,8                   //Width, Height; Start x, Start y; Finish x, Finish y
+2,2,7,7;3,3,6,6                 //Teleporters: Origin x, Origin y, Destination x, Destination y; ...
+1,3,smart,down;8,6,line,left    //Enemies: Spawn x, Span y, Type (smart, dumb, wall, line), Direction (up, down, left, right); ...
+1,5,fire;1,6,water              //Obstacles: Position x, Position y, Type (fire, water); ...
+1,2,fire boots;1,3,water boots  //Items: Position x, Position y, Type (fire boots, water boots);  ...
+##########                      //Level Layout - Walls, Ground, Obstacles, Doors and Items
+#      @ #
+#        #                      #       = Wall
+#  @   a #                      'space' = Ground
+#    @   #                      @       = Token
+# #####A##                      1-9     = Token Door (Number = Token Cost)
+# @      #                      A-Z     = Key Door (Matching key is corresponding lowercase letter)
+#      ###                      a-z     = Key
+# @    5 #
+##########                      (Other characters can be used but will be ignored, helpful for visualising layout)
+
+*/
+
 
 public class LevelReader {
     private static final String LEVEL_DIR = "./Levels";
@@ -40,53 +60,20 @@ public class LevelReader {
                         scanner.close();
                     }
                 }
-                return levels;
             } else {
                 throw new IOException(levelDirectory + " not found!");
             }
         } catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
+        return levels;
     }
 
     private static Level createLevel(String[] levelData) {
         try {
-            String levelName = levelData[0];
-            String levelNumber = levelData[1];
-            String[] dimensions = levelData[2].split(",");
-            String[] startPosition = levelData[3].split(",");
-            String tokens = levelData[4];
 
-            Level newLevel = new Level(new Position(Integer.parseInt(startPosition[0]),
-                    Integer.parseInt(startPosition[1])), Integer.parseInt(levelNumber), levelName,
-                    Integer.parseInt(dimensions[0]), Integer.parseInt(dimensions[1]),
-                    Integer.parseInt(tokens));
-
-            for (String current : levelData[5].split(";")) {
-                String[] enemy = current.split(",");
-                Position position = new Position(Integer.parseInt(enemy[0]), Integer.parseInt(enemy[1]));
-
-                switch (enemy[2]) {
-                    case "A":
-                        newLevel.setEnemy(position, new SmartFollowingEnemy(position));
-                        break;
-                    case "B":
-                        newLevel.setEnemy(position, new WallFollowingEnemy(position));
-                        break;
-                    case "C":
-                        newLevel.setEnemy(position, new DumbFollowingEnemy(position));
-                        break;
-                    case "D":
-                        newLevel.setEnemy(position, new StraightLineEnemy(position));
-                        break;
-                }
-            }
-
-            return newLevel;
         } catch (Exception e) {
             e.printStackTrace();
-            throw e;
         }
     }
 }

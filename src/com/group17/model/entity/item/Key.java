@@ -8,7 +8,7 @@ public class Key extends Item {
 
         public final String label;
 
-        private KeyType(String label) {
+        KeyType(String label) {
             this.label = label;
         }
     }
@@ -16,7 +16,7 @@ public class Key extends Item {
     private KeyType keyType;
 
     public Key(KeyType keyType) {
-        super(keyType + " Key");
+        super(keyType.label + " Key");
         this.keyType = keyType;
     }
 

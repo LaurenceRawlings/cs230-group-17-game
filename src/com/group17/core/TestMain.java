@@ -2,6 +2,7 @@ package com.group17.core;
 
 import com.group17.model.entity.item.FireBoots;
 import com.group17.model.entity.item.Item;
+import com.group17.model.entity.item.Key;
 import com.group17.model.entity.item.WaterBoots;
 
 import java.util.ArrayList;
@@ -19,5 +20,8 @@ public class TestMain {
         List<Item> i = new ArrayList<>();
         i.add(fb);
         System.out.println(i.contains(fb2));
+
+        Key k = new Key(Key.KeyType.blue);
+        System.out.println(k.toString());
     }
 }
