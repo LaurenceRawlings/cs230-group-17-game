@@ -9,7 +9,13 @@ public class Teleporter extends Cell {
     public Teleporter(Position position, Position destinationPosition) {
         super(true);
         this.position = position;
-        destination = new Teleporter(destinationPosition, position);
+        destination = new Teleporter(destinationPosition, this);
+    }
+
+    public Teleporter(Position position, Teleporter destination) {
+        super(true);
+        this.position = position;
+        this.destination = destination;
     }
 
     public Position getPosition() {
