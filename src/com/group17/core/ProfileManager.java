@@ -3,6 +3,7 @@ package com.group17.core;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class ProfileManager {
@@ -70,6 +71,15 @@ public class ProfileManager {
             e.printStackTrace();
         }
 
+        return profiles;
+    }
+
+    public static List<Profile> getProfiles() {
+        List<Profile> profiles = new ArrayList<>();
+        for (String name : getProfileNames()) {
+            profiles.add(load(name));
+        }
+        Collections.sort(profiles);
         return profiles;
     }
 }

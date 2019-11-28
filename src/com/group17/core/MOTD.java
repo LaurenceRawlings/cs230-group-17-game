@@ -4,10 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MOTD {
+    public static String get() {
+        String solution = solve(httpGet("http://cswebcat.swan.ac.uk/puzzle"));
+        return httpGet("http://cswebcat.swan.ac.uk/message?solution=" + solution);
+    }
+
     private static String solve(String puzzle) {
         StringBuilder solution = new StringBuilder();
         boolean shiftDirection = true;
@@ -30,11 +34,6 @@ public class MOTD {
             shiftDirection = !shiftDirection;
         }
         return solution.toString();
-    }
-
-    public static String get() {
-        String solution = solve(httpGet("http://cswebcat.swan.ac.uk/puzzle"));
-        return httpGet("http://cswebcat.swan.ac.uk/message?solution=" + solution);
     }
 
     private static String httpGet(String url) {

@@ -9,31 +9,36 @@ import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        FireBoots fb = new FireBoots();
-        FireBoots fb2 = new FireBoots();
-
-        System.out.println(fb.equals(fb2));
-
-        List<Item> i = new ArrayList<>();
-        i.add(fb);
-        System.out.println(i.contains(fb2));
-
-        Key k = new Key(Key.KeyType.blue);
-        System.out.println(k.toString());
+        System.out.println(MOTD.get());
 
         Profile p = new Profile("Laurence");
         p.newGame();
-        p.setHighscore(100);
+        p.setHighscore(1000);
         ProfileManager.save(p);
 
-        Profile loaded = ProfileManager.load("Laurence");
-        System.out.println(loaded.getName());
-        System.out.println(loaded.getHighscore());
+        Profile p2 = new Profile("Fraz");
+        p2.newGame();
+        p2.setHighscore(800);
+        ProfileManager.save(p2);
+
+        Profile p3 = new Profile("Bias");
+        p3.newGame();
+        p3.setHighscore(900);
+        ProfileManager.save(p3);
+
+        Profile p4 = new Profile("Sam");
+        p4.newGame();
+        p4.setHighscore(500);
+        ProfileManager.save(p4);
+
 
 
         System.out.println(ProfileManager.getProfileNames());
-        System.out.println(ProfileManager.exists("Laurence.1.2.3"));
 
-        System.out.println(MOTD.get());
+
+
+        for (Profile profile : ProfileManager.getProfiles()) {
+            System.out.println(profile.getName());
+        }
     }
 }

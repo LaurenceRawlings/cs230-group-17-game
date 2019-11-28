@@ -2,9 +2,10 @@ package com.group17.core;
 
 import java.io.Serializable;
 
-public class Profile implements Serializable {
+public class Profile implements Serializable, Comparable<Profile> {
     private Game game;
     private String name;
+    private int highscore;
 
     public int getHighscore() {
         return highscore;
@@ -18,8 +19,6 @@ public class Profile implements Serializable {
         return name;
     }
 
-    private int highscore;
-
     public Profile(String name) {
         this.name = name;
         highscore = 0;
@@ -27,5 +26,16 @@ public class Profile implements Serializable {
 
     public void newGame() {
         game = new Game();
+    }
+
+    @Override
+    public int compareTo(Profile profile) {
+        if (highscore == profile.getHighscore()) {
+            return 0;
+        } else if (highscore < profile.getHighscore()) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }
