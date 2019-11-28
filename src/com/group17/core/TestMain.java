@@ -33,5 +33,7 @@ public class TestMain {
 
         System.out.println(ProfileManager.getProfileNames());
         System.out.println(ProfileManager.exists("Laurence.1.2.3"));
+
+        System.out.println(MOTD.get());
     }
 }
