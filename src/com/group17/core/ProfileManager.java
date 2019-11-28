@@ -1,6 +1,10 @@
 package com.group17.core;
 
 import java.io.*;
+import java.nio.file.DirectoryNotEmptyException;
+import java.nio.file.Files;
+import java.nio.file.NoSuchFileException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -50,6 +54,23 @@ public class ProfileManager {
 
     public static boolean exists(String name) {
         return getProfileNames().contains(name);
+    }
+
+    public static void delete(String name) {
+        if (exists(name)) {
+            try {
+                Files.deleteIfExists(Paths.get(PROFILE_DIR + "/" + name + "." + PROFILE_FILE_EXTENSION));
+            } catch(NoSuchFileException e) {
+                e.printStackTrace();
+                System.out.println("No such file/directory exists");
+            } catch(DirectoryNotEmptyException e) {
+                e.printStackTrace();
+                System.out.println("Directory is not empty.");
+            } catch(IOException e) {
+                e.printStackTrace();
+                System.out.println("Invalid permissions.");
+            }
+        }
     }
 
     public static List<String> getProfileNames() {

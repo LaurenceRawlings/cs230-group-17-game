@@ -200,9 +200,6 @@ public class LevelReader {
                             Integer.parseInt(itemDetails[1])), (Item) itemMap.get(itemDetails[2]));
                 }
             }
-
-            newLevel.updateEnemyPositions();
-
             return newLevel;
         } catch (Exception e) {
             e.printStackTrace();

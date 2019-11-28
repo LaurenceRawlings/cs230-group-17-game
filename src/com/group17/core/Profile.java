@@ -7,6 +7,10 @@ public class Profile implements Serializable, Comparable<Profile> {
     private String name;
     private int highscore;
 
+    public Game getGame() {
+        return game;
+    }
+
     public int getHighscore() {
         return highscore;
     }

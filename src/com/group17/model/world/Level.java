@@ -87,6 +87,7 @@ public class Level implements Comparable<Level>, Serializable {
 
     public void addEnemy(Enemy enemy) {
         enemies.add(enemy);
+        updateEnemyPositions();
     }
 
     public void updateEnemyPositions() {
