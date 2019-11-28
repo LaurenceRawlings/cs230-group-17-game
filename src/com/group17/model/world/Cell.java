@@ -8,4 +8,7 @@ public abstract class Cell implements Serializable {
     public Cell(boolean walkable) {
         this.walkable = walkable;
     }
+    public boolean isWalkable (){
+        return this.walkable;
+    }
 }
