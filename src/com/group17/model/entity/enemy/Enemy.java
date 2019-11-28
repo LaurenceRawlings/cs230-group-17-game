@@ -22,26 +22,6 @@ public abstract class Enemy implements Moveable, Serializable {
     }
 
     @Override
-    public void moveUp() {
-
-    }
-
-    @Override
-    public void moveDown() {
-
-    }
-
-    @Override
-    public void moveLeft() {
-
-    }
-
-    @Override
-    public void moveRight() {
-
-    }
-
-    @Override
     public Position getPosition() {
         return position;
     }

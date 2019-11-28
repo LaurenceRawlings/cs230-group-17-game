@@ -6,4 +6,9 @@ public class LineFollowingEnemy extends Enemy {
     public LineFollowingEnemy(Position position, Direction direction) {
         super(position, direction);
     }
+
+    @Override
+    public void move(Direction direction) {
+
+    }
 }

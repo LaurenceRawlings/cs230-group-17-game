@@ -59,9 +59,9 @@ public class LevelReader {
     }});
 
     private static final Map keyMap = Collections.unmodifiableMap(new HashMap() {{
-        put('r', Key.KeyType.red);
-        put('g', Key.KeyType.green);
-        put('b', Key.KeyType.blue);
+        put('r', new Key(Key.KeyType.red));
+        put('g', new Key(Key.KeyType.green));
+        put('b', new Key(Key.KeyType.blue));
     }});
 
     private static final Map enemyMap = Collections.unmodifiableMap(new HashMap() {{

@@ -6,4 +6,9 @@ public class SmartFollowingEnemy extends Enemy {
     public SmartFollowingEnemy(Position position, Direction direction) {
         super(position, direction);
     }
+
+    @Override
+    public void move(Direction direction) {
+
+    }
 }
