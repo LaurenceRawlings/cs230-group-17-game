@@ -10,10 +10,7 @@ public interface Moveable {
         right
     }
 
-    void moveUp();
-    void moveDown();
-    void moveLeft();
-    void moveRight();
+    void move(Direction direction);
 
     Position getPosition();
     void setPosition(Position position);

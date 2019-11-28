@@ -1,6 +1,5 @@
 package com.group17;
 
-import com.group17.core.Game;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
