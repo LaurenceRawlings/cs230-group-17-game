@@ -1,6 +1,8 @@
 package com.group17.model.entity.item;
 
-public abstract class Item {
+import java.io.Serializable;
+
+public abstract class Item implements Serializable {
     private String name;
 
     @Override

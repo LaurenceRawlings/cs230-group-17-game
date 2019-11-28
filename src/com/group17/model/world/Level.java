@@ -4,10 +4,11 @@ import com.group17.core.Position;
 import com.group17.model.entity.enemy.Enemy;
 import com.group17.model.entity.item.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level implements Comparable<Level> {
+public class Level implements Comparable<Level>, Serializable {
     private Cell[][] cells;
     private Item[][] items;
     private Boolean[][] enemyPositions;

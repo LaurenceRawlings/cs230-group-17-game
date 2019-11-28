@@ -9,8 +9,6 @@ import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        Game game = new Game();
-
         FireBoots fb = new FireBoots();
         FireBoots fb2 = new FireBoots();
 
@@ -23,5 +21,17 @@ public class TestMain {
         Key k = new Key(Key.KeyType.blue);
         System.out.println(k.toString());
 
+        Profile p = new Profile("Laurence");
+        p.newGame();
+        p.setHighscore(100);
+        ProfileManager.save(p);
+
+        Profile loaded = ProfileManager.load("Laurence");
+        System.out.println(loaded.getName());
+        System.out.println(loaded.getHighscore());
+
+
+        System.out.println(ProfileManager.getProfileNames());
+        System.out.println(ProfileManager.exists("Laurence.1.2.3"));
     }
 }

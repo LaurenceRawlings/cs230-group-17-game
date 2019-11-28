@@ -1,9 +1,11 @@
 package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
-import com.group17.model.entity.Movable;
+import com.group17.model.entity.Moveable;
 
-public abstract class Enemy implements Movable {
+import java.io.Serializable;
+
+public abstract class Enemy implements Moveable, Serializable {
     public enum EnemyType {
         smart,
         dumb,

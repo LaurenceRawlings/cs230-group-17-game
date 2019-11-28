@@ -2,7 +2,7 @@ package com.group17.model.entity;
 
 import com.group17.core.Position;
 
-public interface Movable {
+public interface Moveable {
     enum Direction {
         up,
         down,

@@ -2,7 +2,9 @@ package com.group17.model.entity;
 
 import com.group17.core.Position;
 
-public class Player implements Movable {
+import java.io.Serializable;
+
+public class Player implements Moveable, Serializable {
     private Position position;
 
     public Player(Position position) {

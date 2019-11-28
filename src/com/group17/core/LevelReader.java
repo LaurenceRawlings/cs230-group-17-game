@@ -1,6 +1,6 @@
 package com.group17.core;
 
-import com.group17.model.entity.Movable;
+import com.group17.model.entity.Moveable;
 import com.group17.model.entity.enemy.*;
 import com.group17.model.entity.item.*;
 import com.group17.model.world.*;
@@ -72,10 +72,10 @@ public class LevelReader {
     }});
 
     private static final Map directionMap = Collections.unmodifiableMap(new HashMap() {{
-        put("up", Movable.Direction.up);
-        put("down", Movable.Direction.down);
-        put("left", Movable.Direction.left);
-        put("right", Movable.Direction.right);
+        put("up", Moveable.Direction.up);
+        put("down", Moveable.Direction.down);
+        put("left", Moveable.Direction.left);
+        put("right", Moveable.Direction.right);
     }});
 
     public static List<Level> readLevels() {
@@ -101,9 +101,10 @@ public class LevelReader {
                         scanner.close();
                     }
                 }
-            } else {
-                throw new IOException(levelDirectory + " not found!");
             }
+        } catch (IOException e) {
+            System.out.println(levelDirectory + " not found!");
+            e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -163,7 +164,7 @@ public class LevelReader {
                 String[] enemyDetails = enemy.split(",");
 
                 if (enemyMap.containsKey(enemyDetails[2]) && directionMap.containsKey(enemyDetails[3])) {
-                    Movable.Direction direction = (Movable.Direction) directionMap.get(enemyDetails[3]);
+                    Moveable.Direction direction = (Moveable.Direction) directionMap.get(enemyDetails[3]);
                     Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
                     switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
                         case smart:

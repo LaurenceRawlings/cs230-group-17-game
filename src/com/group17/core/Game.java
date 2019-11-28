@@ -1,12 +1,13 @@
 package com.group17.core;
 
-import com.group17.model.entity.Movable;
+import com.group17.model.entity.Moveable;
 import com.group17.model.entity.Player;
 import com.group17.model.world.Level;
 
+import java.io.Serializable;
 import java.util.PriorityQueue;
 
-public class Game {
+public class Game implements Serializable {
     private PriorityQueue<Level> levelQueue;
     private Level currentLevel;
     private Player player;
@@ -19,7 +20,7 @@ public class Game {
         player = new Player(currentLevel.getStart());
     }
 
-    public void move(Movable.Direction direction) {
+    public void move(Moveable.Direction direction) {
         switch (direction) {
             case up:
                 break;
