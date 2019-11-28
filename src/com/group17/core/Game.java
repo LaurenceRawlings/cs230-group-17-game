@@ -2,6 +2,7 @@ package com.group17.core;
 
 import com.group17.model.entity.Moveable;
 import com.group17.model.entity.Player;
+import com.group17.model.world.Cell;
 import com.group17.model.world.Level;
 
 import java.io.Serializable;
@@ -38,15 +39,22 @@ public class Game implements Serializable {
     }
 
     public void move(Moveable.Direction direction) {
-        switch (direction) {
-            case up:
-                break;
-            case down:
+        Position next=null;
+        switch(direction){
+            case right:
+                next = new Position(player.getPosition().x()+1 , player.getPosition().y());
                 break;
             case left:
+                next = new Position(player.getPosition().x()+1 , player.getPosition().y());
                 break;
-            case right:
+            case up:
+                next=new Position(player.getPosition().x() , player.getPosition().y()-1);
+                break;
+            case down:
+                next =new Position(player.getPosition().x() , player.getPosition().y()+1);
                 break;
         }
+        Cell nextCell=currentLevel.getCell(next);
+        player.setPosition(next);
     }
 }

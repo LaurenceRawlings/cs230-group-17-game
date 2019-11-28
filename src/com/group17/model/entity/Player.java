@@ -8,6 +8,11 @@ public class Player implements Serializable {
     private Position position;
 
     public Player(Position position) {
-
+    }
+    public void setPosition(Position position){
+        this.position=position;
+    }
+    public Position getPosition() {
+        return this.position;
     }
 }
