@@ -12,12 +12,29 @@ public class Game implements Serializable {
     private Level currentLevel;
     private Player player;
 
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
     public Game() {
         levelQueue = new PriorityQueue<>();
         levelQueue.addAll(LevelReader.readLevels());
         currentLevel = levelQueue.poll();
         assert currentLevel != null;
         player = new Player(currentLevel.getStart());
+    }
+
+    public boolean nextLevel() {
+        if (levelQueue.peek() != null) {
+            currentLevel = levelQueue.poll();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void move(Moveable.Direction direction) {
