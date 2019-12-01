@@ -15,9 +15,11 @@ public class Player implements Serializable {
         inventory = new HashMap();
         this.position = position;
     }
+
     public void setPosition(Position position){
-        this.position=position;
+        this.position = position;
     }
+
     public Position getPosition() {
         return this.position;
     }

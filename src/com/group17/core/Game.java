@@ -2,12 +2,9 @@ package com.group17.core;
 
 import com.group17.model.entity.Moveable;
 import com.group17.model.entity.Player;
-import com.group17.model.entity.item.FireBoots;
-import com.group17.model.entity.item.Item;
 import com.group17.model.entity.item.Key;
 import com.group17.model.entity.item.Token;
 import com.group17.model.world.*;
-import jdk.nashorn.internal.parser.TokenKind;
 
 import java.io.Serializable;
 import java.util.PriorityQueue;
@@ -49,7 +46,7 @@ public class Game implements Serializable {
                 next = new Position(player.getPosition().x() + 1, player.getPosition().y());
                 break;
             case left:
-                next = new Position(player.getPosition().x() + 1, player.getPosition().y());
+                next = new Position(player.getPosition().x() - 1, player.getPosition().y());
                 break;
             case up:
                 next = new Position(player.getPosition().x(), player.getPosition().y() - 1);
@@ -101,7 +98,7 @@ public class Game implements Serializable {
                     }
                 }
             }
-        else{
+        else {
             //die???????????
         }
         }
