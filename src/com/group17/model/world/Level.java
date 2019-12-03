@@ -99,4 +99,6 @@ public class Level implements Comparable<Level>, Serializable {
     public boolean getEnemy(Position position){
         return enemyPositions[position.x()][position.y()];
     }
+
+    public List<Enemy> getEnemies(){return enemies;}
 }

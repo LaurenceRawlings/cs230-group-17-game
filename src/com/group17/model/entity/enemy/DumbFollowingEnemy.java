@@ -11,4 +11,5 @@ public class DumbFollowingEnemy extends Enemy {
     public void move(Direction direction) {
 
     }
+    //empty class
 }

@@ -10,6 +10,7 @@ public class TestMain {
         Player p = new Player(new Position(0,0));
         Token t = new Token();
 
+        new Game();
         p.pickUp(t);
         p.pickUp(t);
         System.out.println(p.hasItem(t, 2));
