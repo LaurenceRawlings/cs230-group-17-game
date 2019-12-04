@@ -73,6 +73,9 @@ public class ProfileController {
     private Label btn_delete;
 
     @FXML
+    private Label lbl_subtitle;
+
+    @FXML
     void initialize() {
         ObservableList<String> profiles = FXCollections.observableArrayList(ProfileManager.getProfileNames());
         lst_profiles.setItems(profiles);

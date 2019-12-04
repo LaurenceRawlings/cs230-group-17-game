@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -79,7 +80,7 @@ public class MenuController {
 
     @FXML
     void initialize() {
-        lbl_motd.setText(MOTD.get());
+        //lbl_motd.setText(MOTD.get());
     }
 
     @FXML
@@ -87,7 +88,7 @@ public class MenuController {
         if (profile == null) {
             ControllerHelpers.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
         } else {
-
+            startGame();
         }
     }
 
@@ -103,6 +104,7 @@ public class MenuController {
             ControllerHelpers.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
         } else {
             profile.newGame();
+            startGame();
         }
     }
 
@@ -119,11 +121,27 @@ public class MenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     @FXML
     void onClickBtnLeaderboard(MouseEvent event) {
+    }
+
+    private void startGame() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+            Parent root = loader.load();
+            GameController game = loader.getController();
+            game.setController(controller);
+            game.setProfile(profile);
+
+            Scene scene = new Scene(root, 1000, 1000);
+            scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> game.keyPressed(event));
+
+            controller.activate(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 }
