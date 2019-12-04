@@ -1,6 +1,7 @@
 package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
+import com.group17.model.entity.Direction;
 
 public class WallFollowingEnemy extends Enemy {
     public WallFollowingEnemy(Position position, Direction direction) {
@@ -27,8 +28,4 @@ public class WallFollowingEnemy extends Enemy {
         return null; //should never happen
     }
 
-    @Override
-    public void move(Direction direction) {
-
-    }
 }

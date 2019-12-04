@@ -1,10 +1,11 @@
 package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
-import com.group17.model.entity.Moveable;
+import com.group17.model.entity.Direction;
+
 import java.io.Serializable;
 
-public abstract class Enemy implements Moveable, Serializable {
+public abstract class Enemy implements Serializable {
     public enum EnemyType {
         smart,
         dumb,
@@ -41,30 +42,29 @@ public abstract class Enemy implements Moveable, Serializable {
     public void rotateRight(){
         switch (getDirection()){
             case up:
-                setDirection(Moveable.Direction.right);
+                setDirection(Direction.right);
             case left:
-                setDirection(Moveable.Direction.up);
+                setDirection(Direction.up);
             case down:
-                setDirection(Moveable.Direction.left);
+                setDirection(Direction.left);
             case right:
-                setDirection(Moveable.Direction.down);
+                setDirection(Direction.down);
         }
     }
 
     public void rotateLeft(){
         switch (getDirection()){
             case up:
-                setDirection(Moveable.Direction.left);
+                setDirection(Direction.left);
             case left:
-                setDirection(Moveable.Direction.down);
+                setDirection(Direction.down);
             case down:
-                setDirection(Moveable.Direction.right);
+                setDirection(Direction.right);
             case right:
-                setDirection(Moveable.Direction.up);
+                setDirection(Direction.up);
         }
     }
 
-    @Override
     public Position getPosition() {
         return position;
     }
@@ -77,7 +77,6 @@ public abstract class Enemy implements Moveable, Serializable {
         this.direction = direction;
     }
 
-    @Override
     public void setPosition(Position position) {
         this.position = position;
     }

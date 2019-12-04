@@ -1,6 +1,6 @@
 package com.group17.core;
 
-import com.group17.model.entity.Moveable;
+import com.group17.model.entity.Direction;
 import com.group17.model.entity.Player;
 import com.group17.model.entity.enemy.*;
 import com.group17.model.entity.item.Key;
@@ -126,7 +126,7 @@ public class Game implements Serializable {
         }
     }
 
-    public void move(Moveable.Direction direction) {
+    public void move(Direction direction) {
         Position next = null;
         switch (direction) {
             case right:

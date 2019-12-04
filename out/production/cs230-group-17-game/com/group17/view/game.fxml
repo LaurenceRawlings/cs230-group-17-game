@@ -23,7 +23,7 @@
       </HBox>
    </top>
    <center>
-      <Canvas height="500" width="-500" BorderPane.alignment="CENTER" />
+      <Canvas fx:id="canvas" height="500" width="500" BorderPane.alignment="CENTER" />
    </center>
    <bottom>
       <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
