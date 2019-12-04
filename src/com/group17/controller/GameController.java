@@ -16,9 +16,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
-import javax.annotation.Resources;
-import java.net.URL;
-
 public class GameController {
     private Profile profile;
     private Game game;
@@ -109,6 +106,6 @@ public class GameController {
     }
 
     private void drawGame() {
-        
+
     }
 }

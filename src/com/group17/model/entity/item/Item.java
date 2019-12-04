@@ -1,8 +1,10 @@
 package com.group17.model.entity.item;
 
+import com.group17.model.GameObject;
+
 import java.io.Serializable;
 
-public abstract class Item implements Serializable {
+public abstract class Item extends GameObject implements Serializable {
     private String name;
 
     @Override
@@ -10,7 +12,8 @@ public abstract class Item implements Serializable {
         return this.getClass() == obj.getClass();
     }
 
-    public Item(String name) {
+    public Item(String name, String spriteName) {
+        super(spriteName);
         this.name = name;
     }
 

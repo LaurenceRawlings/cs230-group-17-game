@@ -50,15 +50,15 @@ public class LevelReader {
         put(' ', new Ground());
         put("water", new Water());
         put("fire", new Fire());
+        put('R', new RedDoor());
+        put('G', new GreenDoor());
+        put('B', new BlueDoor());
     }});
 
     private static final Map itemMap = Collections.unmodifiableMap(new HashMap() {{
         put('@', new Token());
         put("fire boots", new FireBoots());
         put("water boots", new WaterBoots());
-    }});
-
-    private static final Map keyMap = Collections.unmodifiableMap(new HashMap() {{
         put('r', new Key(Key.KeyType.red));
         put('g', new Key(Key.KeyType.green));
         put('b', new Key(Key.KeyType.blue));
@@ -139,10 +139,6 @@ public class LevelReader {
                         newLevel.setCell(position, (Cell) cellMap.get(current));
                     } else if (itemMap.containsKey(current)) {
                         newLevel.setItem(position, (Item) itemMap.get(current));
-                    } else if (keyMap.containsKey(current)) {
-                        newLevel.setItem(position, new Key((Key.KeyType) keyMap.get(current)));
-                    } else if (keyMap.containsKey(String.valueOf(current).toLowerCase().toCharArray()[0])) {
-                        newLevel.setCell(position, new KeyDoor((Key.KeyType) keyMap.get(current)));
                     } else if (Character.isDigit(current)) {
                         newLevel.setCell(position, new TokenDoor(Integer.parseInt(Character.toString(current))));
                     } else {

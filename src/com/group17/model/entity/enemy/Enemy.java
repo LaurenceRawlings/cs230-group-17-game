@@ -1,11 +1,12 @@
 package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
+import com.group17.model.GameObject;
 import com.group17.model.entity.Direction;
 
 import java.io.Serializable;
 
-public abstract class Enemy implements Serializable {
+public abstract class Enemy extends GameObject implements Serializable {
     public enum EnemyType {
         smart,
         dumb,
@@ -16,7 +17,8 @@ public abstract class Enemy implements Serializable {
     private Position position;
     private Direction direction;
 
-    public Enemy(Position position, Direction direction) {
+    public Enemy(Position position, Direction direction, String spriteName) {
+        super(spriteName);
         this.position = position;
         this.direction = direction;
     }

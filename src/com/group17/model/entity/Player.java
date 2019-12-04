@@ -1,17 +1,19 @@
 package com.group17.model.entity;
 
 import com.group17.core.Position;
+import com.group17.model.GameObject;
 import com.group17.model.entity.item.Item;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player implements Serializable {
+public class Player extends GameObject implements Serializable{
     private Position position;
     private Map inventory;
 
     public Player(Position position) {
+        super("player");
         inventory = new HashMap();
         this.position = position;
     }
