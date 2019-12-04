@@ -26,6 +26,7 @@ public class Profile implements Serializable, Comparable<Profile> {
     public Profile(String name) {
         this.name = name;
         highscore = 0;
+        game = new Game();
     }
 
     public void newGame() {
