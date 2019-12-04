@@ -4,7 +4,7 @@ import com.group17.model.GameObject;
 
 import java.io.Serializable;
 
-public abstract class Cell extends GameObject implements Serializable {
+public abstract class Cell extends GameObject {
     private boolean walkable;
 
     public Cell(boolean walkable, String spriteName) {

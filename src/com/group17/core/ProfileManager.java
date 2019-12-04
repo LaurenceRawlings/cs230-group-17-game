@@ -11,7 +11,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProfileManager {
-    private static final String PROFILE_DIR = "./res/profiles";
+    private static final String PROFILE_DIR = "./src/com/group17/resources/profiles";
     private static final String PROFILE_FILE_EXTENSION = "save";
 
     public static Profile load(String name) {

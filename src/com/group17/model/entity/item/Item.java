@@ -4,7 +4,7 @@ import com.group17.model.GameObject;
 
 import java.io.Serializable;
 
-public abstract class Item extends GameObject implements Serializable {
+public abstract class Item extends GameObject {
     private String name;
 
     @Override

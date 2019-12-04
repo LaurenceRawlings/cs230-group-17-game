@@ -20,13 +20,13 @@ public class Key extends Item {
         this.keyType = keyType;
         switch (keyType) {
             case red:
-                setSprite("key_red");
+                setSpriteName("key_red");
                 break;
             case green:
-                setSprite("key_green");
+                setSpriteName("key_green");
                 break;
             case blue:
-                setSprite("key_blue");
+                setSpriteName("key_blue");
                 break;
             default:
                 break;

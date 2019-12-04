@@ -1,29 +1,20 @@
 package com.group17.model;
 
-import javafx.scene.image.Image;
+import java.io.Serializable;
 
-import java.io.File;
+public abstract class GameObject implements Serializable {
 
-public abstract class GameObject {
-    protected static final String SPRITE_DIR = "../resources/sprites";
-    protected static final String SPRITE_FILE_EXTENSION = "png";
+    private String spriteName;
 
-    private Image sprite;
-
-    public Image getSprite() {
-        return sprite;
+    public String getSpriteName() {
+        return spriteName;
     }
 
-    protected void setSprite(String spriteName) {
-        File temp = new File(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
-        if (temp.exists()) {
-            sprite = new Image(temp.getPath());
-        } else {
-            sprite = new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
-        }
+    protected void setSpriteName(String spriteName) {
+        this.spriteName = spriteName;
     }
 
     public GameObject(String spriteName) {
-        setSprite(spriteName);
+        setSpriteName(spriteName);
     }
 }

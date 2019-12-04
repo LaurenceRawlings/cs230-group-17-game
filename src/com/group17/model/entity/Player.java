@@ -4,11 +4,10 @@ import com.group17.core.Position;
 import com.group17.model.GameObject;
 import com.group17.model.entity.item.Item;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Player extends GameObject implements Serializable{
+public class Player extends GameObject {
     private Position position;
     private Map inventory;
 

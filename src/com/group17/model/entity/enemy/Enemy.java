@@ -6,7 +6,7 @@ import com.group17.model.entity.Direction;
 
 import java.io.Serializable;
 
-public abstract class Enemy extends GameObject implements Serializable {
+public abstract class Enemy extends GameObject {
     public enum EnemyType {
         smart,
         dumb,
