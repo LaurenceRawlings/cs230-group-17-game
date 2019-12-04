@@ -56,7 +56,7 @@ public class ProfileManager {
         return getProfileNames().contains(name);
     }
 
-    public static void delete(String name) {
+    public static void delete(String name) throws Exception {
         if (exists(name)) {
             try {
                 Files.deleteIfExists(Paths.get(PROFILE_DIR + "/" + name + "." + PROFILE_FILE_EXTENSION));
@@ -70,6 +70,8 @@ public class ProfileManager {
                 e.printStackTrace();
                 System.out.println("Invalid permissions.");
             }
+        } else{
+            throw new Exception("Profile not found!");
         }
     }
 

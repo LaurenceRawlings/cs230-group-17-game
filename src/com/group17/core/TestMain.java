@@ -18,6 +18,11 @@ public class TestMain {
         p.useItem(t, 2);
 
         System.out.println(p.hasItem(t, 1));
+
+        Profile p1 = new Profile("Profile 1");
+        Profile p2 = new Profile("Profile 2");
+        ProfileManager.save(p1);
+        ProfileManager.save(p2);
     }
 }
 

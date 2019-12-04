@@ -1,43 +1,30 @@
 package com.group17;
 
+import com.group17.controller.MenuController;
+import com.group17.controller.SceneSwitcher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("view/game.fxml"));
-
-        Scene scene = new Scene(root, 1000, 1000);
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> processKeyEvent(event));
+        SceneSwitcher controller = new SceneSwitcher(primaryStage);
 
         primaryStage.setTitle("Group 17 Game");
         primaryStage.setResizable(false);
-        primaryStage.setScene(scene);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
+        Parent root = loader.load();
+        MenuController menu = loader.getController();
+        menu.setController(controller);
+
+        controller.activate(new Scene(root, 1000, 1000));
         primaryStage.show();
     }
 
-    public void processKeyEvent(KeyEvent event) {
-        switch (event.getCode()) {
-            case UP:
-                break;
-            case DOWN:
-                break;
-            case LEFT:
-                break;
-            case RIGHT:
-                break;
-            default:
-                break;
-        }
-        event.consume();
-  }
     public static void main(String[] args) {
         launch(args);
     }
