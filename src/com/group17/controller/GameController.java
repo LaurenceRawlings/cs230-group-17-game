@@ -1,6 +1,7 @@
 package com.group17.controller;
 
 import com.group17.core.Game;
+import com.group17.core.LevelRenderer;
 import com.group17.core.Profile;
 import com.group17.model.entity.Direction;
 import javafx.animation.KeyFrame;
@@ -79,7 +80,6 @@ public class GameController {
         }));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
-        drawGame();
     }
 
     @FXML
@@ -106,6 +106,7 @@ public class GameController {
     }
 
     private void drawGame() {
-
+        LevelRenderer.render(game, canvas);
+        lbl_title.setText(game.getCurrentLevel().getLevelName());
     }
 }

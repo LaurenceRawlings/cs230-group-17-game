@@ -1,20 +1,59 @@
 package com.group17.core;
 
+import com.group17.model.entity.Player;
+import com.group17.model.world.Level;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 import java.io.File;
 
 public class LevelRenderer {
-    protected static final String SPRITE_DIR = "com/group17/resources/sprites";
-    protected static final String SPRITE_FILE_EXTENSION = "png";
+    private static final String SPRITE_DIR = "com/group17/resources/sprites";
+    private static final String SPRITE_FILE_EXTENSION = "png";
+    private static final int SPRITE_WIDTH = 50;
+    private static final int SPRITE_HEIGHT = 50;
 
-    public Image getSprite(String spriteName) {
-        File temp = new File(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
-        if (temp.exists()) {
-            return new Image(temp.getPath());
-        } else {
-            return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
-        }
+    private static Image getSprite(String spriteName) {
+        return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
+//        File temp = new File(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
+//        if (temp.exists()) {
+//            return new Image(temp.getPath());
+//        } else {
+//            return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
+//        }
     }
 
+    public static void render(Game game, Canvas canvas) {
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        int fov = game.getFov();
+        Level level = game.getCurrentLevel();
+        Player player = game.getPlayer();
+        Position playerPosition = player.getPosition();
+
+        int drawX = 0;
+        int drawY = 0;
+
+        for (int y = playerPosition.y() - fov; y <= playerPosition.y() + fov; y++) {
+            for (int x = playerPosition.x() - fov; x <= playerPosition.x() + fov; x++) {
+                if (y < 0 || x < 0 || y > level.getHeight()-1 || x > level.getWidth()-1) {
+                    gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                } else {
+                    if (level.getCell(new Position(x, y)) != null) {
+                        Image i = getSprite(level.getCell(new Position(x, y)).getSpriteName());
+                        gc.drawImage(getSprite(level.getCell(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                    } else {
+                        gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                    }
+                    if (level.getItem(new Position(x, y)) != null){
+                        gc.drawImage(getSprite(level.getItem(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                    }
+                }
+                drawX++;
+            }
+            drawX = 0;
+            drawY++;
+        }
+        gc.drawImage(getSprite(player.getSpriteName()), fov * SPRITE_WIDTH, fov * SPRITE_HEIGHT);
+    }
 }

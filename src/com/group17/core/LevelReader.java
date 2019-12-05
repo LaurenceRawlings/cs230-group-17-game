@@ -139,6 +139,7 @@ public class LevelReader {
                         newLevel.setCell(position, (Cell) cellMap.get(current));
                     } else if (itemMap.containsKey(current)) {
                         newLevel.setItem(position, (Item) itemMap.get(current));
+                        newLevel.setCell(position, (Cell) cellMap.get(' '));
                     } else if (Character.isDigit(current)) {
                         newLevel.setCell(position, new TokenDoor(Integer.parseInt(Character.toString(current))));
                     } else {
