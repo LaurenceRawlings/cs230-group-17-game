@@ -34,7 +34,7 @@
     <center>
         <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
-            <Canvas fx:id="canvas" height="600.0" width="600.0">
+            <Canvas fx:id="canvas" height="700.0" width="700.0">
                <VBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" />
                </VBox.margin>
@@ -42,14 +42,14 @@
          </children></VBox>
     </center>
     <top>
-        <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="root_top" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
                 <Label fx:id="lbl_title" text="Level">
                     <font>
                         <Font name="Segoe UI Black Italic" size="40.0" />
                     </font>
                 </Label>
-                <Label fx:id="lbl_timer" text="Timer" textAlignment="CENTER" wrapText="true">
+                <Label fx:id="lbl_timer" text="0s" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="Segoe UI Light" size="18.0" />
                     </font></Label>

@@ -9,16 +9,16 @@ import javafx.scene.image.Image;
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
-    private static final int SPRITE_WIDTH = 50;
-    private static final int SPRITE_HEIGHT = 50;
+    private static final int SPRITE_WIDTH = 100;
+    private static final int SPRITE_HEIGHT = 100;
 
     private static Image getSprite(String spriteName) {
         try {
-            return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
+            return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         }
-        return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
+        return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
     }
 
     public static void render(Game game, Canvas canvas) {

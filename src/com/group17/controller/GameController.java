@@ -72,10 +72,12 @@ public class GameController {
 
     @FXML
     void initialize() {
-        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(30), new EventHandler<ActionEvent>() {
+        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+                int time = game.getCurrentLevel().getTime();
+                game.getCurrentLevel().setTime(++time);
+                lbl_timer.setText(time + "s");
             }
         }));
         timer.setCycleCount(Timeline.INDEFINITE);

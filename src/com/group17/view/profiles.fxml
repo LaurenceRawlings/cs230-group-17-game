@@ -59,14 +59,17 @@
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
                   </Label>
                   <Label id="button" fx:id="btn_back" onMousePressed="#onClickBtnBack" stylesheets="@styles.css" text="Back">
-                     <padding>
-                        <Insets left="10.0" />
-                     </padding>
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Label>
                </children>
             </HBox>
