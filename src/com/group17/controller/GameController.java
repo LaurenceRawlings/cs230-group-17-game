@@ -111,4 +111,8 @@ public class GameController {
         LevelRenderer.render(game, canvas);
         lbl_title.setText(game.getCurrentLevel().getLevelName());
     }
+
+    public void onLoad() {
+        drawGame();
+    }
 }

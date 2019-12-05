@@ -138,6 +138,7 @@ public class MenuController {
             Scene scene = new Scene(root, 1000, 1000);
             scene.addEventFilter(KeyEvent.KEY_PRESSED, event -> game.keyPressed(event));
 
+            game.onLoad();
             controller.activate(scene);
         } catch (IOException e) {
             e.printStackTrace();
