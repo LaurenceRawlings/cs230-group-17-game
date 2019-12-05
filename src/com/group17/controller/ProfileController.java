@@ -11,14 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 
 import java.io.IOException;
 
 public class ProfileController {
-    private SceneSwitcher controller;
+    private SceneController controller;
 
     private Profile profile;
 
@@ -29,58 +26,21 @@ public class ProfileController {
         }
     }
 
-    public void setController(SceneSwitcher controller) {
+    public void setController(SceneController controller) {
         this.controller = controller;
     }
-
-    @FXML
-    private BorderPane root;
-
-    @FXML
-    private HBox root_bottom;
 
     @FXML
     private Label lbl_profile;
 
     @FXML
-    private VBox root_left;
-
-    @FXML
-    private VBox root_right;
-
-    @FXML
-    private VBox root_main;
-
-    @FXML
     private ListView<String> lst_profiles;
-
-    @FXML
-    private Label btn_load;
-
-    @FXML
-    private Label btn_create;
-
-    @FXML
-    private Label btn_back;
-
-    @FXML
-    private VBox root_top;
-
-    @FXML
-    private Label lbl_title;
-
-    @FXML
-    private Label btn_delete;
-
-    @FXML
-    private Label lbl_subtitle;
 
     @FXML
     void initialize() {
         ObservableList<String> profiles = FXCollections.observableArrayList(ProfileManager.getProfileNames());
         lst_profiles.setItems(profiles);
     }
-
 
     @FXML
     void onClickBtnBack(MouseEvent event) {
@@ -100,28 +60,36 @@ public class ProfileController {
     @FXML
     void onClickBtnCreate(MouseEvent event) {
         String name = "Player";
-        name = ControllerHelpers.inputDialog("New Profile", "Create A New Profile", "Enter the name for the new profile: ");
-        if (!ProfileManager.exists(name)) {
-            profile = new Profile(name);
-            ProfileManager.save(profile);
-            initialize();
-        } else {
-            ControllerHelpers.showMessage("Hold Up!", "Profile Already Exists!", "A profile with that name already exists, choose another name.");
+        name = MessageController.inputDialog("New Profile", "Create A New Profile", "Enter the name for the new profile: ", "New Profile");
+        if (name != null) {
+            if (!ProfileManager.exists(name)) {
+                profile = new Profile(name);
+                ProfileManager.save(profile);
+                initialize();
+            } else {
+                MessageController.showMessage("Hold Up!", "Profile Already Exists!", "A profile with that name already exists, choose another name.");
+            }
         }
     }
 
     @FXML
     void onClickBtnLoad(MouseEvent event) {
-        setProfile(ProfileManager.load(lst_profiles.getSelectionModel().getSelectedItem()));
+        String profile  = lst_profiles.getSelectionModel().getSelectedItem();
+        if (profile != null) {
+            setProfile(ProfileManager.load(profile));
+        }
     }
 
     @FXML
     void onClickBtnDelete(MouseEvent event) {
         try {
-            ProfileManager.delete(lst_profiles.getSelectionModel().getSelectedItem());
+            String profile  = lst_profiles.getSelectionModel().getSelectedItem();
+            if (profile != null) {
+                ProfileManager.delete(profile);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        initialize();;
+        initialize();
     }
 }

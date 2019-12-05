@@ -27,18 +27,14 @@ public class Player extends GameObject {
 
     public boolean hasItem(Item item) {
         if (inventory.containsKey(item)) {
-            if ((int) inventory.get(item) > 0) {
-                return true;
-            }
+            return (int) inventory.get(item) > 0;
         }
         return false;
     }
 
     public  boolean hasItem(Item item, int amount) {
         if (inventory.containsKey(item)) {
-            if ((int) inventory.get(item) >= amount) {
-                return true;
-            }
+            return (int) inventory.get(item) >= amount;
         }
         return false;
     }

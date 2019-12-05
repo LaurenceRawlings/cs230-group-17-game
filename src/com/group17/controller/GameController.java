@@ -3,26 +3,30 @@ package com.group17.controller;
 import com.group17.core.Game;
 import com.group17.core.LevelRenderer;
 import com.group17.core.Profile;
+import com.group17.core.ProfileManager;
 import com.group17.model.entity.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
+import java.io.IOException;
 
 public class GameController {
     private Profile profile;
     private Game game;
-    private SceneSwitcher controller;
+    private SceneController controller;
 
-    public void setController(SceneSwitcher controller) {
+    public void setController(SceneController controller) {
         this.controller = controller;
     }
 
@@ -35,37 +39,13 @@ public class GameController {
     }
 
     @FXML
-    private BorderPane root;
-
-    @FXML
-    private VBox root_left;
-
-    @FXML
-    private Label lbl_inventory;
-
-    @FXML
-    private ListView<?> lst_inventory;
-
-    @FXML
-    private VBox root_right;
-
-    @FXML
-    private VBox root_main;
-
-    @FXML
     private Canvas canvas;
-
-    @FXML
-    private VBox root_top;
 
     @FXML
     private Label lbl_title;
 
     @FXML
     private Label lbl_timer;
-
-    @FXML
-    private VBox root_bottom;
 
     @FXML
     private Label lbl_profile;
@@ -114,5 +94,21 @@ public class GameController {
 
     public void onLoad() {
         drawGame();
+    }
+
+    @FXML
+    void onClickBtnSave(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            Parent root = loader.load();
+            MenuController menu = loader.getController();
+            menu.setController(controller);
+            menu.setProfile(profile);
+            ProfileManager.save(profile);
+
+            controller.activate(new Scene(root, 1000, 1000));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.group17;
 
 import com.group17.controller.MenuController;
-import com.group17.controller.SceneSwitcher;
+import com.group17.controller.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
-        SceneSwitcher controller = new SceneSwitcher(primaryStage);
+        SceneController controller = new SceneController(primaryStage);
 
         primaryStage.setTitle("Group 17 Game");
         primaryStage.setResizable(false);

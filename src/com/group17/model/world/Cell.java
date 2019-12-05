@@ -2,8 +2,6 @@ package com.group17.model.world;
 
 import com.group17.model.GameObject;
 
-import java.io.Serializable;
-
 public abstract class Cell extends GameObject {
     private boolean walkable;
 

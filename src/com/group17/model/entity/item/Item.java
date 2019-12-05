@@ -2,8 +2,6 @@ package com.group17.model.entity.item;
 
 import com.group17.model.GameObject;
 
-import java.io.Serializable;
-
 public abstract class Item extends GameObject {
     private String name;
 

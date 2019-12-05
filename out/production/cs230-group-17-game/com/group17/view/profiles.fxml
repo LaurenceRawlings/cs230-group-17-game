@@ -40,14 +40,14 @@
             <ListView fx:id="lst_profiles" prefHeight="600.0" prefWidth="200.0" stylesheets="@styles.css" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Label id="button" fx:id="btn_load" onMousePressed="#onClickBtnLoad" stylesheets="@styles.css" text="Load">
+                  <Label id="button" fx:id="btn_load" onMouseClicked="#onClickBtnLoad" stylesheets="@styles.css" text="Load">
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin></Label>
-                  <Label id="button" fx:id="btn_create" onMousePressed="#onClickBtnCreate" stylesheets="@styles.css" text="Create">
+                  <Label id="button" fx:id="btn_create" onMouseClicked="#onClickBtnCreate" stylesheets="@styles.css" text="Create">
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>
@@ -55,7 +55,7 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label id="button" fx:id="btn_delete" onMousePressed="#onClickBtnDelete" stylesheets="@styles.css" text="Delete">
+                  <Label id="button" fx:id="btn_delete" onMouseClicked="#onClickBtnDelete" stylesheets="@styles.css" text="Delete">
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>
@@ -63,7 +63,7 @@
                         <Insets left="10.0" right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label id="button" fx:id="btn_back" onMousePressed="#onClickBtnBack" stylesheets="@styles.css" text="Back">
+                  <Label id="button" fx:id="btn_back" onMouseClicked="#onClickBtnBack" stylesheets="@styles.css" text="Back">
                      <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                      </font>

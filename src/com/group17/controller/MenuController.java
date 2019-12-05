@@ -2,6 +2,8 @@ package com.group17.controller;
 
 import com.group17.core.MOTD;
 import com.group17.core.Profile;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,19 +11,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class MenuController {
 
     private Profile profile;
-    private SceneSwitcher controller;
+    private SceneController controller;
 
-    public void setController(SceneSwitcher controller) {
+    public void setController(SceneController controller) {
         this.controller = controller;
     }
 
@@ -37,56 +37,26 @@ public class MenuController {
     }
 
     @FXML
-    private BorderPane root;
-
-    @FXML
-    private HBox root_bottom;
-
-    @FXML
     private Label lbl_profile;
 
     @FXML
-    private VBox root_left;
-
-    @FXML
-    private VBox root_right;
-
-    @FXML
-    private VBox root_main;
-
-    @FXML
-    private Label btn_continue;
-
-    @FXML
-    private Label btn_new;
-
-    @FXML
-    private Label btn_profile;
-
-    @FXML
-    private Label btn_leaderboard;
-
-    @FXML
     private Label btn_quit;
-
-    @FXML
-    private VBox root_top;
-
-    @FXML
-    private Label lbl_title;
 
     @FXML
     private Label lbl_motd;
 
     @FXML
     void initialize() {
-        //lbl_motd.setText(MOTD.get());
+        lbl_motd.setText(MOTD.get());
+        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(30), event -> lbl_motd.setText(MOTD.get())));
+        timer.setCycleCount(Timeline.INDEFINITE);
+        timer.play();
     }
 
     @FXML
     void onClickBtnContinue(MouseEvent event) {
         if (profile == null) {
-            ControllerHelpers.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
         } else {
             startGame();
         }
@@ -101,7 +71,7 @@ public class MenuController {
     @FXML
     void onClickBtnNew(MouseEvent event) {
         if (profile == null) {
-            ControllerHelpers.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
         } else {
             profile.newGame();
             startGame();
@@ -143,6 +113,5 @@ public class MenuController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

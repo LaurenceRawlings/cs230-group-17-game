@@ -3,10 +3,10 @@ package com.group17.controller;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class SceneSwitcher {
+public class SceneController {
     private Stage main;
 
-    public SceneSwitcher(Stage main) {
+    public SceneController(Stage main) {
         this.main = main;
     }
 

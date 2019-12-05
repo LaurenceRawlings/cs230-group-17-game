@@ -11,19 +11,19 @@
 
 <BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.controller.GameController">
     <left>
-        <VBox fx:id="root_left" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
+        <VBox fx:id="root_left" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
             <Label fx:id="lbl_inventory" text="Inventory">
-               <font>
-                  <Font name="Segoe UI Italic" size="24.0" />
-               </font>
+                <font>
+                    <Font name="Segoe UI Italic" size="24.0"/>
+                </font>
             </Label>
             <ListView fx:id="lst_inventory" prefHeight="550.0" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
+                <VBox.margin>
+                    <Insets top="20.0"/>
+                </VBox.margin>
             </ListView>
-         </children></VBox>
+        </VBox>
     </left>
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
@@ -32,53 +32,48 @@
         <VBox fx:id="root_right" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
     </right>
     <center>
-        <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
+        <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
             <Canvas fx:id="canvas" height="700.0" width="700.0">
-               <VBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" />
-               </VBox.margin>
+                <VBox.margin>
+                    <Insets bottom="20.0" left="20.0" right="20.0"/>
+                </VBox.margin>
             </Canvas>
-         </children></VBox>
+        </VBox>
     </center>
     <top>
         <VBox fx:id="root_top" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <children>
-                <Label fx:id="lbl_title" text="Level">
-                    <font>
-                        <Font name="Segoe UI Black Italic" size="40.0" />
-                    </font>
-                </Label>
-                <Label fx:id="lbl_timer" text="0s" textAlignment="CENTER" wrapText="true">
-                    <font>
-                        <Font name="Segoe UI Light" size="18.0" />
-                    </font></Label>
-            </children>
+            <Label fx:id="lbl_title" text="Level">
+                <font>
+                    <Font name="Segoe UI Black Italic" size="40.0"/>
+                </font>
+            </Label>
+            <Label fx:id="lbl_timer" text="0s" textAlignment="CENTER" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Light" size="18.0"/>
+                </font>
+            </Label>
         </VBox>
     </top>
    <bottom>
-      <VBox fx:id="root_bottom" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Label id="button" stylesheets="@styles.css" text="Save &amp; Exit">
-               <font>
-                  <Font name="Segoe UI Semibold" size="24.0" />
-               </font>
-            </Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Label alignment="TOP_LEFT" text="Current Profile: ">
-                     <font>
-                        <Font name="Segoe UI Italic" size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="lbl_profile" alignment="TOP_LEFT" text="None">
-                     <font>
-                        <Font name="Segoe UI" size="14.0" />
-                     </font>
-                  </Label>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
+       <VBox fx:id="root_bottom" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <Label id="button" onMouseClicked="#onClickBtnSave" stylesheets="@styles.css" text="Save &amp; Exit">
+              <font>
+                  <Font name="Segoe UI Semibold" size="24.0"/>
+              </font>
+           </Label>
+           <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <Label alignment="TOP_LEFT" text="Current Profile: ">
+                   <font>
+                       <Font name="Segoe UI Italic" size="14.0"/>
+                   </font>
+               </Label>
+               <Label fx:id="lbl_profile" alignment="TOP_LEFT" text="None">
+                   <font>
+                       <Font name="Segoe UI" size="14.0"/>
+                   </font>
+               </Label>
+           </HBox>
+       </VBox>
    </bottom>
 </BorderPane>
