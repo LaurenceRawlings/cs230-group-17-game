@@ -3,12 +3,12 @@ package com.group17.core;
 import com.group17.model.entity.Direction;
 import com.group17.model.entity.Player;
 import com.group17.model.entity.enemy.*;
-import com.group17.model.entity.item.Key;
-import com.group17.model.entity.item.Token;
-import com.group17.model.world.*;
-import java.util.List;
+import com.group17.model.world.Cell;
+import com.group17.model.world.Ground;
+import com.group17.model.world.Level;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.PriorityQueue;
 
 public class Game implements Serializable {

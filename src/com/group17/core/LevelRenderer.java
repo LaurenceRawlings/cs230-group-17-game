@@ -6,8 +6,6 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
-import java.io.File;
-
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
@@ -15,13 +13,12 @@ public class LevelRenderer {
     private static final int SPRITE_HEIGHT = 50;
 
     private static Image getSprite(String spriteName) {
-        return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
-//        File temp = new File(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
-//        if (temp.exists()) {
-//            return new Image(temp.getPath());
-//        } else {
-//            return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
-//        }
+        try {
+            return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+        return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION);
     }
 
     public static void render(Game game, Canvas canvas) {
