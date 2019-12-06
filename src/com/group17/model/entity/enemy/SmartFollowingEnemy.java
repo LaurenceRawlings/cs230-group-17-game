@@ -9,3 +9,4 @@ public class SmartFollowingEnemy extends Enemy {
     }
 
 }
+
