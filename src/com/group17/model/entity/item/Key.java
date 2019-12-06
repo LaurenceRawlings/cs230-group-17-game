@@ -40,12 +40,16 @@ public class Key extends Item {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return this.getKeyType() == ((Key) obj).getKeyType();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Key key = (Key) o;
+        return keyType == key.keyType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(keyType);
+        return Objects.hash(super.hashCode(), keyType);
     }
 }
