@@ -1,19 +1,24 @@
 package com.group17.core;
 
-import com.group17.model.entity.Player;
-import com.group17.model.entity.item.Key;
-import com.group17.model.entity.item.Token;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class TestMain {
     public static void main(String[] args) {
-        Player p = new Player(new Position(1,1));
-        Key k1 = new Key(Key.KeyType.red);
-        Key k2 = new Key(Key.KeyType.blue);
-        Token t = new Token();
+        Profile p1 = new Profile("Top");
+        Profile p2 = new Profile("Middle");
+        Profile p3 = new Profile("Bottom");
 
-        p.pickUp(k1);
-        p.pickUp(t);
-        System.out.println(p.hasItem(new Key(Key.KeyType.red)));
+        p1.setLevelTime("test", 1);
+        p2.setLevelTime("test", 4);
+        p3.setLevelTime("test", 3);
+
+        ProfileManager.save(p1);
+        ProfileManager.save(p2);
+        ProfileManager.save(p3);
+
+        System.out.println(Arrays.toString(Leaderboard.getTopTimes("test", 5)));
     }
 }
 

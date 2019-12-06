@@ -38,18 +38,15 @@ public class Game implements Serializable {
         levelQueue.addAll(LevelReader.readLevels());
         currentLevel = levelQueue.poll();
         player = new Player(currentLevel.getStart());
-        //player moves
-        moveEnemies();
-        currentLevel.updateEnemyPositions(); //update positions _after_ enemy moves
         fov = 3;
     }
 
-    public boolean moveEnemiesHelper(Cell c, Enemy e, Position next){ //checks if next cell is walkable, and sets the enemy to it if it is (its a helper due to repetitive use)
+    public boolean moveEnemiesHelper(Cell c, Enemy e, Position next){
         if (c.isWalkable() && c instanceof Ground){
-            e.setPosition(next); //position is valid, set and break
+            e.setPosition(next);
             return true;
         } else {
-            return false; //to enable the outside caller to produce a new (next) position before applying an invalid move
+            return false;
         }
     }
 
@@ -173,15 +170,15 @@ public class Game implements Serializable {
         }
     }
 
-    private boolean canMove(Position position) {
-        Cell cell = currentLevel.getCell(position);
+    private boolean canMove(Position nextPosition) {
+        Cell cell = currentLevel.getCell(nextPosition);
         if (cell.isWalkable()) {
             return true;
         } else {
             if (cell instanceof KeyDoor) {
                 Key key = new Key(((KeyDoor) cell).getKey());
                 if (player.hasItem(key)) {
-                    currentLevel.setCell(position, new Ground());
+                    currentLevel.setCell(nextPosition, new Ground());
                     player.useItem(key);
                     return true;
                 }
@@ -189,7 +186,7 @@ public class Game implements Serializable {
                 Token token = new Token();
                 int cost = ((TokenDoor) cell).getTokenCost();
                 if (player.hasItem(token, cost)) {
-                    currentLevel.setCell(position, new Ground());
+                    currentLevel.setCell(nextPosition, new Ground());
                     player.useItem(token, cost);
                     return true;
                 }
@@ -198,13 +195,12 @@ public class Game implements Serializable {
                     return true;
                 }
             }
-            if (currentLevel.getEnemy(position) != null) {
-                player.setPosition(position);
+            if (currentLevel.getEnemy(nextPosition) != null) {
+                player.setPosition(nextPosition);
                 die();
                 return false;
             }
         }
-
         return false;
     }
 

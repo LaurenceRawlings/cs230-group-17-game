@@ -7,7 +7,6 @@ import java.nio.file.NoSuchFileException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class ProfileManager {
@@ -102,7 +101,18 @@ public class ProfileManager {
         for (String name : getProfileNames()) {
             profiles.add(load(name));
         }
-        Collections.sort(profiles);
         return profiles;
+    }
+
+    public static List<Profile> getProfiles(String levelName) {
+        List<Profile> profiles = getProfiles();
+        List<Profile> returnProfiles = new ArrayList<>();
+
+        for (Profile profile : profiles) {
+            if (profile.levelCompleted(levelName)) {
+                returnProfiles.add(profile);
+            }
+        }
+        return returnProfiles;
     }
 }

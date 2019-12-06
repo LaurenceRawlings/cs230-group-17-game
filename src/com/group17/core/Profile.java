@@ -9,12 +9,20 @@ public class Profile implements Serializable, Comparable<Profile> {
     private String name;
     private Map levelTimes = new HashMap();
 
-    public int getLevelTime(String level) {
-        return (int) levelTimes.get(level);
+    public int getLevelTime(String levelName) {
+        if (levelTimes.containsKey(levelName)) {
+            return (int) levelTimes.get(levelName);
+        } else {
+            return (int) Double.POSITIVE_INFINITY;
+        }
     }
 
-    public void setLevelTime(String level, int time) {
-        levelTimes.put(level, time);
+    public boolean levelCompleted(String levelName) {
+        return levelTimes.containsKey(levelName);
+    }
+
+    public void setLevelTime(String levelName, int time) {
+        levelTimes.put(levelName, time);
     }
 
     public Game getGame() {

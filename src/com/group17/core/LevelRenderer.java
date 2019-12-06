@@ -51,7 +51,7 @@ public class LevelRenderer {
                         gc.drawImage(getSprite(level.getItem(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                     }
                     if (level.getEnemy(new Position(x, y)) != null) {
-                        gc.drawImage(getSprite(level.getEnemy(new Position(x, y)).getSprite()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                        gc.drawImage(getSprite(level.getEnemy(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                     }
                 }
                 drawX++;

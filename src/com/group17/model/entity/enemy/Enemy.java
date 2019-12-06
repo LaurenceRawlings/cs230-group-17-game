@@ -12,14 +12,14 @@ public abstract class Enemy implements Serializable {
         wall("enemy_wall"),
         line("enemy_line");
 
-        private final String sprite;
+        private final String spriteName;
 
         EnemyType(String label) {
-            this.sprite = label;
+            this.spriteName = label;
         }
 
-        public String getSprite() {
-            return sprite;
+        public String getSpriteName() {
+            return spriteName;
         }
     }
 
