@@ -148,57 +148,67 @@ public class LevelReader {
                 }
             }
 
-            for (String teleporter : teleporters) {
-                String[] teleporterDetails = teleporter.split(",");
-                Teleporter t = new Teleporter(new Position(Integer.parseInt(teleporterDetails[0]), Integer.parseInt(teleporterDetails[1])),
-                        new Position(Integer.parseInt(teleporterDetails[2]), Integer.parseInt(teleporterDetails[3])));
+            if (!teleporters[0].equals("")) {
+                for (String teleporter : teleporters) {
+                    String[] teleporterDetails = teleporter.split(",");
+                    Teleporter t = new Teleporter(new Position(Integer.parseInt(teleporterDetails[0]), Integer.parseInt(teleporterDetails[1])),
+                            new Position(Integer.parseInt(teleporterDetails[2]), Integer.parseInt(teleporterDetails[3])));
 
-                newLevel.setCell(t.getPosition(), t);
-                newLevel.setCell(t.getDestination().getPosition(), t.getDestination());
+                    newLevel.setCell(t.getPosition(), t);
+                    newLevel.setCell(t.getDestination().getPosition(), t.getDestination());
+                }
             }
 
-            for (String enemy : enemies) {
-                String[] enemyDetails = enemy.split(",");
+            if (!enemies[0].equals("")) {
+                for (String enemy : enemies) {
+                    String[] enemyDetails = enemy.split(",");
 
-                if (enemyMap.containsKey(enemyDetails[2]) && directionMap.containsKey(enemyDetails[3])) {
-                    Direction direction = (Direction) directionMap.get(enemyDetails[3]);
-                    Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
-                    switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
-                        case smart:
-                            newLevel.addEnemy(new SmartFollowingEnemy(position, direction));
-                            break;
-                        case dumb:
-                            newLevel.addEnemy(new DumbFollowingEnemy(position, direction));
-                            break;
-                        case wall:
-                            newLevel.addEnemy(new WallFollowingEnemy(position, direction));
-                            break;
-                        case line:
-                            newLevel.addEnemy(new LineFollowingEnemy(position, direction));
-                            break;
+                    if (enemyMap.containsKey(enemyDetails[2]) && directionMap.containsKey(enemyDetails[3])) {
+                        Direction direction = (Direction) directionMap.get(enemyDetails[3]);
+                        Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
+                        switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
+                            case smart:
+                                newLevel.addEnemy(new SmartFollowingEnemy(position, direction));
+                                break;
+                            case dumb:
+                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction));
+                                break;
+                            case wall:
+                                newLevel.addEnemy(new WallFollowingEnemy(position, direction));
+                                break;
+                            case line:
+                                newLevel.addEnemy(new LineFollowingEnemy(position, direction));
+                                break;
+                        }
                     }
                 }
             }
 
-            for (String obstacle : obstacles) {
-                String[] obstacleDetails = obstacle.split(",");
+            if (!obstacles[0].equals("")) {
+                for (String obstacle : obstacles) {
+                    String[] obstacleDetails = obstacle.split(",");
 
-                if (cellMap.containsKey(obstacleDetails[2])) {
-                    newLevel.setCell(new Position(Integer.parseInt(obstacleDetails[0]),
-                            Integer.parseInt(obstacleDetails[1])), (Cell) cellMap.get(obstacleDetails[2]));
+                    if (cellMap.containsKey(obstacleDetails[2])) {
+                        newLevel.setCell(new Position(Integer.parseInt(obstacleDetails[0]),
+                                Integer.parseInt(obstacleDetails[1])), (Cell) cellMap.get(obstacleDetails[2]));
+                    }
                 }
             }
 
-            for (String item : items) {
-                String[] itemDetails = item.split(",");
+            if (!items[0].equals("")) {
+                for (String item : items) {
+                    String[] itemDetails = item.split(",");
 
-                if (itemMap.containsKey(itemDetails[2])) {
-                    newLevel.setItem(new Position(Integer.parseInt(itemDetails[0]),
-                            Integer.parseInt(itemDetails[1])), (Item) itemMap.get(itemDetails[2]));
+                    if (itemMap.containsKey(itemDetails[2])) {
+                        newLevel.setItem(new Position(Integer.parseInt(itemDetails[0]),
+                                Integer.parseInt(itemDetails[1])), (Item) itemMap.get(itemDetails[2]));
+                    }
                 }
             }
+
             return newLevel;
         } catch (Exception e) {
+            System.out.println("Invalid level file!");
             e.printStackTrace();
             return null;
         }
