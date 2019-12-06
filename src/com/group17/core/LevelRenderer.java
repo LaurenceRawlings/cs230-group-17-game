@@ -47,8 +47,11 @@ public class LevelRenderer {
                     } else {
                         gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                     }
-                    if (level.getItem(new Position(x, y)) != null){
+                    if (level.getItem(new Position(x, y)) != null) {
                         gc.drawImage(getSprite(level.getItem(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                    }
+                    if (level.getEnemy(new Position(x, y)) != null) {
+                        gc.drawImage(getSprite(level.getEnemy(new Position(x, y)).getSprite()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                     }
                 }
                 drawX++;

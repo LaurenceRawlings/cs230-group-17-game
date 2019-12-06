@@ -13,7 +13,7 @@ public abstract class Item extends GameObject {
     
     /**
      * Method determines wether the current object is the same as another.
-     * @param obj
+     * @param o
      * @return true or false depending on wether they are equal or not
      */
 

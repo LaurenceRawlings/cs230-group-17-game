@@ -7,7 +7,6 @@ import com.group17.model.entity.item.Item;
 import com.group17.model.entity.item.Key;
 import com.group17.model.entity.item.Token;
 import com.group17.model.world.*;
-import javafx.geometry.Pos;
 
 import java.io.Serializable;
 import java.util.List;
@@ -168,7 +167,7 @@ public class Game implements Serializable {
                 player.setPosition(((Teleporter) currentLevel.getCell(current)).getDestination().getPosition());
             }
             moveEnemies();
-            if (currentLevel.getEnemy(current)) {
+            if (currentLevel.getEnemy(current) != null) {
                 die();
             }
         }
@@ -199,7 +198,7 @@ public class Game implements Serializable {
                     return true;
                 }
             }
-            if (currentLevel.getEnemy(position)) {
+            if (currentLevel.getEnemy(position) != null) {
                 player.setPosition(position);
                 die();
                 return false;

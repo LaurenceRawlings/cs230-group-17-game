@@ -11,7 +11,7 @@ import java.util.List;
 public class Level implements Comparable<Level>, Serializable {
     private Cell[][] cells;
     private Item[][] items;
-    private boolean[][] enemyPositions;
+    private Enemy.EnemyType[][] enemyPositions;
     private List<Enemy> enemies;
     private int levelNumber;
     private String levelName;
@@ -60,7 +60,7 @@ public class Level implements Comparable<Level>, Serializable {
 
         cells = new Cell[height][width];
         items = new Item[height][width];
-        enemyPositions = new boolean[height][width];
+        enemyPositions = new Enemy.EnemyType[height][width];
         enemies = new ArrayList<>();
     }
 
@@ -101,13 +101,13 @@ public class Level implements Comparable<Level>, Serializable {
     }
 
     public void updateEnemyPositions() {
-        enemyPositions = new boolean[height][width];
+        enemyPositions = new Enemy.EnemyType[height][width];
         for (Enemy enemy : enemies) {
-            enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = true;
+            enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = enemy.getEnemyType();
         }
     }
 
-    public boolean getEnemy(Position position){
+    public Enemy.EnemyType getEnemy(Position position){
         return enemyPositions[position.y()][position.x()];
     }
 

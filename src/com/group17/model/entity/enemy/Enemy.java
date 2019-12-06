@@ -1,24 +1,36 @@
 package com.group17.model.entity.enemy;
 
 import com.group17.core.Position;
-import com.group17.model.GameObject;
 import com.group17.model.entity.Direction;
 
-public abstract class Enemy extends GameObject {
+import java.io.Serializable;
+
+public abstract class Enemy implements Serializable {
     public enum EnemyType {
-        smart,
-        dumb,
-        wall,
-        line
+        smart("enemy_smart"),
+        dumb("enemy_dumb"),
+        wall("enemy_wall"),
+        line("enemy_line");
+
+        private final String sprite;
+
+        EnemyType(String label) {
+            this.sprite = label;
+        }
+
+        public String getSprite() {
+            return sprite;
+        }
     }
 
     private Position position;
     private Direction direction;
+    private EnemyType enemyType;
 
-    public Enemy(Position position, Direction direction, String spriteName) {
-        super(spriteName);
+    public Enemy(EnemyType enemyType, Position position, Direction direction) {
         this.position = position;
         this.direction = direction;
+        this.enemyType = enemyType;
     }
 
     public Position moveInDir(Direction direction) {
@@ -79,5 +91,9 @@ public abstract class Enemy extends GameObject {
 
     public void setPosition(Position position) {
         this.position = position;
+    }
+
+    public EnemyType getEnemyType() {
+        return enemyType;
     }
 }

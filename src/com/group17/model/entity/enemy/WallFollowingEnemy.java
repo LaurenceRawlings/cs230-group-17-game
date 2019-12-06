@@ -5,7 +5,7 @@ import com.group17.model.entity.Direction;
 
 public class WallFollowingEnemy extends Enemy {
     public WallFollowingEnemy(Position position, Direction direction) {
-        super(position, direction, "enemy_wall");
+        super(EnemyType.wall, position, direction);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.group17.model.entity.Direction;
 
 public class SmartFollowingEnemy extends Enemy {
     public SmartFollowingEnemy(Position position, Direction direction) {
-        super(position, direction, "enemy_smart");
+        super(EnemyType.smart, position, direction);
     }
 
 }

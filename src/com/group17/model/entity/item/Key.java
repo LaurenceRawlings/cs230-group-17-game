@@ -8,17 +8,21 @@ public class Key extends Item {
         green("Green"),
         blue("Blue");
 
-        public final String label;
+        private final String label;
 
         KeyType(String label) {
             this.label = label;
+        }
+
+        public String getLabel() {
+            return label;
         }
     }
 
     private KeyType keyType;
 
     public Key(KeyType keyType) {
-        super(keyType.label + " Key", "missing_item");
+        super(keyType.getLabel() + " Key", "missing_item");
         this.keyType = keyType;
         switch (keyType) {
             case red:
