@@ -94,7 +94,7 @@ public class Game implements Serializable {
                             if(moveEnemiesHelper(currentLevel.getCell(next), e, next)){break;}
                         }
                         if (yDif < 0) {
-                            next = new Position(e.getPosition().x() - 1, e.getPosition().y() + 1);
+                            next = new Position(e.getPosition().x(), e.getPosition().y() + 1);
                             if(moveEnemiesHelper(currentLevel.getCell(next), e, next)){break;}
                         }
                         triedy = 1;
