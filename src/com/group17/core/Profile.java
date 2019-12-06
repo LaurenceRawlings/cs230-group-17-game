@@ -1,22 +1,24 @@
 package com.group17.core;
 
 import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Profile implements Serializable, Comparable<Profile> {
     private Game game;
     private String name;
-    private int highscore;
+    private Map levelTimes = new HashMap();
+
+    public int getLevelTime(String level) {
+        return (int) levelTimes.get(level);
+    }
+
+    public void setLevelTime(String level, int time) {
+        levelTimes.put(level, time);
+    }
 
     public Game getGame() {
         return game;
-    }
-
-    public int getHighscore() {
-        return highscore;
-    }
-
-    public void setHighscore(int highscore) {
-        this.highscore = highscore;
     }
 
     public String getName() {
@@ -25,7 +27,6 @@ public class Profile implements Serializable, Comparable<Profile> {
 
     public Profile(String name) {
         this.name = name;
-        highscore = 0;
         game = new Game();
     }
 
@@ -35,9 +36,15 @@ public class Profile implements Serializable, Comparable<Profile> {
 
     @Override
     public int compareTo(Profile profile) {
-        if (highscore == profile.getHighscore()) {
+        String compareLevel = Leaderboard.getCompareLevel();
+
+        if (compareLevel == null) {
             return 0;
-        } else if (highscore < profile.getHighscore()) {
+        }
+
+        if (getLevelTime(compareLevel) == profile.getLevelTime(compareLevel)) {
+            return 0;
+        } else if (getLevelTime(compareLevel) > profile.getLevelTime(compareLevel)) {
             return 1;
         } else {
             return -1;

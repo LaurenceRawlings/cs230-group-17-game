@@ -29,7 +29,8 @@ public class Level implements Comparable<Level>, Serializable {
         this.time = time;
     }
 
-    public String getLevelName() {
+    @Override
+    public String toString() {
         return levelName;
     }
 

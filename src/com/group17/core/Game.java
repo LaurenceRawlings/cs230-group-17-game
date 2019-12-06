@@ -40,7 +40,7 @@ public class Game implements Serializable {
         //player moves
         moveEnemies();
         currentLevel.updateEnemyPositions(); //update positions _after_ enemy moves
-        fov = 3;
+        fov = 8;
     }
 
     public boolean moveEnemiesHelper(Cell c, Enemy e, Position next){ //checks if next cell is walkable, and sets the enemy to it if it is (its a helper due to repetitive use)

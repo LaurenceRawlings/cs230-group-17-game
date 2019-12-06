@@ -1,5 +1,5 @@
 <Level File>
-4;Level 4
+2;Level 2
 14,12;1,1;12,9
 
 9,8,line,left;4,8,line,right;

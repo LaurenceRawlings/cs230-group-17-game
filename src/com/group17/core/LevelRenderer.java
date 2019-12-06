@@ -9,8 +9,8 @@ import javafx.scene.image.Image;
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
-    private static final int SPRITE_WIDTH = 100;
-    private static final int SPRITE_HEIGHT = 100;
+    private static final int SPRITE_WIDTH = 40;
+    private static final int SPRITE_HEIGHT = 40;
 
     private static Image getSprite(String spriteName) {
         try {

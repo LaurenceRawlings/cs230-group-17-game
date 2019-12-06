@@ -89,7 +89,7 @@ public class GameController {
 
     private void drawGame() {
         LevelRenderer.render(game, canvas);
-        lbl_title.setText(game.getCurrentLevel().getLevelName());
+        lbl_title.setText(game.getCurrentLevel().toString());
     }
 
     public void onLoad() {
