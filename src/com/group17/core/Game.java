@@ -3,9 +3,11 @@ package com.group17.core;
 import com.group17.model.entity.Direction;
 import com.group17.model.entity.Player;
 import com.group17.model.entity.enemy.*;
-import com.group17.model.world.Cell;
-import com.group17.model.world.Ground;
-import com.group17.model.world.Level;
+import com.group17.model.entity.item.Item;
+import com.group17.model.entity.item.Key;
+import com.group17.model.entity.item.Token;
+import com.group17.model.world.*;
+import javafx.geometry.Pos;
 
 import java.io.Serializable;
 import java.util.List;
@@ -40,7 +42,7 @@ public class Game implements Serializable {
         //player moves
         moveEnemies();
         currentLevel.updateEnemyPositions(); //update positions _after_ enemy moves
-        fov = 15;
+        fov = 3;
     }
 
     public boolean moveEnemiesHelper(Cell c, Enemy e, Position next){ //checks if next cell is walkable, and sets the enemy to it if it is (its a helper due to repetitive use)
@@ -152,49 +154,62 @@ public class Game implements Serializable {
                 next = new Position(player.getPosition().x(), player.getPosition().y() + 1);
                 break;
         }
-//        Cell nextCell = currentLevel.getCell(next);
-//        if(!currentLevel.getEnemy(next)){
-//            if (nextCell.isWalkable()) {
-//                if (nextCell instanceof Ground) {
-//                    player.setPosition(next);
-//                } else if (nextCell instanceof Obstacle) {
-//                    if (player.hasItem(((Obstacle) nextCell).getCounterItem())) {
-//                        player.setPosition(next);
-//                    } else {/*die?*/}
-//                }
-//            }
-//            else {
-//                if (nextCell instanceof Teleporter) {
-//                    player.setPosition(((Teleporter) nextCell).getDestination().getPosition());
-//                }
-//                if (nextCell instanceof TokenDoor) {
-//                    if (player.hasItem(new Token(), ((TokenDoor) nextCell).getTokenCost())) {
-//                        ((TokenDoor) nextCell).open();
-//                        player.useItem(new Token(), ((TokenDoor) nextCell).getTokenCost());
-//                        player.setPosition(next);
-//                    }
-//                }
-//                if (nextCell instanceof KeyDoor) {
-//                    if ((player.hasItem(new Key(Key.KeyType.red))) && (((KeyDoor) nextCell).getKey() == Key.KeyType.red)) {
-//                        ((KeyDoor) nextCell).open();
-//                        player.useItem(new Key(Key.KeyType.red));
-//                        player.setPosition(next);
-//                    }
-//                    if ((player.hasItem(new Key(Key.KeyType.green))) && (((KeyDoor) nextCell).getKey() == Key.KeyType.green)) {
-//                        ((KeyDoor) nextCell).open();
-//                        player.useItem(new Key(Key.KeyType.green));
-//                        player.setPosition(next);
-//                    }
-//                    if ((player.hasItem(new Key(Key.KeyType.blue))) && (((KeyDoor) nextCell).getKey() == Key.KeyType.blue)) {
-//                        ((KeyDoor) nextCell).open();
-//                        player.useItem(new Key(Key.KeyType.blue));
-//                        player.setPosition(next);
-//                    }
-//                }
-//            }
-//        } else {
-//
-//        }
+
+        if (canMove(next)) {
+            player.setPosition(next);
+            Position current = player.getPosition();
+            Item item = currentLevel.getItem(current);
+            Cell cell = currentLevel.getCell(current);
+            if (item != null) {
+                player.pickUp(item);
+                currentLevel.setItem(current, null);
+            }
+            if (cell instanceof Teleporter) {
+                player.setPosition(((Teleporter) currentLevel.getCell(current)).getDestination().getPosition());
+            }
+            moveEnemies();
+            if (currentLevel.getEnemy(current)) {
+                die();
+            }
+        }
+    }
+
+    private boolean canMove(Position position) {
+        Cell cell = currentLevel.getCell(position);
+        if (cell.isWalkable()) {
+            return true;
+        } else {
+            if (cell instanceof KeyDoor) {
+                Key key = new Key(((KeyDoor) cell).getKey());
+                if (player.hasItem(key)) {
+                    currentLevel.setCell(position, new Ground());
+                    player.useItem(key);
+                    return true;
+                }
+            } else if (cell instanceof TokenDoor) {
+                Token token = new Token();
+                int cost = ((TokenDoor) cell).getTokenCost();
+                if (player.hasItem(token, cost)) {
+                    currentLevel.setCell(position, new Ground());
+                    player.useItem(token, cost);
+                    return true;
+                }
+            } else if (cell instanceof Obstacle) {
+                if (player.hasItem(((Obstacle) cell).getCounterItem())) {
+                    return true;
+                }
+            }
+            if (currentLevel.getEnemy(position)) {
+                player.setPosition(position);
+                die();
+                return false;
+            }
+        }
+
+        return false;
+    }
+
+    private void die() {
     }
 
 }

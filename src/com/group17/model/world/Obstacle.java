@@ -6,7 +6,7 @@ public abstract class Obstacle extends Cell {
     private Item counterItem;
 
     public Obstacle(Item counterItem, String spriteName) {
-        super(true, spriteName);
+        super(false, spriteName);
         this.counterItem = counterItem;
     }
 

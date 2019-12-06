@@ -1,5 +1,7 @@
 package com.group17.model.entity.item;
 
+import java.util.Objects;
+
 public class Key extends Item {
     public enum KeyType{
         red("Red"),
@@ -35,5 +37,15 @@ public class Key extends Item {
 
     public KeyType getKeyType() {
         return keyType;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this.getKeyType() == ((Key) obj).getKeyType();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(keyType);
     }
 }

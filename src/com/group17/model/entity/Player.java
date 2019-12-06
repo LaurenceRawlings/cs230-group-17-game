@@ -3,6 +3,7 @@ package com.group17.model.entity;
 import com.group17.core.Position;
 import com.group17.model.GameObject;
 import com.group17.model.entity.item.Item;
+import com.group17.model.entity.item.Key;
 
 import java.util.HashMap;
 import java.util.Map;
