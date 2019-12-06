@@ -206,6 +206,8 @@ public class LevelReader {
                 }
             }
 
+            newLevel.setCell(new Position(Integer.parseInt(finish[0]), Integer.parseInt(finish[1])), new Goal());
+
             return newLevel;
         } catch (Exception e) {
             System.out.println("Invalid level file!");

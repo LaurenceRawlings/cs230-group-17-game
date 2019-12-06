@@ -25,6 +25,7 @@ public class GameController {
     private Profile profile;
     private Game game;
     private SceneController controller;
+    private Timeline timer;
 
     public void setController(SceneController controller) {
         this.controller = controller;
@@ -52,13 +53,10 @@ public class GameController {
 
     @FXML
     void initialize() {
-        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                int time = game.getCurrentLevel().getTime();
-                game.getCurrentLevel().setTime(++time);
-                lbl_timer.setText(time + "s");
-            }
+        timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
+            int time = game.getCurrentLevel().getTime();
+            game.getCurrentLevel().setTime(++time);
+            lbl_timer.setText(time + "s");
         }));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
@@ -99,6 +97,7 @@ public class GameController {
     @FXML
     void onClickBtnSave(MouseEvent event) {
         try {
+            timer.stop();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();

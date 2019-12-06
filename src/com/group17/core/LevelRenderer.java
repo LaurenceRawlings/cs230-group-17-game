@@ -9,20 +9,25 @@ import javafx.scene.image.Image;
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
-    private static final int SPRITE_WIDTH = 40;
-    private static final int SPRITE_HEIGHT = 40;
+    private static final int SPRITE_WIDTH = 20;
+    private static final int SPRITE_HEIGHT = 20;
 
     private static Image getSprite(String spriteName) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
         } catch (IllegalArgumentException e) {
-            e.printStackTrace();
+            try {
+                return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+            } catch (IllegalArgumentException e2) {
+                e2.printStackTrace();
+            }
         }
-        return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+        return null;
     }
 
     public static void render(Game game, Canvas canvas) {
         GraphicsContext gc = canvas.getGraphicsContext2D();
+        gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int fov = game.getFov();
         Level level = game.getCurrentLevel();
         Player player = game.getPlayer();

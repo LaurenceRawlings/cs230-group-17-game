@@ -43,7 +43,7 @@
                     <Font name="Segoe UI Black Italic" size="40.0" />
                 </font>
             </Label>
-            <Label fx:id="lbl_timer" text="0s" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lbl_timer" textAlignment="CENTER" wrapText="true">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0" />
                 </font>
