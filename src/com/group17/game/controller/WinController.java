@@ -56,7 +56,9 @@ public class WinController {
         int totalTime = 0;
         List<String> levels = LevelReader.getLevelNames();
         for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel(); i++) {
-            totalTime += Leaderboard.getProfileTime(ProfileManager.getActiveProfile().toString(), levels.get(i));
+            if (!(i >= levels.size())) {
+                totalTime += Leaderboard.getProfileTime(ProfileManager.getActiveProfile().toString(), levels.get(i));
+            }
         }
 
         lbl_time.setText(Leaderboard.formatTime(totalTime));
