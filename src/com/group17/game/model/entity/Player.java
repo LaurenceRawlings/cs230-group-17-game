@@ -79,14 +79,6 @@ public class Player extends GameObject {
             inventory.put(item, ++current);
         }
     }
-    
-    /**
-     * Clears the inventory of any items
-     */
-
-    public void clearInventory() {
-        inventory = new HashMap();
-    }
 
     /**
      * Checks if the player has the item and takes it from the players

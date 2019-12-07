@@ -81,9 +81,7 @@ public class LevelReader {
     private static List<Level> levelQueue;
 
     public static List<Level> getLevelQueue() {
-        if (levelQueue == null) {
-            readLevels();
-        }
+        readLevels();
         return levelQueue;
     }
 

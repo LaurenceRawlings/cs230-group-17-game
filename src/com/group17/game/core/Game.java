@@ -177,6 +177,7 @@ public class Game implements Serializable {
     public boolean nextLevel() {
         try {
             currentLevel = levelQueue.get(++levelIndex);
+            player = new Player(currentLevel.getStart());
             return true;
         } catch (IndexOutOfBoundsException e) {
             return false;
@@ -254,6 +255,7 @@ public class Game implements Serializable {
     }
 
     private void die() {
+        levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(levelIndex);
         player = new Player(currentLevel.getStart());
     }

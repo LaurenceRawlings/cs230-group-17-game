@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Level implements Comparable<Level>, Serializable {
+public class Level implements Comparable<Level>, Serializable, Cloneable {
     private Cell[][] cells;
     private Item[][] items;
     private Enemy.EnemyType[][] enemyPositions;
