@@ -70,6 +70,7 @@ public class GameController {
         }
 
         if (game.getPlayer().getPosition().equals(game.getCurrentLevel().getFinish())) {
+            int currentLevelIndex = game.getLevelIndex();
             Level currentLevel = game.getCurrentLevel();
             ProfileManager.getActiveProfile().setHighestLevel(game.getLevelIndex());
             if (currentLevel.getTime() < ProfileManager.getActiveProfile().getLevelTime(currentLevel.toString())) {
@@ -78,6 +79,22 @@ public class GameController {
             if (!game.nextLevel()) {
                 //win
                 System.out.println("win");
+            } else {
+                try {
+                    timer.stop();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/continue.fxml"));
+                    Parent root = loader.load();
+                    ContinueController continueC = loader.getController();
+                    ProfileManager.save(ProfileManager.getActiveProfile());
+                    continueC.setNextLevelIndex(currentLevelIndex + 1);
+
+
+                    continueC.onLoad();
+
+                    SceneController.activate(new Scene(root, 1000, 1000));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
 

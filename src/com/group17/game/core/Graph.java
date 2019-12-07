@@ -26,7 +26,6 @@ public class Graph implements Serializable{
     }
 
     public void addEdge(Node source, Node destination) {
-
         // We make sure that every used node shows up
         if (!adjMap.containsKey(source))
             adjMap.put(source, null);
@@ -49,7 +48,6 @@ public class Graph implements Serializable{
 
     Node findShortestPath(Node Start, Node Goal) {
         pathList.add(Goal);
-        //Thread.sleep(400);
         while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
             Goal.prevVisited = true;
             if (Goal.prev != null) {

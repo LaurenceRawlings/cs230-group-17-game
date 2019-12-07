@@ -6,10 +6,18 @@ import java.util.LinkedList;
 
 public class TestMain {
     public static void main(String[] args) {
-
         Profile p = new Profile("Test");
-        p.setHighestLevel(1);
+        Profile p2 = new Profile("Test2");
+        Profile p3 = new Profile("Test3");
+        Profile p4 = new Profile("Test4");
+        p.setLevelTime("Level 1", 50);
+        p2.setLevelTime("Level 1", 40);
+        p3.setLevelTime("Level 1", 30);
+        p4.setLevelTime("Level 1", 20);
         ProfileManager.save(p);
+        ProfileManager.save(p2);
+        ProfileManager.save(p3);
+        ProfileManager.save(p4);
     }
 
     public static void main2(String[] args) throws InterruptedException {
