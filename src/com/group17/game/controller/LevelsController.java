@@ -46,19 +46,21 @@ public class LevelsController {
 
     @FXML
     void onClickBtnPlay(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
-            Parent root = loader.load();
-            GameController game = loader.getController();
+        if (lst_levels.getSelectionModel().getSelectedItem() != null) {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+                Parent root = loader.load();
+                GameController game = loader.getController();
 
-            Scene scene = new Scene(root, 1000, 1000);
-            scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
-            ProfileManager.getActiveProfile().newGame(lst_levels.getSelectionModel().getSelectedIndex());
+                Scene scene = new Scene(root, 1000, 1000);
+                scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
+                ProfileManager.getActiveProfile().newGame(lst_levels.getSelectionModel().getSelectedIndex());
 
-            game.onLoad();
-            SceneController.activate(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
+                game.onLoad();
+                SceneController.activate(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

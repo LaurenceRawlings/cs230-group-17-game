@@ -48,7 +48,7 @@ public class Profile implements Serializable, Comparable<Profile> {
         this.name = name;
         game = new Game();
         levelTimes = new HashMap();
-        highestLevel = 0;
+        highestLevel = -1;
     }
 
     public void newGame() {
