@@ -25,10 +25,14 @@ public class SmartFollowingEnemy extends Enemy {
     @Override
     public void move(Player player) {
         if (smartFail){
-            move(nextDumbPosition);
-            smartFail = false;
-        } else{
-            move(nextPosition);
+            if (!(nextDumbPosition.x() == player.getPosition().x() && nextDumbPosition.y() == player.getPosition().y())) {
+                move(nextDumbPosition);
+                smartFail = false;
+            }
+        }else{
+            if (!(nextPosition.x() == player.getPosition().x() && nextPosition.y() == player.getPosition().y())) {
+                move(nextPosition);
+            }
         }
         calculatePath(player);
         moveDumb(player);
@@ -70,8 +74,8 @@ public class SmartFollowingEnemy extends Enemy {
         LinkedList<Node> shortestPath = graph.findShortestPathHelper(nodeMap[player.getPosition().x()][player.getPosition().y()], nodeMap[position.x()][position.y()]);
 
         if (shortestPath != null && shortestPath.size() > 1) {
-            nextPosition = shortestPath.get(1).getPos();
-            smartFail = false;
+                nextPosition = shortestPath.get(1).getPos();
+                smartFail = false;
         } else {
             smartFail = true;
         }
