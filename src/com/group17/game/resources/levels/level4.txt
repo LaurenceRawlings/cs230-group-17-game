@@ -4,7 +4,7 @@
 
 20,4,line,down;9,12,wall,up
 3,4,water
-4,16,water boots
+3,15,water boots
 #####################
 # #                @#
 # # ###R# ###########
