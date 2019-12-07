@@ -4,12 +4,15 @@ import com.group17.core.*;
 import com.group17.model.entity.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
@@ -47,6 +50,9 @@ public class GameController {
     private Label lbl_profile;
 
     @FXML
+    private ListView<String> lst_inventory;
+
+    @FXML
     void initialize() {
         timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             int time = game.getCurrentLevel().getTime();
@@ -76,6 +82,9 @@ public class GameController {
                 break;
         }
         drawGame();
+
+        ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
+        lst_inventory.setItems(items);
 
         event.consume();
     }

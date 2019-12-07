@@ -42,7 +42,7 @@
                         <Font name="Segoe UI" size="18.0" />
                      </font>
                   </Label>
-                  <ComboBox fx:id="cmb_levels" onAction="#levelChanged" stylesheets="@styles.css" />
+                  <ComboBox fx:id="cmb_levels" focusTraversable="false" onAction="#levelChanged" stylesheets="@styles.css" />
                </children>
             </HBox>
             <Label fx:id="lbl_first" style="-fx-background-color: gold;" text="[EMPTY]">

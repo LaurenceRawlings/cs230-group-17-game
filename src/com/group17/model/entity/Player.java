@@ -10,8 +10,7 @@ import com.group17.model.GameObject;
 import com.group17.model.entity.item.Item;
 import com.group17.model.entity.item.Key;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Player extends GameObject {
     private Position position;
@@ -121,5 +120,16 @@ public class Player extends GameObject {
             return true;
         }
         return false;
+    }
+
+    public List<String> getItems() {
+        List<String> items = new ArrayList<>();
+        for (Object item : inventory.keySet()) {
+            int amount = (int) inventory.get(item);
+            if (amount > 0) {
+                items.add(item.toString() + " x" + amount);
+            }
+        }
+        return items;
     }
 }
