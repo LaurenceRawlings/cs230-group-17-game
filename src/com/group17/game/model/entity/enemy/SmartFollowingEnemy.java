@@ -61,7 +61,47 @@ public class SmartFollowingEnemy extends Enemy {
 
         if (shortestPath != null) {
             nextPosition = shortestPath.get(1).getPos();
+        } else {
+            nextPosition = moveDumb(player);
         }
     }
+
+    public Position moveDumb(Player player) {
+        int xDif = (position.x() - player.getPosition().x());
+        int yDif = (position.y() - player.getPosition().y());
+
+        if (Math.abs(xDif) >= Math.abs(yDif)) {
+            if (!moveX(xDif)) {
+                moveY(yDif);
+            }
+        } else{
+            if (!moveY(yDif)) {
+                moveX(xDif);
+            }
+        }
+        return super.position;
+    }
+
+    private boolean moveX(int xDif) {
+        if (xDif > 0) {
+            return move(Position.nextPosition(position, Direction.left));
+        } else if (xDif < 0) {
+            return move(Position.nextPosition(position, Direction.right));
+        }
+
+        return false;
+    }
+
+    private boolean moveY(int yDif) {
+        if (yDif > 0) {
+            return move(Position.nextPosition(position, Direction.up));
+        } else if (yDif < 0) {
+            return move(Position.nextPosition(position, Direction.down));
+        }
+
+        return false;
+    }
+
+    //
 }
 
