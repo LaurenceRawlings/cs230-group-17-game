@@ -2,9 +2,12 @@ package com.group17.core;
 
 import com.group17.model.entity.Player;
 import com.group17.model.world.Level;
+import com.group17.model.world.TokenDoor;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/resources/sprites";
@@ -44,6 +47,11 @@ public class LevelRenderer {
                     if (level.getCell(new Position(x, y)) != null) {
                         Image i = getSprite(level.getCell(new Position(x, y)).getSpriteName());
                         gc.drawImage(getSprite(level.getCell(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
+                        if (level.getCell(new Position(x, y)) instanceof TokenDoor) {
+                            gc.setFill(Color.web("#ffffff"));
+                            gc.setFont(Font.font("Segoe UI", 18));
+                            gc.fillText(Integer.toString(((TokenDoor) level.getCell(new Position(x, y))).getTokenCost()), drawX * SPRITE_WIDTH + SPRITE_WIDTH/2, drawY * SPRITE_HEIGHT + SPRITE_HEIGHT/2);
+                        }
                     } else {
                         gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                     }
