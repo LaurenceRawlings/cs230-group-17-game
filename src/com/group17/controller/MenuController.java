@@ -95,6 +95,17 @@ public class MenuController {
 
     @FXML
     void onClickBtnLeaderboard(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/leaderboard.fxml"));
+            Parent root = loader.load();
+            LeaderboardController leaderboard = loader.getController();
+            leaderboard.setController(controller);
+            leaderboard.setProfile(profile);
+
+            controller.activate(new Scene(root, 1000, 1000));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void startGame() {

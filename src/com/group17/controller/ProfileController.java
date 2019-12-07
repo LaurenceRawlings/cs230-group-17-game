@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class ProfileController {
     private SceneController controller;
-
     private Profile profile;
 
     public void setProfile(Profile profile) {

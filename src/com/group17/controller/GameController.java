@@ -1,14 +1,9 @@
 package com.group17.controller;
 
-import com.group17.core.Game;
-import com.group17.core.LevelRenderer;
-import com.group17.core.Profile;
-import com.group17.core.ProfileManager;
+import com.group17.core.*;
 import com.group17.model.entity.Direction;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,7 +51,7 @@ public class GameController {
         timer = new Timeline(new KeyFrame(Duration.seconds(1), event -> {
             int time = game.getCurrentLevel().getTime();
             game.getCurrentLevel().setTime(++time);
-            lbl_timer.setText(time + "s");
+            lbl_timer.setText(Leaderboard.formatTime(time));
         }));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
@@ -92,6 +87,7 @@ public class GameController {
 
     public void onLoad() {
         drawGame();
+        lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));
     }
 
     @FXML

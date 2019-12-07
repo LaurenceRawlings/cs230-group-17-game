@@ -215,4 +215,12 @@ public class LevelReader {
             return null;
         }
     }
+
+    public static List<String> getLevelNames() {
+        List<String> levelNames = new ArrayList<>();
+        for (Level level : readLevels()) {
+            levelNames.add(level.toString());
+        }
+        return levelNames;
+    }
 }

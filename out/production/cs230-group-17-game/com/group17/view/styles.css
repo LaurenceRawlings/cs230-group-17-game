@@ -8,20 +8,20 @@
     -fx-text-fill: white;
 }
 
-.list-cell{
+.list-cell, .combo-box{
     -fx-font-size:24.0;
     -fx-font-family: "Segoe UI";
 }
 
-.list-cell:even {
+.list-cell:even, .combo-box:even {
     -fx-background-color: white;
 }
 
-.list-cell:odd {
+.list-cell:odd, .combo-box:odd {
     -fx-background-color: #dadada;
 }
 
-.list-cell:filled:hover {
+.list-cell:filled:hover, .combo-box:hover {
     -fx-background-color: red;
     -fx-text-fill: white;
 }

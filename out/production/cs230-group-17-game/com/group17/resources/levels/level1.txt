@@ -1,4 +1,4 @@
-<Level File>yy
+<Level File>
 1;Level 1
 16,11;1,1;10,9
 5,1,13,9;6,9,13,4
