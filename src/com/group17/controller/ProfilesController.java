@@ -14,7 +14,7 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-public class ProfileController {
+public class ProfilesController {
     private SceneController controller;
     private Profile profile;
 
@@ -42,17 +42,23 @@ public class ProfileController {
     }
 
     @FXML
-    void onClickBtnBack(MouseEvent event) {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
-            Parent root = loader.load();
-            MenuController menu = loader.getController();
-            menu.setController(controller);
-            menu.setProfile(profile);
+    void onClickBtnEnter(MouseEvent event) {
+        String selectedProfile = lst_profiles.getSelectionModel().getSelectedItem();
+        if (selectedProfile != null) {
+            setProfile(ProfileManager.load(selectedProfile));
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+                Parent root = loader.load();
+                MenuController menu = loader.getController();
+                menu.setController(controller);
+                menu.setProfile(profile);
 
-            controller.activate(new Scene(root, 1000, 1000));
-        } catch (IOException e) {
-            e.printStackTrace();
+                controller.activate(new Scene(root, 1000, 1000));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            MessageController.showMessage("Hold Up!", "Select a Profile", "Please select or create a profile before entering.");
         }
     }
 
@@ -68,14 +74,6 @@ public class ProfileController {
             } else {
                 MessageController.showMessage("Hold Up!", "Profile Already Exists!", "A profile with that name already exists, choose another name.");
             }
-        }
-    }
-
-    @FXML
-    void onClickBtnLoad(MouseEvent event) {
-        String profile  = lst_profiles.getSelectionModel().getSelectedItem();
-        if (profile != null) {
-            setProfile(ProfileManager.load(profile));
         }
     }
 

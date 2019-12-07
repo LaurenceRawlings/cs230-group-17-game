@@ -83,7 +83,7 @@ public class MenuController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/profiles.fxml"));
             Parent root = loader.load();
-            ProfileController profiles = loader.getController();
+            ProfilesController profiles = loader.getController();
             profiles.setController(controller);
             profiles.setProfile(profile);
 
@@ -105,6 +105,26 @@ public class MenuController {
             controller.activate(new Scene(root, 1000, 1000));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onClickBtnLevel(MouseEvent event) {
+        if (profile == null) {
+            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+        } else {
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/levels.fxml"));
+                Parent root = loader.load();
+                LevelsController levels = loader.getController();
+                levels.setController(controller);
+                levels.setProfile(profile);
+                levels.onLoad();
+
+                controller.activate(new Scene(root, 1000, 1000));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 

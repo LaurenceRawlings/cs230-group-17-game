@@ -1,6 +1,7 @@
 package com.group17;
 
 import com.group17.controller.MenuController;
+import com.group17.controller.ProfilesController;
 import com.group17.controller.SceneController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -16,10 +17,10 @@ public class Main extends Application {
         primaryStage.setTitle("Group 17 Game");
         primaryStage.setResizable(false);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/menu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/profiles.fxml"));
         Parent root = loader.load();
-        MenuController menu = loader.getController();
-        menu.setController(controller);
+        ProfilesController profiles = loader.getController();
+        profiles.setController(controller);
 
         controller.activate(new Scene(root, 1000, 1000));
         primaryStage.show();

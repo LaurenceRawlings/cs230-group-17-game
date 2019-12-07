@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.controller.ProfilesController">
+<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.controller.LevelsController">
     <bottom>
         <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
             <Label text="Current Profile: ">
@@ -31,9 +31,9 @@
     </right>
     <center>
         <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <ListView fx:id="lst_profiles" prefHeight="600.0" prefWidth="200.0" stylesheets="@styles.css" />
+            <ListView fx:id="lst_levels" prefHeight="600.0" prefWidth="200.0" stylesheets="@styles.css" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-                <Label id="button" fx:id="btn_create" onMouseClicked="#onClickBtnCreate" stylesheets="@styles.css" text="CREATE">
+                <Label id="button" fx:id="btn_play" onMouseClicked="#onClickBtnPlay" stylesheets="@styles.css" text="Play &gt;">
                     <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                     </font>
@@ -41,15 +41,7 @@
                         <Insets right="10.0" />
                     </HBox.margin>
                 </Label>
-                <Label id="button" fx:id="btn_delete" onMouseClicked="#onClickBtnDelete" stylesheets="@styles.css" text="DELETE">
-                    <font>
-                        <Font name="Segoe UI Semibold" size="24.0" />
-                    </font>
-                    <HBox.margin>
-                        <Insets left="10.0" right="10.0" />
-                    </HBox.margin>
-                </Label>
-                <Label id="button" fx:id="btn_enter" onMouseClicked="#onClickBtnEnter" stylesheets="@styles.css" text="ENTER &gt;">
+                <Label id="button" fx:id="btn_back" onMouseClicked="#onClickBtnBack" stylesheets="@styles.css" text="BACK">
                     <font>
                         <Font name="Segoe UI Semibold" size="24.0" />
                     </font>
@@ -62,12 +54,12 @@
     </center>
     <top>
         <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label fx:id="lbl_title" text="Profile Selection">
+            <Label fx:id="lbl_title" text="Level Selection">
                 <font>
                     <Font name="Segoe UI Black Italic" size="40.0" />
                 </font>
             </Label>
-            <Label fx:id="lbl_subtitle" text="Please select a profile..." textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lbl_subtitle" text="Select a level to play..." textAlignment="CENTER" wrapText="true">
                 <font>
                     <Font name="Segoe UI Light" size="18.0" />
                 </font>

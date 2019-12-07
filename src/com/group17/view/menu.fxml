@@ -1,23 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.controller.MenuController">
+<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.controller.MenuController">
     <bottom>
        <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
           <Label text="Current Profile: ">
              <font>
-                <Font name="Segoe UI Italic" size="14.0"/>
+                <Font name="Segoe UI Italic" size="14.0" />
              </font>
           </Label>
           <Label fx:id="lbl_profile" text="None">
              <font>
-                <Font name="Segoe UI" size="14.0"/>
+                <Font name="Segoe UI" size="14.0" />
              </font>
           </Label>
        </HBox>
@@ -33,60 +31,67 @@
     </right>
    <center>
       <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Label id="button" fx:id="btn_continue" onMouseClicked="#onClickBtnContinue" stylesheets="@styles.css"
-                text="Continue Game &gt;">
+         <Label id="button" fx:id="btn_continue" onMouseClicked="#onClickBtnContinue" stylesheets="@styles.css" text="Continue Game &gt;">
             <font>
-               <Font name="Segoe UI Semibold" size="24.0"/>
+               <Font name="Segoe UI Semibold" size="24.0" />
             </font>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
             <VBox.margin>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
-         <Label id="button" fx:id="btn_new" onMouseClicked="#onClickBtnNew" stylesheets="@styles.css"
-                text="New Game &gt;">
+         <Label id="button" fx:id="btn_level" onMouseClicked="#onClickBtnLevel" stylesheets="@styles.css" text="Select Level &gt;">
             <font>
-               <Font name="Segoe UI Semibold" size="24.0"/>
+               <Font name="Segoe UI Semibold" size="24.0" />
             </font>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
             <VBox.margin>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
-         <Label id="button" fx:id="btn_profile" onMouseClicked="#onClickBtnProfile" stylesheets="@styles.css"
-                text="Select Profile &gt;">
+         <Label id="button" fx:id="btn_new" onMouseClicked="#onClickBtnNew" stylesheets="@styles.css" text="New Game &gt;">
             <font>
-               <Font name="Segoe UI Semibold" size="24.0"/>
+               <Font name="Segoe UI Semibold" size="24.0" />
             </font>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
             <VBox.margin>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
-         <Label id="button" fx:id="btn_leaderboard" onMouseClicked="#onClickBtnLeaderboard" stylesheets="@styles.css"
-                text="Leaderboard &gt;">
+         <Label id="button" fx:id="btn_leaderboard" onMouseClicked="#onClickBtnLeaderboard" stylesheets="@styles.css" text="Leaderboard &gt;">
             <font>
-               <Font name="Segoe UI Semibold" size="24.0"/>
+               <Font name="Segoe UI Semibold" size="24.0" />
             </font>
             <opaqueInsets>
-               <Insets/>
+               <Insets />
             </opaqueInsets>
             <VBox.margin>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
+            </VBox.margin>
+         </Label>
+         <Label id="button" fx:id="btn_profile" onMouseClicked="#onClickBtnProfile" stylesheets="@styles.css" text="Switch Profile &gt;">
+            <font>
+               <Font name="Segoe UI Semibold" size="24.0" />
+            </font>
+            <opaqueInsets>
+               <Insets />
+            </opaqueInsets>
+            <VBox.margin>
+               <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
          <Label id="button" fx:id="btn_quit" onMouseClicked="#onClickBtnQuit" stylesheets="@styles.css" text="QUIT">
             <font>
-               <Font name="Segoe UI Semibold" size="24.0"/>
+               <Font name="Segoe UI Semibold" size="24.0" />
             </font>
             <VBox.margin>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
       </VBox>
@@ -95,12 +100,12 @@
       <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <Label fx:id="lbl_title" text="Group 17 Game">
             <font>
-               <Font name="Segoe UI Black Italic" size="40.0"/>
+               <Font name="Segoe UI Black Italic" size="40.0" />
             </font>
          </Label>
          <Label fx:id="lbl_motd" text="MOTD" textAlignment="CENTER" wrapText="true">
             <font>
-               <Font name="Segoe UI Light" size="18.0"/>
+               <Font name="Segoe UI Light" size="18.0" />
             </font>
          </Label>
       </VBox>

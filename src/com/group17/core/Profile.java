@@ -3,6 +3,7 @@ package com.group17.core;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Profile implements Serializable, Comparable<Profile> {
     private Game game;
@@ -57,5 +58,9 @@ public class Profile implements Serializable, Comparable<Profile> {
         } else {
             return -1;
         }
+    }
+
+    public Set getCompletedLevels() {
+        return levelTimes.keySet();
     }
 }
