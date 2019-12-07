@@ -20,8 +20,13 @@ public class Leaderboard {
         List<Profile> profiles = ProfileManager.getProfiles(levelName);
         Collections.sort(profiles);
         List<String> topProfiles = new ArrayList<>();
+        int i = 0;
         for (Profile profile : profiles) {
+            if (i >= amount) {
+                return topProfiles;
+            }
             topProfiles.add(profile.toString());
+            i++;
         }
         return topProfiles;
     }
