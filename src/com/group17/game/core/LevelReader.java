@@ -179,7 +179,7 @@ public class LevelReader {
                                 newLevel.addEnemy(new SmartFollowingEnemy(position, direction, newLevel, new Position(Integer.parseInt(start[0]), Integer.parseInt(start[1]))));
                                 break;
                             case dumb:
-                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction, newLevel));
+                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction, newLevel, new Position(Integer.parseInt(start[0]), Integer.parseInt(start[1]))));
                                 break;
                             case wall:
                                 newLevel.addEnemy(new WallFollowingEnemy(position, direction, newLevel));

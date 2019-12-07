@@ -38,23 +38,28 @@ public class Graph implements Serializable{
     }
 
     public LinkedList<Node> findShortestPathHelper(Node Start, Node Goal){
-        Node finalGoal = findShortestPath(Start, Goal);
-        if (pathList.getLast().n != Start.n){
+        if (Start != null){
+            findShortestPath(Start, Goal);
+            if (pathList.getLast().n != Start.n) {
+                return null;
+            } else {
+                return pathList;
+            }
+        } else{
             return null;
-        } else {
-            return pathList;
         }
     }
 
-    Node findShortestPath(Node Start, Node Goal) {
-        pathList.add(Goal);
-        while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
-            Goal.prevVisited = true;
-            if (Goal.prev != null) {
-                findShortestPath(Start, Goal.prev);
+    void findShortestPath(Node Start, Node Goal) {
+        if (Start != null){ //check if player is on an obstacle
+            pathList.add(Goal);
+            while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
+                Goal.prevVisited = true;
+                if (Goal.prev != null) {
+                    findShortestPath(Start, Goal.prev);
+                }
             }
         }
-        return Goal;
     }
 
     public boolean hasEdge(Node source, Node destination) {

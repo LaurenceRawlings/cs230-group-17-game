@@ -57,7 +57,7 @@ public abstract class Enemy implements Serializable {
         }
     }
 
-    private boolean canMove(Position nextPosition){
+    public boolean canMove(Position nextPosition){
         return level.getCell(nextPosition) instanceof Ground;
     }
 
