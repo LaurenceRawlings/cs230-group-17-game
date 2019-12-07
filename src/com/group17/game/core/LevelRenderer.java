@@ -12,8 +12,16 @@ import javafx.scene.text.Font;
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/game/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
-    private static final int SPRITE_WIDTH = 100;
-    private static final int SPRITE_HEIGHT = 100;
+    private static int SPRITE_WIDTH = 100;
+    private static int SPRITE_HEIGHT = 100;
+
+    public static void setSpriteWidth(int spriteWidth) {
+        SPRITE_WIDTH = spriteWidth;
+    }
+
+    public static void setSpriteHeight(int spriteHeight) {
+        SPRITE_HEIGHT = spriteHeight;
+    }
 
     private static Image getSprite(String spriteName) {
         try {

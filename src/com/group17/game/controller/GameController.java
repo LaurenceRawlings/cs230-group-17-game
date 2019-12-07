@@ -137,4 +137,24 @@ public class GameController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void onClickBtnZoomIn(MouseEvent event) {
+        if (game.getFov() > 0) {
+            game.setFov(game.getFov() - 1);
+            LevelRenderer.setSpriteHeight(700 / (game.getFov() * 2 + 1));
+            LevelRenderer.setSpriteWidth(700 / (game.getFov() * 2 + 1));
+            drawGame();
+        }
+    }
+
+    @FXML
+    void onClickBtnZoomOut(MouseEvent event) {
+        if (game.getFov() < 15) {
+            game.setFov(game.getFov() + 1);
+            LevelRenderer.setSpriteHeight(700 / (game.getFov() * 2 + 1));
+            LevelRenderer.setSpriteWidth(700 / (game.getFov() * 2 + 1));
+            drawGame();
+        }
+    }
 }
