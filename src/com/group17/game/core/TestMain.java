@@ -6,22 +6,11 @@ import java.util.LinkedList;
 
 public class TestMain {
     public static void main(String[] args) {
-        Profile p1 = new Profile("Top");
-        Profile p2 = new Profile("Middle");
-        Profile p3 = new Profile("Bottom");
 
-        p1.setLevelTime("Level 2", 1);
-        p2.setLevelTime("Level 2", 4);
-        p3.setLevelTime("Level 2", 3);
+        Profile p = new Profile("Test");
+        p.setHighestLevel(1);
+        ProfileManager.save(p);
 
-        ProfileManager.save(p1);
-        ProfileManager.save(p2);
-        ProfileManager.save(p3);
-
-//        System.out.println(Arrays.toString(Leaderboard.getTopTimes("Level 2", 5)));
-
-        System.out.println(Leaderboard.formatTime(100000));
-        System.out.println((int) Double.POSITIVE_INFINITY);
     }
 
     public static void main2(String[] args) throws InterruptedException {
@@ -46,7 +35,6 @@ public class TestMain {
             System.out.println("Failed to find node path");
         } else {
             System.out.println(Arrays.toString(shortestPath.toArray()));
-
         }
     }
 }

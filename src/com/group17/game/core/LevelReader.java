@@ -78,7 +78,16 @@ public class LevelReader {
         put("right", Direction.right);
     }});
 
-    public static List<Level> readLevels() {
+    private static List<Level> levelQueue;
+
+    public static List<Level> getLevelQueue() {
+        if (levelQueue == null) {
+            readLevels();
+        }
+        return levelQueue;
+    }
+
+    private static void readLevels() {
         File levelDirectory = new File(LEVEL_DIR);
         File[] levelFiles = levelDirectory.listFiles();
         List<Level> levels = new ArrayList<>();
@@ -108,7 +117,8 @@ public class LevelReader {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return levels;
+        Collections.sort(levels);
+        levelQueue = levels;
     }
 
     private static Level buildLevel(String[] levelData) {
@@ -218,7 +228,7 @@ public class LevelReader {
 
     public static List<String> getLevelNames() {
         List<String> levelNames = new ArrayList<>();
-        for (Level level : readLevels()) {
+        for (Level level : getLevelQueue()) {
             levelNames.add(level.toString());
         }
         return levelNames;

@@ -12,8 +12,9 @@ import java.io.Serializable;
 import java.util.*;
 
 public class Game implements Serializable {
-    private PriorityQueue<Level> levelQueue;
+    private List<Level> levelQueue;
     private Level currentLevel;
+    private int levelIndex;
     private Player player;
     private int fov;
 
@@ -34,12 +35,21 @@ public class Game implements Serializable {
 
 
     public Game() {
-        levelQueue = new PriorityQueue<>();
-        levelQueue.addAll(LevelReader.readLevels());
-        currentLevel = levelQueue.poll();
+        levelQueue = LevelReader.getLevelQueue();
+        currentLevel = levelQueue.get(0);
+        levelIndex = 0;
         player = new Player(currentLevel.getStart());
         fov = 3;
     }
+
+    public Game(int levelIndex) {
+        levelQueue = LevelReader.getLevelQueue();
+        currentLevel = levelQueue.get(levelIndex);
+        this.levelIndex = levelIndex;
+        player = new Player(currentLevel.getStart());
+        fov = 3;
+    }
+
 
     public boolean moveEnemiesHelper(Cell c, Enemy e, Position next){ //checks if next cell is walkable, and sets the enemy to it if it is (its a helper due to repetitive use)
         if (c instanceof Ground){
@@ -165,10 +175,10 @@ public class Game implements Serializable {
     }
 
     public boolean nextLevel() {
-        if (levelQueue.peek() != null) {
-            currentLevel = levelQueue.poll();
+        try {
+            currentLevel = levelQueue.get(++levelIndex);
             return true;
-        } else {
+        } catch (IndexOutOfBoundsException e) {
             return false;
         }
     }
@@ -244,6 +254,8 @@ public class Game implements Serializable {
     }
 
     private void die() {
+        currentLevel = levelQueue.get(levelIndex);
+        player = new Player(currentLevel.getStart());
     }
 
 }

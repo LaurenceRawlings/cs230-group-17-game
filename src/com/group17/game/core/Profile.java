@@ -54,6 +54,10 @@ public class Profile implements Serializable, Comparable<Profile> {
         game = new Game();
     }
 
+    public void newGame(int levelIndex) {
+        game = new Game(levelIndex);
+    }
+
     @Override
     public int compareTo(Profile profile) {
         String compareLevel = Leaderboard.getCompareLevel();
@@ -69,9 +73,5 @@ public class Profile implements Serializable, Comparable<Profile> {
         } else {
             return -1;
         }
-    }
-
-    public Set getCompletedLevels() {
-        return levelTimes.keySet();
     }
 }

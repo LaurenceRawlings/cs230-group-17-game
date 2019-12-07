@@ -9,10 +9,7 @@ import com.group17.game.core.Position;
 import com.group17.game.model.GameObject;
 import com.group17.game.model.entity.item.Item;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Player extends GameObject {
     private Position position;
@@ -132,6 +129,7 @@ public class Player extends GameObject {
                 items.add(item.toString() + " x" + amount);
             }
         }
+        Collections.sort(items);
         return items;
     }
 }

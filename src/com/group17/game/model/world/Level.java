@@ -86,13 +86,7 @@ public class Level implements Comparable<Level>, Serializable {
 
     @Override
     public int compareTo(Level level) {
-        if (levelNumber == level.getLevelNumber()) {
-            return 0;
-        } else if (levelNumber > level.getLevelNumber()) {
-            return 1;
-        } else {
-            return -1;
-        }
+        return Integer.compare(levelNumber, level.getLevelNumber());
     }
 
     public void addEnemy(Enemy enemy) {

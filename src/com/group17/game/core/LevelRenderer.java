@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 public class LevelRenderer {
-    private static final String SPRITE_DIR = "com/group17/game/game/resources/sprites";
+    private static final String SPRITE_DIR = "com/group17/game/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
     private static final int SPRITE_WIDTH = 100;
     private static final int SPRITE_HEIGHT = 100;
