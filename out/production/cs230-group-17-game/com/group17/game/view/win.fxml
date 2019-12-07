@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.WinController">
+<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.WinController">
     <bottom>
         <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
             <Label text="Current Profile: ">
@@ -70,12 +68,12 @@
             </Label>
             <Label fx:id="lbl_subtitle" text="You recovered all the gems and completed the last assignment!" textAlignment="CENTER" wrapText="true">
                 <font>
-                    <Font name="Segoe UI Light" size="18.0" />
+                    <Font name="Segoe UI Semibold" size="18.0" />
                 </font>
             </Label>
          <Label text="Your best times combined. Go back and improve your times on any level from the menu." textAlignment="CENTER" wrapText="true">
             <font>
-               <Font name="Segoe UI Semibold" size="18.0" />
+               <Font name="Segoe UI Light" size="18.0" />
             </font>
             <VBox.margin>
                <Insets top="20.0" />

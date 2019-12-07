@@ -8,6 +8,11 @@
 <BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ProfilesController">
     <bottom>
         <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
+         <ComboBox fx:id="cmb_language" onAction="#setLanguage">
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
+         </ComboBox>
             <Label text="Current Profile: ">
                 <font>
                     <Font name="Segoe UI Italic" size="14.0" />

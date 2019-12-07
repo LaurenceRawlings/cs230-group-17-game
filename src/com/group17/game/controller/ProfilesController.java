@@ -8,10 +8,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class ProfilesController {
@@ -20,6 +23,12 @@ public class ProfilesController {
 
     @FXML
     private ListView<String> lst_profiles;
+
+    @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_title;
 
     @FXML
     void initialize() {
@@ -91,10 +100,21 @@ public class ProfilesController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
+        lbl_title.setText(SceneController.getLanguageBundle().getString("profiles_title"));
+
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
         }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        SceneController.loadLanguage(language);
+        onLoad();
     }
 }
