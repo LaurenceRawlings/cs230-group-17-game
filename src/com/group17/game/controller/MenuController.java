@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -26,6 +27,9 @@ public class MenuController {
 
     @FXML
     private Label lbl_motd;
+
+    @FXML
+    private BorderPane root;
 
     @FXML
     void initialize() {

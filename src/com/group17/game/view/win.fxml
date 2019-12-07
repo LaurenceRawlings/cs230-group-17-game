@@ -1,14 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.group17.game.view.Win"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.WinController">
+    <bottom>
+        <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
+            <Label text="Current Profile: ">
+                <font>
+                    <Font name="Segoe UI Italic" size="14.0" />
+                </font>
+            </Label>
+            <Label fx:id="lbl_profile" text="None">
+                <font>
+                    <Font name="Segoe UI" size="14.0" />
+                </font>
+            </Label>
+        </HBox>
+    </bottom>
+    <left>
+        <VBox fx:id="root_left" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </left>
+    <padding>
+        <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+    </padding>
+    <right>
+        <VBox fx:id="root_right" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+    </right>
+    <center>
+        <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <Label fx:id="lbl_time" text="Total Time" textFill="GREEN">
+            <VBox.margin>
+               <Insets bottom="50.0" top="30.0" />
+            </VBox.margin>
+            <font>
+               <Font name="Segoe UI Black" size="48.0" />
+            </font>
+         </Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <Label id="button" fx:id="btn_menu" onMouseClicked="#onClickBtnMenu" stylesheets="@styles.css" text="&lt; MENU">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets right="10.0" />
+                    </HBox.margin>
+                </Label>
+                <Label id="button" fx:id="btn_leaderboard" onMouseClicked="#onClickBtnLeaderboard" stylesheets="@styles.css" text="LEADERBOARD &gt;">
+                    <font>
+                        <Font name="Segoe UI Semibold" size="24.0" />
+                    </font>
+                    <HBox.margin>
+                        <Insets left="10.0" />
+                    </HBox.margin>
+                </Label>
+            </HBox>
+        </VBox>
+    </center>
+    <top>
+        <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <Label fx:id="lbl_title" text="Game Complete!">
+                <font>
+                    <Font name="Segoe UI Black Italic" size="40.0" />
+                </font>
+            </Label>
+            <Label fx:id="lbl_subtitle" text="You recovered all the gems and completed the last assignment!" textAlignment="CENTER" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Light" size="18.0" />
+                </font>
+            </Label>
+         <Label text="Your best times combined. Go back and improve your times on any level from the menu." textAlignment="CENTER" wrapText="true">
+            <font>
+               <Font name="Segoe UI Semibold" size="18.0" />
+            </font>
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
+         </Label>
+        </VBox>
+    </top>
+</BorderPane>

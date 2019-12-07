@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ContinueController">
+<BorderPane id="background" fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ContinueController">
     <bottom>
         <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
             <Label text="Current Profile: ">
