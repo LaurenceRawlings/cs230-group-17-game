@@ -2,30 +2,19 @@ package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
 import com.group17.game.model.entity.Direction;
+import com.group17.game.model.entity.Player;
+import com.group17.game.model.world.Level;
 
 public class LineFollowingEnemy extends Enemy {
-    public LineFollowingEnemy(Position position, Direction direction) {
-        super(EnemyType.line, position, direction);
+    public LineFollowingEnemy(Position position, Direction direction, Level level) {
+        super(EnemyType.line, position, direction, level);
     }
 
     @Override
-    public Position moveHelper(Direction direction){
-        switch (direction){ //This helper sets the opposite direction and tries to "move" one in the opposite direction)
-            case up :
-                setDirection(Direction.down);
-                return new Position(getPosition().x(), getPosition().y()+1);
-            case down :
-                setDirection(Direction.up);
-                return new Position(getPosition().x(), getPosition().y()-1);
-            case left :
-                setDirection(Direction.right);
-                return new Position(getPosition().x()+1, getPosition().y());
-            case right :
-                setDirection(Direction.left);
-                return new Position(getPosition().x()-1, getPosition().y());
+    public void move(Player player) {
+        if (!move(Position.nextPosition(position, direction))) {
+            direction = direction.flip();
+            move(Position.nextPosition(position, direction));
         }
-        return null;  //should never happen
-        // There will be an infinite loop if the enemy is initialised a position where it cannot move in its desired axis (vertical/horizontal)
-                                            // I don't know if we want to check for this and just break the loop after x unsuccessful attempts
     }
 }

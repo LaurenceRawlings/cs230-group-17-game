@@ -1,6 +1,7 @@
 package com.group17.game.model.world;
 
 import com.group17.game.core.Position;
+import com.group17.game.model.entity.Player;
 import com.group17.game.model.entity.enemy.Enemy;
 import com.group17.game.model.entity.item.Item;
 
@@ -91,13 +92,19 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
 
     public void addEnemy(Enemy enemy) {
         enemies.add(enemy);
-        updateEnemyPositions();
     }
 
     public void updateEnemyPositions() {
         enemyPositions = new Enemy.EnemyType[height][width];
         for (Enemy enemy : enemies) {
             enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = enemy.getEnemyType();
+        }
+    }
+
+    public void moveEnemies(Player player) {
+        for (Enemy enemy : enemies) {
+            enemy.move(player);
+            updateEnemyPositions();
         }
     }
 

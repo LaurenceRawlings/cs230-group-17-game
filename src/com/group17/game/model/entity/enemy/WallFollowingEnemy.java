@@ -2,30 +2,36 @@ package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
 import com.group17.game.model.entity.Direction;
+import com.group17.game.model.entity.Player;
+import com.group17.game.model.world.Level;
 
 public class WallFollowingEnemy extends Enemy {
-    public WallFollowingEnemy(Position position, Direction direction) {
-        super(EnemyType.wall, position, direction);
+    private boolean reachedWall;
+
+    public WallFollowingEnemy(Position position, Direction direction, Level level) {
+        super(EnemyType.wall, position, direction, level);
+        reachedWall = false;
     }
 
     @Override
-    public Position moveHelper(Direction direction) { //gets the wall our enemy is attached to, which is the one to the left of it based on enemy's rotation (direction)
-        Position inDir = moveInDir(getDirection());
-        if (getPosition().x() == inDir.x()) { //y changed - we intend on moving vertically so the wall will be horizontal to us
-            if (inDir.y() > getPosition().y()){
-                return new Position(getPosition().x()+1, getPosition().y());
+    public void move(Player player) {
+        if (reachedWall) {
+            if (!move(Position.nextPosition(position, Direction.right.relative(direction)))) {
+                if (!move(Position.nextPosition(position, Direction.up.relative(direction)))) {
+                    direction = direction.rotateRight().flip();
+                    if (!move(Position.nextPosition(position, Direction.up.relative(direction)))) {
+                        direction = direction.rotateRight().flip();
+                        move(Position.nextPosition(position, Direction.up.relative(direction)));
+                    }
+                }
             } else {
-                return new Position(getPosition().x()-1, getPosition().y());
+                direction = direction.rotateRight();
             }
-
-        } else if (getPosition().y() == inDir.y()){ //x changed
-            if (inDir.x() > getPosition().x()){
-                return new Position(getPosition().x(), getPosition().y()-1);
-            } else {
-                return new Position(getPosition().x(), getPosition().y()+1);
+        } else {
+            if (!move(Position.nextPosition(position, Direction.right.relative(direction)))) {
+                reachedWall = true;
+                move(player);
             }
         }
-        return null; //should never happen
     }
-
 }

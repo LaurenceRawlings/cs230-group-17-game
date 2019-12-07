@@ -1,5 +1,7 @@
 package com.group17.game.core;
 
+import com.group17.game.model.entity.Direction;
+
 import java.io.Serializable;
 import java.util.Objects;
 
@@ -20,14 +22,6 @@ public class Position implements Serializable {
         return y;
     }
 
-    public void setX(int x){
-        this.x=x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -40,4 +34,25 @@ public class Position implements Serializable {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+    public static Position nextPosition(Position currentPosition, Direction direction) {
+        Position next = null;
+        switch (direction) {
+            case right:
+                next = new Position(currentPosition.x() + 1, currentPosition.y());
+                break;
+            case left:
+                next = new Position(currentPosition.x() - 1, currentPosition.y());
+                break;
+            case up:
+                next = new Position(currentPosition.x(), currentPosition.y() - 1);
+                break;
+            case down:
+                next = new Position(currentPosition.x(), currentPosition.y() + 1);
+                break;
+        }
+
+        return next;
+    }
+
 }

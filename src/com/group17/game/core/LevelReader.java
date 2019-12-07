@@ -176,16 +176,16 @@ public class LevelReader {
                         Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
                         switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
                             case smart:
-                                newLevel.addEnemy(new SmartFollowingEnemy(position, direction));
+                                newLevel.addEnemy(new SmartFollowingEnemy(position, direction, newLevel));
                                 break;
                             case dumb:
-                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction));
+                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction, newLevel));
                                 break;
                             case wall:
-                                newLevel.addEnemy(new WallFollowingEnemy(position, direction));
+                                newLevel.addEnemy(new WallFollowingEnemy(position, direction, newLevel));
                                 break;
                             case line:
-                                newLevel.addEnemy(new LineFollowingEnemy(position, direction));
+                                newLevel.addEnemy(new LineFollowingEnemy(position, direction, newLevel));
                                 break;
                         }
                     }

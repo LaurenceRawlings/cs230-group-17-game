@@ -76,8 +76,10 @@ public class ProfilesController {
         try {
             String profile = lst_profiles.getSelectionModel().getSelectedItem();
             if (profile != null) {
-                if (profile.equals(ProfileManager.getActiveProfile().toString())) {
-                    ProfileManager.setActiveProfile(null);
+                if (ProfileManager.getActiveProfile() != null) {
+                    if (profile.equals(ProfileManager.getActiveProfile().toString())) {
+                        ProfileManager.setActiveProfile(null);
+                    }
                 }
                 ProfileManager.delete(profile);
             }

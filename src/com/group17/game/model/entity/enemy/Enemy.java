@@ -2,10 +2,15 @@ package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
 import com.group17.game.model.entity.Direction;
+import com.group17.game.model.entity.Player;
+import com.group17.game.model.world.Ground;
+import com.group17.game.model.world.Level;
 
 import java.io.Serializable;
 
 public abstract class Enemy implements Serializable {
+    public abstract void move(Player player);
+
     public enum EnemyType {
         smart("enemy_smart"),
         dumb("enemy_dumb"),
@@ -23,32 +28,37 @@ public abstract class Enemy implements Serializable {
         }
     }
 
-    private Position position;
-    private Direction direction;
-    private EnemyType enemyType;
+    protected Position position;
+    protected Direction direction;
+    protected EnemyType enemyType;
+    protected Level level;
 
-    public Enemy(EnemyType enemyType, Position position, Direction direction) {
+    public Level getLevel() {
+        return level;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public Enemy(EnemyType enemyType, Position position, Direction direction, Level level) {
         this.position = position;
         this.direction = direction;
         this.enemyType = enemyType;
+        this.level = level;
     }
 
-    public Position moveInDir(Direction direction) {
-        switch (direction){
-            case up :
-                return new Position(getPosition().x(), getPosition().y()-1);
-            case down :
-                return new Position(getPosition().x(), getPosition().y()+1);
-            case left :
-                return new Position(getPosition().x()-1, getPosition().y());
-            case right :
-                return new Position(getPosition().x()+1, getPosition().y());
+    protected boolean move(Position nextPosition) {
+        if (canMove(nextPosition)) {
+            position = nextPosition;
+            return true;
+        } else {
+            return false;
         }
-        return null;
     }
 
-    public Position moveHelper(Direction direction){
-        return null;
+    private boolean canMove(Position nextPosition){
+        return level.getCell(nextPosition) instanceof Ground;
     }
 
     public void rotateRight(){
