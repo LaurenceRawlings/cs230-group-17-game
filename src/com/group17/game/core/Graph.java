@@ -38,7 +38,7 @@ public class Graph implements Serializable{
         addEdgeHelper(destination, source);
     }
 
-    LinkedList<Node> findShortestPathHelper(Node Start, Node Goal){
+    public LinkedList<Node> findShortestPathHelper(Node Start, Node Goal){
         Node finalGoal = findShortestPath(Start, Goal);
         if (pathList.getLast().n != Start.n){
             return null;
@@ -63,7 +63,7 @@ public class Graph implements Serializable{
         return adjMap.containsKey(source) && adjMap.get(source).contains(destination);
     }
 
-    void breadthFirstSearch(Node node) {
+    public void breadthFirstSearch(Node node) {
         if (node == null)
             return;
 

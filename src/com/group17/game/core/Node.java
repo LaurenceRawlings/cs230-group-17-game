@@ -8,7 +8,7 @@ public class Node implements Serializable {
     Node prev;
     boolean prevVisited;
 
-    Node(Position n) {
+    public Node(Position n) {
         this.n = n;
         visited = false;
         Node prev = null;
@@ -16,7 +16,7 @@ public class Node implements Serializable {
 
     }
 
-    Position getPos(){
+    public Position getPos(){
         return this.n;
     }
 

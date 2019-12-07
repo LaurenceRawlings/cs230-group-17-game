@@ -64,7 +64,7 @@ public class LevelsController {
 
     public void onLoad() {
         List<String> availableLevels = new ArrayList<>();
-        for (int i = 0; i < ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
+        for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
             if (i < LevelReader.getLevelQueue().size()) {
                 availableLevels.add(LevelReader.getLevelQueue().get(i).toString());
             }

@@ -55,7 +55,7 @@
     </top>
    <bottom>
        <VBox fx:id="root_bottom" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
-           <Label id="button" onMouseClicked="#onClickBtnSave" stylesheets="@styles.css" text="Save &amp; Exit">
+           <Label id="button" onMouseClicked="#onClickBtnSave" stylesheets="@styles.css" text="SAVE &amp; RETURN TO MENU">
               <font>
                   <Font name="Segoe UI Semibold" size="24.0" />
               </font>

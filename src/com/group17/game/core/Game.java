@@ -2,14 +2,13 @@ package com.group17.game.core;
 
 import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.Player;
-import com.group17.game.model.entity.enemy.*;
 import com.group17.game.model.entity.item.Item;
 import com.group17.game.model.entity.item.Key;
 import com.group17.game.model.entity.item.Token;
 import com.group17.game.model.world.*;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.List;
 
 public class Game implements Serializable {
     private List<Level> levelQueue;
