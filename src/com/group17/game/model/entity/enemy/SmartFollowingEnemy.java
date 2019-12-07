@@ -12,20 +12,30 @@ import java.util.LinkedList;
 
 public class SmartFollowingEnemy extends Enemy {
     private Position nextPosition;
+    private Position nextDumbPosition;
+    private boolean smartFail;
+    public Node[][] nodeMap;
 
     public SmartFollowingEnemy(Position position, Direction direction, Level level, Position initialTarget) {
         super(EnemyType.smart, position, direction, level);
         calculatePath(new Player(initialTarget));
+        moveDumb(new Player(initialTarget));
     }
 
     @Override
     public void move(Player player) {
-        move(nextPosition);
+        if (smartFail){
+            move(nextDumbPosition);
+            smartFail = false;
+        } else{
+            move(nextPosition);
+        }
         calculatePath(player);
+        moveDumb(player);
     }
 
-    private void calculatePath(Player player) {
-        Node[][] nodeMap = new Node[level.getWidth() - 1][level.getHeight() - 1];
+    public void calculatePath(Player player) {
+        nodeMap = new Node[level.getWidth() - 1][level.getHeight() - 1];
 
         Graph graph = new Graph();
         for (int i = 0; i < level.getWidth(); i++) { //populating our arrays of nodes
@@ -57,18 +67,17 @@ public class SmartFollowingEnemy extends Enemy {
 
         graph.breadthFirstSearch(nodeMap[player.getPosition().x()][player.getPosition().y()]); //generate all paths starting from player's position
 
-        try {
-            LinkedList<Node> shortestPath = graph.findShortestPathHelper(nodeMap[player.getPosition().x()][player.getPosition().y()], nodeMap[position.x()][position.y()]);
+        LinkedList<Node> shortestPath = graph.findShortestPathHelper(nodeMap[player.getPosition().x()][player.getPosition().y()], nodeMap[position.x()][position.y()]);
 
+        if (shortestPath != null && shortestPath.size() > 1) {
             nextPosition = shortestPath.get(1).getPos();
-
-        } catch (NullPointerException e) {
-            nextPosition = moveDumb(player);
+            smartFail = false;
+        } else {
+            smartFail = true;
         }
-
     }
 
-    public Position moveDumb(Player player) {
+    public void moveDumb(Player player) {
         int xDif = (position.x() - player.getPosition().x());
         int yDif = (position.y() - player.getPosition().y());
 
@@ -81,26 +90,35 @@ public class SmartFollowingEnemy extends Enemy {
                 moveX(xDif);
             }
         }
-        return super.position;
     }
 
     private boolean moveX(int xDif) {
         if (xDif > 0) {
-            return move(Position.nextPosition(position, Direction.left));
+            if(super.canMove(Position.nextPosition(position, Direction.left))){
+                nextDumbPosition = Position.nextPosition(position, Direction.left);
+                return true;
+            }
         } else if (xDif < 0) {
-            return move(Position.nextPosition(position, Direction.right));
+            if(super.canMove(Position.nextPosition(position, Direction.right))){
+                nextDumbPosition = Position.nextPosition(position, Direction.right);
+                return true;
+            }
         }
-
         return false;
     }
 
     private boolean moveY(int yDif) {
         if (yDif > 0) {
-            return move(Position.nextPosition(position, Direction.up));
+            if(super.canMove(Position.nextPosition(position, Direction.up))){
+                nextDumbPosition = Position.nextPosition(position, Direction.up);
+                return true;
+            }
         } else if (yDif < 0) {
-            return move(Position.nextPosition(position, Direction.down));
+            if(super.canMove(Position.nextPosition(position, Direction.down))){
+                nextDumbPosition = Position.nextPosition(position, Direction.down);
+                return true;
+            }
         }
-
         return false;
     }
 
