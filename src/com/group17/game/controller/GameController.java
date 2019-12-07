@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 import com.group17.game.core.*;
 import com.group17.game.model.entity.Direction;
+import com.group17.game.model.world.Level;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -20,22 +21,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 public class GameController {
-    private Profile profile;
     private Game game;
-    private SceneController controller;
     private Timeline timer;
-
-    public void setController(SceneController controller) {
-        this.controller = controller;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-        game = profile.getGame();
-        if (profile != null) {
-            lbl_profile.setText(profile.getName());
-        }
-    }
 
     @FXML
     private Canvas canvas;
@@ -81,10 +68,23 @@ public class GameController {
             default:
                 break;
         }
-        drawGame();
+
+        if (game.getPlayer().getPosition().equals(game.getCurrentLevel().getFinish())) {
+            Level currentLevel = game.getCurrentLevel();
+            ProfileManager.getActiveProfile().setHighestLevel(game.getLevelIndex());
+            if (currentLevel.getTime() < ProfileManager.getActiveProfile().getLevelTime(currentLevel.toString())) {
+                ProfileManager.getActiveProfile().setLevelTime(currentLevel.toString(), currentLevel.getTime());
+            }
+            if (!game.nextLevel()) {
+                //win
+                System.out.println("win");
+            }
+        }
 
         ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
         lst_inventory.setItems(items);
+
+        drawGame();
 
         event.consume();
     }
@@ -95,6 +95,12 @@ public class GameController {
     }
 
     public void onLoad() {
+        game = ProfileManager.getActiveProfile().getGame();
+        if (ProfileManager.getActiveProfile() != null) {
+            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
+        } else {
+            lbl_profile.setText("None");
+        }
         drawGame();
         lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));
     }
@@ -106,11 +112,10 @@ public class GameController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
-            menu.setController(controller);
-            menu.setProfile(profile);
-            ProfileManager.save(profile);
+            ProfileManager.save(ProfileManager.getActiveProfile());
+            menu.onLoad();
 
-            controller.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root, 1000, 1000));
         } catch (IOException e) {
             e.printStackTrace();
         }

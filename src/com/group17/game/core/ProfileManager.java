@@ -13,6 +13,16 @@ public class ProfileManager {
     private static final String PROFILE_DIR = "./src/com/group17/game/resources/profiles";
     private static final String PROFILE_FILE_EXTENSION = "save";
 
+    private static Profile activeProfile;
+
+    public static Profile getActiveProfile() {
+        return activeProfile;
+    }
+
+    public static void setActiveProfile(Profile activeProfile) {
+        ProfileManager.activeProfile = activeProfile;
+    }
+
     public static Profile load(String name) {
         if (exists(name)) {
             Profile profile = null;
@@ -39,7 +49,7 @@ public class ProfileManager {
 
     public static void save(Profile profile) {
         try {
-            FileOutputStream file = new FileOutputStream(PROFILE_DIR + "/" + profile.getName() + "." + PROFILE_FILE_EXTENSION);
+            FileOutputStream file = new FileOutputStream(PROFILE_DIR + "/" + profile.toString() + "." + PROFILE_FILE_EXTENSION);
             ObjectOutputStream serial = new ObjectOutputStream(file);
 
             serial.writeObject(profile);

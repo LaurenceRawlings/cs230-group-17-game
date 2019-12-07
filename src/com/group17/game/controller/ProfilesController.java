@@ -15,20 +15,6 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 public class ProfilesController {
-    private SceneController controller;
-    private Profile profile;
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-        if (profile != null) {
-            lbl_profile.setText(profile.getName());
-        }
-    }
-
-    public void setController(SceneController controller) {
-        this.controller = controller;
-    }
-
     @FXML
     private Label lbl_profile;
 
@@ -45,20 +31,26 @@ public class ProfilesController {
     void onClickBtnEnter(MouseEvent event) {
         String selectedProfile = lst_profiles.getSelectionModel().getSelectedItem();
         if (selectedProfile != null) {
-            setProfile(ProfileManager.load(selectedProfile));
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
-                Parent root = loader.load();
-                MenuController menu = loader.getController();
-                menu.setController(controller);
-                menu.setProfile(profile);
-
-                controller.activate(new Scene(root, 1000, 1000));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
+            ProfileManager.setActiveProfile(ProfileManager.load(selectedProfile));
+            enter();
+        } else if (ProfileManager.getActiveProfile() != null) {
+            enter();
+        }
+        else {
             MessageController.showMessage("Hold Up!", "Select a Profile", "Please select or create a profile before entering.");
+        }
+    }
+
+    private void enter() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            Parent root = loader.load();
+            MenuController menu = loader.getController();
+            menu.onLoad();
+
+            SceneController.activate(new Scene(root, 1000, 1000));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -68,9 +60,11 @@ public class ProfilesController {
         name = MessageController.inputDialog("New Profile", "Create A New Profile", "Enter the name for the new profile: ", "New Profile");
         if (name != null) {
             if (!ProfileManager.exists(name)) {
-                profile = new Profile(name);
+                Profile profile = new Profile(name);
                 ProfileManager.save(profile);
+                ProfileManager.setActiveProfile(profile);
                 initialize();
+                onLoad();
             } else {
                 MessageController.showMessage("Hold Up!", "Profile Already Exists!", "A profile with that name already exists, choose another name.");
             }
@@ -80,13 +74,25 @@ public class ProfilesController {
     @FXML
     void onClickBtnDelete(MouseEvent event) {
         try {
-            String profile  = lst_profiles.getSelectionModel().getSelectedItem();
+            String profile = lst_profiles.getSelectionModel().getSelectedItem();
             if (profile != null) {
+                if (profile.equals(ProfileManager.getActiveProfile().toString())) {
+                    ProfileManager.setActiveProfile(null);
+                }
                 ProfileManager.delete(profile);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         initialize();
+        onLoad();
+    }
+
+    public void onLoad() {
+        if (ProfileManager.getActiveProfile() != null) {
+            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
+        } else {
+            lbl_profile.setText("None");
+        }
     }
 }

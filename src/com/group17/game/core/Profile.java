@@ -39,7 +39,8 @@ public class Profile implements Serializable, Comparable<Profile> {
         return game;
     }
 
-    public String getName() {
+    @Override
+    public String toString() {
         return name;
     }
 

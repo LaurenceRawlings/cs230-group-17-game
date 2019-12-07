@@ -21,7 +21,7 @@ public class Leaderboard {
         Collections.sort(profiles);
         List<String> topProfiles = new ArrayList<>();
         for (Profile profile : profiles) {
-            topProfiles.add(profile.getName());
+            topProfiles.add(profile.toString());
         }
         return topProfiles;
     }

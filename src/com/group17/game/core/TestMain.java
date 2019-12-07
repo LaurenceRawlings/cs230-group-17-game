@@ -10,7 +10,6 @@ public class TestMain {
         Profile p = new Profile("Test");
         p.setHighestLevel(1);
         ProfileManager.save(p);
-
     }
 
     public static void main2(String[] args) throws InterruptedException {

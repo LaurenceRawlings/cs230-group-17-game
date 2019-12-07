@@ -4,13 +4,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SceneController {
-    private Stage main;
+    private static Stage main = new Stage();
 
-    public SceneController(Stage main) {
-        this.main = main;
+    public static void setMain(Stage main) {
+        SceneController.main = main;
     }
 
-    public void activate(Scene scene){
+    public static void activate(Scene scene){
         main.setScene(scene);
     }
 }

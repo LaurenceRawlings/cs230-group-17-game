@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 import com.group17.game.core.LevelReader;
 import com.group17.game.core.Profile;
+import com.group17.game.core.ProfileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,20 +19,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LevelsController {
-    private SceneController controller;
-    private Profile profile;
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-        if (profile != null) {
-            lbl_profile.setText(profile.getName());
-        }
-    }
-
-    public void setController(SceneController controller) {
-        this.controller = controller;
-    }
-
     @FXML
     private Label lbl_profile;
 
@@ -49,10 +36,9 @@ public class LevelsController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
-            menu.setController(controller);
-            menu.setProfile(profile);
+            menu.onLoad();
 
-            controller.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root, 1000, 1000));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,15 +50,13 @@ public class LevelsController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
             Parent root = loader.load();
             GameController game = loader.getController();
-            game.setController(controller);
 
             Scene scene = new Scene(root, 1000, 1000);
             scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
-            profile.newGame(lst_levels.getSelectionModel().getSelectedIndex());
-            game.setProfile(profile);
+            ProfileManager.getActiveProfile().newGame(lst_levels.getSelectionModel().getSelectedIndex());
 
             game.onLoad();
-            controller.activate(scene);
+            SceneController.activate(scene);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -80,12 +64,18 @@ public class LevelsController {
 
     public void onLoad() {
         List<String> availableLevels = new ArrayList<>();
-        for (int i = 0; i < profile.getHighestLevel() + 1; i++) {
+        for (int i = 0; i < ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
             if (i < LevelReader.getLevelQueue().size()) {
                 availableLevels.add(LevelReader.getLevelQueue().get(i).toString());
             }
         }
         ObservableList levels = FXCollections.observableArrayList(availableLevels);
         lst_levels.setItems(levels);
+
+        if (ProfileManager.getActiveProfile() != null) {
+            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
+        } else {
+            lbl_profile.setText("None");
+        }
     }
 }

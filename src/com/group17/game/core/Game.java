@@ -174,6 +174,10 @@ public class Game implements Serializable {
         }
     }
 
+    public int getLevelIndex() {
+        return levelIndex;
+    }
+
     public boolean nextLevel() {
         try {
             currentLevel = levelQueue.get(++levelIndex);

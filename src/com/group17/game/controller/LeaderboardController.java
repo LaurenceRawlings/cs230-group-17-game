@@ -3,7 +3,7 @@ package com.group17.game.controller;
 import com.group17.game.core.Leaderboard;
 import com.group17.game.core.LevelReader;
 import com.group17.game.core.MessageOfTheDay;
-import com.group17.game.core.Profile;
+import com.group17.game.core.ProfileManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -22,25 +22,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class LeaderboardController {
-    private SceneController controller;
-    private Profile profile;
     private Timeline timer;
     private Label[] podium;
-
-    public void setController(SceneController controller) {
-        this.controller = controller;
-    }
-
-    public Profile getProfile() {
-        return profile;
-    }
-
-    public void setProfile(Profile profile) {
-        this.profile = profile;
-        if (profile != null) {
-            lbl_profile.setText(profile.getName());
-        }
-    }
 
     @FXML
     private Label lbl_profile;
@@ -96,12 +79,19 @@ public class LeaderboardController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
-            menu.setController(controller);
-            menu.setProfile(profile);
+            menu.onLoad();
 
-            controller.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root, 1000, 1000));
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void onLoad() {
+        if (ProfileManager.getActiveProfile() != null) {
+            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
+        } else {
+            lbl_profile.setText("None");
         }
     }
 }
