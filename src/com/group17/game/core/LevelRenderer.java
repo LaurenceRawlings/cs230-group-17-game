@@ -37,6 +37,8 @@ public class LevelRenderer {
     }
 
     public static void render(Game game, Canvas canvas) {
+        LevelRenderer.setSpriteHeight((int) canvas.getHeight() / (game.getFov() * 2 + 1));
+        LevelRenderer.setSpriteWidth((int) canvas.getWidth() / (game.getFov() * 2 + 1));
         GraphicsContext gc = canvas.getGraphicsContext2D();
         gc.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         int fov = game.getFov();
