@@ -14,7 +14,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         SceneController.setMain(primaryStage);
 
-        primaryStage.setTitle("Group 17 Game");
+        primaryStage.setTitle("Indiana Jones and the Last Assignment - Group 17");
         primaryStage.setResizable(false);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/profiles.fxml"));

@@ -98,7 +98,7 @@
    </center>
    <top>
       <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <Label fx:id="lbl_title" text="Group 17 Game">
+         <Label fx:id="lbl_title" text="Indiana Jones and the Last Assignment">
             <font>
                <Font name="Segoe UI Black Italic" size="40.0" />
             </font>
