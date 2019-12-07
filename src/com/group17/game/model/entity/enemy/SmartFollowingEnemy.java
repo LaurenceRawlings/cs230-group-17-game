@@ -57,13 +57,15 @@ public class SmartFollowingEnemy extends Enemy {
 
         graph.breadthFirstSearch(nodeMap[player.getPosition().x()][player.getPosition().y()]); //generate all paths starting from player's position
 
-        LinkedList<Node> shortestPath = graph.findShortestPathHelper(nodeMap[player.getPosition().x()][player.getPosition().y()], nodeMap[position.x()][position.y()]);
+        try {
+            LinkedList<Node> shortestPath = graph.findShortestPathHelper(nodeMap[player.getPosition().x()][player.getPosition().y()], nodeMap[position.x()][position.y()]);
 
-        if (shortestPath != null) {
             nextPosition = shortestPath.get(1).getPos();
-        } else {
+
+        } catch (NullPointerException e) {
             nextPosition = moveDumb(player);
         }
+
     }
 
     public Position moveDumb(Player player) {
