@@ -77,8 +77,18 @@ public class GameController {
                 ProfileManager.getActiveProfile().setLevelTime(currentLevel.toString(), currentLevel.getTime());
             }
             if (!game.nextLevel()) {
-                //win
-                System.out.println("win");
+                try {
+                    timer.stop();
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/win.fxml"));
+                    Parent root = loader.load();
+                    WinController win = loader.getController();
+                    ProfileManager.save(ProfileManager.getActiveProfile());
+
+                    win.onLoad();
+                    SceneController.activate(new Scene(root));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             } else {
                 try {
                     timer.stop();

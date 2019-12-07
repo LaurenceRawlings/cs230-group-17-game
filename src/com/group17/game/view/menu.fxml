@@ -86,7 +86,7 @@
                <Insets bottom="20.0" />
             </VBox.margin>
          </Label>
-         <Label id="button" fx:id="btn_quit" onMouseClicked="#onClickBtnQuit" stylesheets="@styles.css" text="QUIT">
+         <Label id="button" fx:id="btn_quit" onMouseClicked="#onClickBtnQuit" stylesheets="@styles.css" text="EXIT">
             <font>
                <Font name="Segoe UI Semibold" size="24.0" />
             </font>

@@ -25,11 +25,3 @@
     -fx-background-color: red;
     -fx-text-fill: white;
 }
-
-#background{
-    -fx-background-image: url("../resources/sprites/ground.png");
-    -fx-background-repeat: repeat;
-    -fx-background-size: 50 50;
-    -fx-background-position: center center;
-    -fx-effect: dropshadow(three-pass-box, black, 30, 0.5, 0, 0);
-}
