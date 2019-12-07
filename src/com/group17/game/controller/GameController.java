@@ -140,7 +140,7 @@ public class GameController {
 
     @FXML
     void onClickBtnZoomIn(MouseEvent event) {
-        if (game.getFov() > 0) {
+        if (game.getFov() > 1) {
             game.setFov(game.getFov() - 1);
             drawGame();
         }
@@ -148,7 +148,7 @@ public class GameController {
 
     @FXML
     void onClickBtnZoomOut(MouseEvent event) {
-        if (game.getFov() < 15) {
+        if (game.getFov() < 4) {
             game.setFov(game.getFov() + 1);
             drawGame();
         }
