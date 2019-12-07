@@ -67,7 +67,7 @@ public class MenuController {
             ProfilesController profiles = loader.getController();
             profiles.onLoad();
 
-            SceneController.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -81,7 +81,7 @@ public class MenuController {
             LeaderboardController leaderboard = loader.getController();
             leaderboard.onLoad();
 
-            SceneController.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class MenuController {
                 LevelsController levels = loader.getController();
                 levels.onLoad();
 
-                SceneController.activate(new Scene(root, 1000, 1000));
+                SceneController.activate(new Scene(root));
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -111,7 +111,7 @@ public class MenuController {
             Parent root = loader.load();
             GameController game = loader.getController();
 
-            Scene scene = new Scene(root, 1000, 1000);
+            Scene scene = new Scene(root);
             scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
 
             game.onLoad();

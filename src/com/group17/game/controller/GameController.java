@@ -91,7 +91,7 @@ public class GameController {
 
                     continueC.onLoad();
 
-                    SceneController.activate(new Scene(root, 1000, 1000));
+                    SceneController.activate(new Scene(root));
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -132,7 +132,7 @@ public class GameController {
             ProfileManager.save(ProfileManager.getActiveProfile());
             menu.onLoad();
 
-            SceneController.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }

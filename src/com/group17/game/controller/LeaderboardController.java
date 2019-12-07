@@ -81,7 +81,7 @@ public class LeaderboardController {
             MenuController menu = loader.getController();
             menu.onLoad();
 
-            SceneController.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }

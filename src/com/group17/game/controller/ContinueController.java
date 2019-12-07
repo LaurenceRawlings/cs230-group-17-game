@@ -45,7 +45,7 @@ public class ContinueController {
             MenuController menu = loader.getController();
             menu.onLoad();
 
-            SceneController.activate(new Scene(root, 1000, 1000));
+            SceneController.activate(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class ContinueController {
             Parent root = loader.load();
             GameController game = loader.getController();
 
-            Scene scene = new Scene(root, 1000, 1000);
+            Scene scene = new Scene(root);
             scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
             ProfileManager.getActiveProfile().newGame(nextLevelIndex);
 

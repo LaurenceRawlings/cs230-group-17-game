@@ -15,13 +15,13 @@ public class Main extends Application {
         SceneController.setMain(primaryStage);
 
         primaryStage.setTitle("Indiana Jones and the Last Assignment - Group 17");
-        primaryStage.setResizable(false);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view/profiles.fxml"));
         Parent root = loader.load();
         ProfilesController profiles = loader.getController();
+        profiles.onLoad();
 
-        SceneController.activate(new Scene(root, 1000, 1000));
+        SceneController.activate(new Scene(root, 800, 800));
         primaryStage.show();
     }
 
