@@ -11,11 +11,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.util.List;
 
-public class WinController {
+/**
+ *
+ * @author
+ */
+public class WinController extends Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -42,7 +45,6 @@ public class WinController {
 
     @FXML
     private Label lbl_subtitle2;
-
 
     @FXML
     void onClickBtnLeaderboard(MouseEvent event) {
@@ -72,6 +74,16 @@ public class WinController {
         }
     }
 
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
+
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -97,15 +109,6 @@ public class WinController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("");
-        }
-    }
-
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
         }
     }
 }

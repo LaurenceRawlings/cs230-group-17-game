@@ -15,10 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-
 import java.io.IOException;
 
-public class MenuController {
+/**
+ *
+ * @author
+ */
+public class MenuController extends Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -149,22 +152,16 @@ public class MenuController {
         }
     }
 
-    private void startGame() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
-            Parent root = loader.load();
-            GameController game = loader.getController();
-
-            Scene scene = new Scene(root);
-            scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
-
-            game.onLoad();
-            SceneController.activate(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -186,12 +183,21 @@ public class MenuController {
         }
     }
 
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
+    private void startGame() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+            Parent root = loader.load();
+            GameController game = loader.getController();
+
+            Scene scene = new Scene(root);
+            scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
+
+            game.onLoad();
+            SceneController.activate(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
+
+
 }

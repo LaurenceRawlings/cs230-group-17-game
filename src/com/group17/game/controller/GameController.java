@@ -20,7 +20,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 import java.io.IOException;
 
-public class GameController {
+/**
+ *
+ * @author
+ */
+public class GameController extends Controller {
     private Game game;
     private Timeline timer;
 
@@ -139,33 +143,6 @@ public class GameController {
         event.consume();
     }
 
-    private void drawGame() {
-        LevelRenderer.render(game, canvas);
-        lbl_title.setText(game.getCurrentLevel().toString());
-    }
-
-    public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
-
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        lbl_inventory.setText(SceneController.getLanguageBundle().getString("game_inventory"));
-        lbl_fov.setText(SceneController.getLanguageBundle().getString("game_fov"));
-        btn_exit.setText(SceneController.getLanguageBundle().getString("game_saveAndReturn"));
-        btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
-        btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
-
-
-
-        game = ProfileManager.getActiveProfile().getGame();
-        if (ProfileManager.getActiveProfile() != null) {
-            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
-        } else {
-            lbl_profile.setText("");
-        }
-        drawGame();
-        lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));
-    }
-
     @FXML
     void onClickBtnSave(MouseEvent event) {
         try {
@@ -198,7 +175,7 @@ public class GameController {
         }
     }
 
-    @FXML
+    @FXML @Override
     void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
@@ -208,5 +185,33 @@ public class GameController {
 
         ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
         lst_inventory.setItems(items);
+    }
+
+    @Override
+    public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        lbl_inventory.setText(SceneController.getLanguageBundle().getString("game_inventory"));
+        lbl_fov.setText(SceneController.getLanguageBundle().getString("game_fov"));
+        btn_exit.setText(SceneController.getLanguageBundle().getString("game_saveAndReturn"));
+        btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
+        btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
+
+
+
+        game = ProfileManager.getActiveProfile().getGame();
+        if (ProfileManager.getActiveProfile() != null) {
+            lbl_profile.setText(ProfileManager.getActiveProfile().toString());
+        } else {
+            lbl_profile.setText("");
+        }
+        drawGame();
+        lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));
+    }
+
+    private void drawGame() {
+        LevelRenderer.render(game, canvas);
+        lbl_title.setText(game.getCurrentLevel().toString());
     }
 }

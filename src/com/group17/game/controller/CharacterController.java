@@ -19,7 +19,7 @@ import java.io.IOException;
  *
  * @author
  */
-public class CharacterController {
+public class CharacterController extends Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -61,7 +61,7 @@ public class CharacterController {
         back();
     }
 
-    @FXML
+    @FXML @Override
     void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
@@ -70,6 +70,7 @@ public class CharacterController {
         }
     }
 
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 

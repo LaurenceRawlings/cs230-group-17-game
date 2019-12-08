@@ -13,12 +13,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LevelsController {
+/**
+ *
+ * @author
+ */
+public class LevelsController extends Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -77,6 +80,16 @@ public class LevelsController {
         }
     }
 
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
+
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -99,15 +112,6 @@ public class LevelsController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("");
-        }
-    }
-
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
         }
     }
 }

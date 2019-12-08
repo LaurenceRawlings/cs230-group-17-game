@@ -12,10 +12,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 
-public class ProfilesController {
+/**
+ *
+ * @author
+ */
+public class ProfilesController extends Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -63,19 +66,6 @@ public class ProfilesController {
         }
     }
 
-    private void enter() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
-            Parent root = loader.load();
-            MenuController menu = loader.getController();
-            menu.onLoad();
-
-            SceneController.activate(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     void onClickBtnCreate(MouseEvent event) {
         String name = MessageController.inputDialog(SceneController.getLanguageBundle().getString("msg_createProfile_title"), SceneController.getLanguageBundle().getString("msg_createProfile_head"), SceneController.getLanguageBundle().getString("msg_createProfile_body"), SceneController.getLanguageBundle().getString("msg_createProfile_default"));
@@ -111,6 +101,16 @@ public class ProfilesController {
         onLoad();
     }
 
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
+
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -129,12 +129,16 @@ public class ProfilesController {
         }
     }
 
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
+    private void enter() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            Parent root = loader.load();
+            MenuController menu = loader.getController();
+            menu.onLoad();
+
+            SceneController.activate(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

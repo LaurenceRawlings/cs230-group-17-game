@@ -17,11 +17,14 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-
 import java.io.IOException;
 import java.util.List;
 
-public class LeaderboardController {
+/**
+ *
+ * @author
+ */
+public class LeaderboardController extends Controller {
     private Timeline timer;
     private Label[] podium;
 
@@ -102,6 +105,16 @@ public class LeaderboardController {
         }
     }
 
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
+
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -120,15 +133,6 @@ public class LeaderboardController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("");
-        }
-    }
-
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
         }
     }
 }

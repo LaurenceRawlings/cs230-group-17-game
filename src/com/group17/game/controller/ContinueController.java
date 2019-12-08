@@ -14,12 +14,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ContinueController {
+/**
+ *
+ * @author
+ */
+public class ContinueController extends Controller {
     private int nextLevelIndex = 0;
 
     public void setNextLevelIndex(int nextLevelIndex) {
@@ -82,6 +85,16 @@ public class ContinueController {
         }
     }
 
+    @FXML @Override
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
+
+    @Override
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
@@ -105,15 +118,6 @@ public class ContinueController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("");
-        }
-    }
-
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
         }
     }
 }
