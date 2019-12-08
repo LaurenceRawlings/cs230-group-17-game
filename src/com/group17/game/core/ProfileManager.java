@@ -1,3 +1,7 @@
+/**
+ * The purpose of this class is to manage in game profiles allowing profiles to be saved.
+ * @author
+ */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Player;
@@ -17,22 +21,49 @@ public class ProfileManager {
 
     private static Profile activeProfile;
     private static Player.Skin character = Player.Skin.man;
+    
+    /**
+	 * Method to get the character
+	 * @return character
+	 */
 
     public static Player.Skin getCharacter() {
         return character;
     }
+    
+    /**
+	 * Method to set the character
+	 * @param character
+	 */
 
     public static void setCharacter(Player.Skin character) {
         ProfileManager.character = character;
     }
+    
+    /**
+	 * Method to get any profiles still active
+	 * @return activeProfile
+	 */
 
     public static Profile getActiveProfile() {
         return activeProfile;
     }
+    
+    /**
+	 * Method to set any active profile
+	 * @param activeProfile
+	 */
 
     public static void setActiveProfile(Profile activeProfile) {
         ProfileManager.activeProfile = activeProfile;
     }
+    
+    /**
+	 * Method to load a profile if the parameter exists. If a profile cannot be found a
+	 * message is displayed
+	 * @param name
+	 * @return profile
+	 */
 
     public static Profile load(String name) {
         if (exists(name)) {
@@ -57,6 +88,11 @@ public class ProfileManager {
             return null;
         }
     }
+    
+    /**
+	 * Method to save a profile
+	 * @param profile
+	 */
 
     public static void save(Profile profile) {
         try {
@@ -75,7 +111,12 @@ public class ProfileManager {
     public static boolean exists(String name) {
         return getProfileNames().contains(name);
     }
-
+    
+    /**
+	 * Method to delete a profile. Will check for the profiles existence and delete will it
+	 * @param name
+	 */
+    
     public static void delete(String name) throws Exception {
         if (exists(name)) {
             try {
@@ -94,6 +135,11 @@ public class ProfileManager {
             throw new Exception("Profile not found!");
         }
     }
+    
+    /**
+	 * Method to get names of the profiles.
+	 * @return profiles
+	 */
 
     public static List<String> getProfileNames() {
         File profileDirectory = new File(PROFILE_DIR);
@@ -125,6 +171,11 @@ public class ProfileManager {
         return profiles;
     }
 
+    /**
+	 * Method to get the profiles
+	 * @param levelName
+	 */
+    
     public static List<Profile> getProfiles(String levelName) {
         List<Profile> profiles = getProfiles();
         List<Profile> returnProfiles = new ArrayList<>();
