@@ -1,3 +1,9 @@
+/**
+ * This is the class representing the smart following enemy. Any calculations for the smart enemy to function
+ * are specified here.
+ * @author
+ */
+
 package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Graph;
@@ -21,6 +27,11 @@ public class SmartFollowingEnemy extends Enemy {
         moveDumb(new Player(initialTarget));
     }
 
+    /**
+     * Method to cause the enemy to move towards the player by calling the path calculation method.
+     * @param player
+     */
+    
     @Override
     public void move(Player player) {
         if (smartFail){
