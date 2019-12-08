@@ -1,5 +1,6 @@
 /**
  * Class defining the line following enemys movement.
+ * @author
  */
 package com.group17.game.model.entity.enemy;
 
