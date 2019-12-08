@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ProfilesController">
+<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ProfilesController">
     <bottom>
         <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
          <ComboBox fx:id="cmb_language" focusTraversable="false" onAction="#setLanguage" promptText="🌍">
@@ -21,6 +17,9 @@
                 <font>
                     <Font name="Segoe UI Italic" size="14.0" />
                 </font>
+            <HBox.margin>
+               <Insets right="10.0" />
+            </HBox.margin>
             </Label>
             <Label fx:id="lbl_profile" text="None">
                 <font>

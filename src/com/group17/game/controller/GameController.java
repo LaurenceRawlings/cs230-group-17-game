@@ -141,12 +141,12 @@ public class GameController {
 
     private void drawGame() {
         LevelRenderer.render(game, canvas);
+        lbl_title.setText(game.getCurrentLevel().toString());
     }
 
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(game.getCurrentLevel().toString());
         lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
         lbl_inventory.setText(SceneController.getLanguageBundle().getString("game_inventory"));
         lbl_fov.setText(SceneController.getLanguageBundle().getString("game_fov"));
