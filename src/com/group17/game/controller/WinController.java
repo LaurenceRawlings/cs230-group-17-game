@@ -4,10 +4,12 @@ import com.group17.game.core.Leaderboard;
 import com.group17.game.core.LevelReader;
 import com.group17.game.core.ProfileManager;
 import com.group17.game.model.world.Level;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
@@ -22,6 +24,9 @@ public class WinController {
 
     @FXML
     private Label lbl_time;
+
+    @FXML
+    private ComboBox<String> cmb_language;
 
 
     @FXML
@@ -53,6 +58,8 @@ public class WinController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         int totalTime = 0;
         List<String> levels = LevelReader.getLevelNames();
         for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel(); i++) {
@@ -67,6 +74,15 @@ public class WinController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }

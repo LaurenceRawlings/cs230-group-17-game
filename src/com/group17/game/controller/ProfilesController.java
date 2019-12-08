@@ -114,7 +114,9 @@ public class ProfilesController {
     @FXML
     void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
-        SceneController.loadLanguage(language);
-        onLoad();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
     }
 }

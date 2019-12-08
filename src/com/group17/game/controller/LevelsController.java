@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
@@ -24,6 +25,9 @@ public class LevelsController {
 
     @FXML
     private ListView<String> lst_levels;
+
+    @FXML
+    private ComboBox<String> cmb_language;
 
     @FXML
     void initialize() {
@@ -65,6 +69,8 @@ public class LevelsController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         List<String> availableLevels = new ArrayList<>();
         for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
             if (i < LevelReader.getLevelQueue().size()) {
@@ -78,6 +84,15 @@ public class LevelsController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }

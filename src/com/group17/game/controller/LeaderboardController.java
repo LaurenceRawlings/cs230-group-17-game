@@ -44,6 +44,9 @@ public class LeaderboardController {
     private Label lbl_motd;
 
     @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
     void initialize() {
         lbl_motd.setText(MessageOfTheDay.get());
         timer = new Timeline(new KeyFrame(Duration.seconds(30), event -> lbl_motd.setText(MessageOfTheDay.get())));
@@ -88,10 +91,21 @@ public class LeaderboardController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }

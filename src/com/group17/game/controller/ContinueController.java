@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
@@ -31,6 +32,9 @@ public class ContinueController {
 
     @FXML
     private ListView<String> lst_times;
+
+    @FXML
+    private ComboBox<String> cmb_language;
 
     @FXML
     void initialize() {
@@ -70,6 +74,8 @@ public class ContinueController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         List<String> topProfiles = Leaderboard.getTopTimes(LevelReader.getLevelQueue().get(nextLevelIndex - 1).toString(), ProfileManager.getProfileNames().size());
         List<String> topTimes = new ArrayList<>();
 
@@ -84,6 +90,15 @@ public class ContinueController {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }

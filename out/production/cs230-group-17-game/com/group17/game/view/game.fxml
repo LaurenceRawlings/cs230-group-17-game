@@ -85,6 +85,11 @@
               </font>
            </Label>
            <HBox alignment="CENTER" prefWidth="200.0">
+               <ComboBox fx:id="cmb_language" focusTraversable="false" onAction="#setLanguage" promptText="🌍">
+                   <HBox.margin>
+                       <Insets right="20.0" />
+                   </HBox.margin>
+               </ComboBox>
                <Label alignment="TOP_LEFT" text="Current Profile: ">
                    <font>
                        <Font name="Segoe UI Italic" size="14.0" />

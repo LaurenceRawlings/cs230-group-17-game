@@ -6,10 +6,12 @@ import com.group17.game.core.ProfileManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -30,6 +32,9 @@ public class MenuController {
 
     @FXML
     private BorderPane root;
+
+    @FXML
+    private ComboBox<String> cmb_language;
 
     @FXML
     void initialize() {
@@ -126,10 +131,21 @@ public class MenuController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
             lbl_profile.setText("None");
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }

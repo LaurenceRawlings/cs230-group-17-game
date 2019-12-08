@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
@@ -38,6 +39,9 @@ public class GameController {
 
     @FXML
     private ListView<String> lst_inventory;
+
+    @FXML
+    private ComboBox<String> cmb_language;
 
     @FXML
     void initialize() {
@@ -122,6 +126,8 @@ public class GameController {
     }
 
     public void onLoad() {
+        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+
         game = ProfileManager.getActiveProfile().getGame();
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
@@ -161,6 +167,15 @@ public class GameController {
         if (game.getFov() < 4) {
             game.setFov(game.getFov() + 1);
             drawGame();
+        }
+    }
+
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
         }
     }
 }
