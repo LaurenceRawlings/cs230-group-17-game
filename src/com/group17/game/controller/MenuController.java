@@ -150,7 +150,7 @@ public class MenuController {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
         lbl_title.setText(SceneController.getLanguageBundle().getString("game_name"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("menu_currentProfile"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
         btn_continue.setText(SceneController.getLanguageBundle().getString("menu_continueGame"));
         btn_level.setText(SceneController.getLanguageBundle().getString("menu_selectProfile"));
         btn_new.setText(SceneController.getLanguageBundle().getString("menu_newGame"));

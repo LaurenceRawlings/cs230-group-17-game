@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ProfilesController">
+<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.ProfilesController">
     <bottom>
-        <HBox fx:id="root_bottom" alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
          <ComboBox fx:id="cmb_language" focusTraversable="false" onAction="#setLanguage" promptText="🌍">
             <HBox.margin>
                <Insets right="20.0" />
             </HBox.margin>
          </ComboBox>
-            <Label text="Current Profile: ">
+            <Label fx:id="lbl_currentProfile" text="Current Profile: ">
                 <font>
                     <Font name="Segoe UI Italic" size="14.0" />
                 </font>
@@ -26,16 +30,16 @@
         </HBox>
     </bottom>
     <left>
-        <VBox fx:id="root_left" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
     </left>
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
     <right>
-        <VBox fx:id="root_right" alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
     </right>
     <center>
-        <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <ListView fx:id="lst_profiles" focusTraversable="false" prefHeight="600.0" prefWidth="200.0" stylesheets="@styles.css" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <Label id="button" fx:id="btn_create" onMouseClicked="#onClickBtnCreate" stylesheets="@styles.css" text="CREATE">
@@ -66,7 +70,7 @@
         </VBox>
     </center>
     <top>
-        <VBox fx:id="root_top" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <Label fx:id="lbl_title" text="Profile Selection">
                 <font>
                     <Font name="Segoe UI Black Italic" size="40.0" />
