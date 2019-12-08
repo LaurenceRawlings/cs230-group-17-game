@@ -9,7 +9,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class SceneController {
-    private static Stage main = new Stage();
+    private static Stage main;
 
     private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("en"));
     private static final List<String> languages = new ArrayList<String>() {
