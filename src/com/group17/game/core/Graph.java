@@ -1,3 +1,8 @@
+/**
+ * Class defining the graph structure of the level. Contains methods
+ * that will help the entities movement in the levels.
+ * @author
+ */
 package com.group17.game.core;
 
 import java.io.Serializable;
@@ -22,6 +27,12 @@ public class Graph implements Serializable{
         tmp.add(b);
         adjMap.put(a,tmp);
     }
+    
+    /**
+     * Method calls the addEdgeHelper method once every used node is checked
+     * @param source
+     * @param destination  
+     */
 
     public void addEdge(Node source, Node destination) {
         if (!adjMap.containsKey(source))
@@ -33,6 +44,12 @@ public class Graph implements Serializable{
         addEdgeHelper(source, destination);
         addEdgeHelper(destination, source);
     }
+    
+    /**
+     * Method help find the shortest path between the start node and goal node
+     * @param Start
+     * @param Goal
+     */
 
     public LinkedList<Node> findShortestPathHelper(Node Start, Node Goal){
         if (Start != null){
@@ -58,6 +75,11 @@ public class Graph implements Serializable{
             }
         }
     }
+    
+    /**
+    * Method completes a breadth first search algorithm. Searches for a node.
+    * @param node is the node to be searched for.
+    */
 
     public void breadthFirstSearch(Node node) {
         if (node == null)
