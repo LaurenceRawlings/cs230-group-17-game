@@ -36,6 +36,19 @@ public class LevelRenderer {
         return null;
     }
 
+    public static Image getSprite(String spriteName, int width, int height) {
+        try {
+            return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, width, height, false, true);
+        } catch (IllegalArgumentException e) {
+            try {
+                return new Image(SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+            } catch (IllegalArgumentException e2) {
+                e2.printStackTrace();
+            }
+        }
+        return null;
+    }
+
     public static void render(Game game, Canvas canvas) {
         LevelRenderer.setSpriteHeight((int) canvas.getHeight() / (game.getFov() * 2 + 1));
         LevelRenderer.setSpriteWidth((int) canvas.getWidth() / (game.getFov() * 2 + 1));
@@ -77,5 +90,6 @@ public class LevelRenderer {
             drawY++;
         }
         gc.drawImage(getSprite(player.getSpriteName()), fov * SPRITE_WIDTH, fov * SPRITE_HEIGHT);
+        gc.drawImage(getSprite("overlay", (int) canvas.getWidth(), (int) canvas.getHeight()), 0, 0);
     }
 }
