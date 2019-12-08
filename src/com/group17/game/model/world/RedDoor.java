@@ -1,3 +1,8 @@
+/**
+ * Class representing the red door child of KeyDoor.
+ * @author
+ */
+
 package com.group17.game.model.world;
 
 import com.group17.game.model.entity.item.Key;
