@@ -30,10 +30,17 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Auto generated method to launch javafx application.
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /**
+     * Overridden stop method to save active profile if game window closed.
+     */
     @Override
     public void stop() {
         if (ProfileManager.getActiveProfile() != null) {
