@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 import com.group17.game.core.MessageOfTheDay;
 import com.group17.game.core.ProfileManager;
+import com.group17.game.model.entity.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -69,6 +70,7 @@ public class MenuController {
         if (ProfileManager.getActiveProfile() == null) {
             MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         } else {
+            ProfileManager.getActiveProfile().getGame().getPlayer().setSprite(ProfileManager.getCharacter());
             startGame();
         }
     }

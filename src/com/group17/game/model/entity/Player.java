@@ -36,6 +36,10 @@ public class Player extends GameObject {
         inventory = new HashMap();
         this.position = position;
     }
+
+    public void setSprite(Skin character) {
+        setSpriteName(character.getSkinSprite());
+    }
     
     /**
      * Set position of the player
