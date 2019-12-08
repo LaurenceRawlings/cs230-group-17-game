@@ -1,3 +1,8 @@
+/**
+ * This class is the manager for the game. It allows the levels to change and update the positions
+ * of entities as well as defines where entities can and cannot move.
+ * @author
+ */
 package com.group17.game.core;
 
 import com.group17.game.controller.MessageController;
@@ -26,9 +31,20 @@ public class Game implements Serializable {
         this.fov = fov;
     }
 
+    /**
+     * Method to get the current level
+     * @return currentLevel
+     */
+    
     public Level getCurrentLevel() {
         return currentLevel;
     }
+    
+    /**
+     * Method to get the player
+     * @return player 
+     */
+    
     public Player getPlayer() {
         return player;
     }
@@ -42,6 +58,11 @@ public class Game implements Serializable {
         player = new Player(currentLevel.getStart());
         fov = 3;
     }
+    
+    /**
+     * Method to set the current level based on the level index and update the enemy positions
+     * @param levelIndex
+     */
 
     public Game(int levelIndex) {
         levelQueue = LevelReader.getLevelQueue();
@@ -51,10 +72,20 @@ public class Game implements Serializable {
         player = new Player(currentLevel.getStart());
         fov = 3;
     }
+    
+    /**
+     * Method to get the index of the current level
+     * @return levelIndex
+     */
 
     public int getLevelIndex() {
         return levelIndex;
     }
+    
+    /**
+     * Method sets the current level to the next indexed level
+     * @return true if next level is present false if not
+     */
 
     public boolean nextLevel() {
         try {
@@ -66,6 +97,12 @@ public class Game implements Serializable {
             return false;
         }
     }
+    
+    /**
+     * Method to update the positions of entities. Establishes laws concerning item pickup,
+     * teleportation and enemy contact with the player.
+     * @param direction
+     */
 
     public void move(Direction direction) {
         Position next = Position.nextPosition(player.getPosition(), direction);
