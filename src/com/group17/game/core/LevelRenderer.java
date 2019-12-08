@@ -1,3 +1,8 @@
+/**
+ * The purpose of this class is to draw out the game itself. Defines the size of sprite's
+ * and of the canvas.
+ * @author
+ */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Player;
@@ -15,14 +20,30 @@ public class LevelRenderer {
     private static int SPRITE_WIDTH = 100;
     private static int SPRITE_HEIGHT = 100;
 
+    /**
+	 * Method to set a sprite's width
+	 * @param spriteWidth
+	 */
+    
     private static void setSpriteWidth(int spriteWidth) {
         SPRITE_WIDTH = spriteWidth;
     }
+    
+    /**
+	 * Method to set a sprite's height
+	 * @param spriteHeight
+	 */
 
     private static void setSpriteHeight(int spriteHeight) {
         SPRITE_HEIGHT = spriteHeight;
     }
 
+    /**
+	 * Method to get a sprite's image according to the sprite's name
+	 * @param spriteName
+	 * @return image of the sprite
+	 */
+    
     public static Image getSprite(String spriteName) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
@@ -48,6 +69,13 @@ public class LevelRenderer {
         }
         return null;
     }
+    
+    /**
+	 * Method to render the game canvas by drawing the sprite's and cells aswell as
+	 * Colour filling and font setting.
+	 * @param game
+	 * @param canvas
+	 */
 
     public static void render(Game game, Canvas canvas) {
         LevelRenderer.setSpriteHeight((int) canvas.getHeight() / (game.getFov() * 2 + 1));
