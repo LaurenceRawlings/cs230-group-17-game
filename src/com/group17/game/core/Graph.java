@@ -1,60 +1,52 @@
-/**
- * Class defining the graph structure of the level. Contains methods
- * that will help the entities movement in the levels.
- * @author
- */
 package com.group17.game.core;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-public class Graph implements Serializable{
+/**
+ * Models the graph structure of a level. Contains methods to generate paths for smart enemies.
+ * @author Vlad Kashtelynov
+ * @version 2.0
+ */
+public class Graph implements Serializable {
     private final HashMap<Node, LinkedList<Node>> adjMap;
     private final LinkedList<Node> pathList = new LinkedList<>();
 
+    /**
+     * Graph constructor.
+     */
     public Graph() {
         adjMap = new HashMap<>();
     }
-
-    private void addEdgeHelper(Node a, Node b) {
-        LinkedList<Node> tmp = adjMap.get(a);
-
-        if (tmp != null) {
-            tmp.remove(b);
-        }
-        else tmp = new LinkedList<>();
-        tmp.add(b);
-        adjMap.put(a,tmp);
-    }
     
     /**
-     * Method calls the addEdgeHelper method once every used node is checked
-     * @param source
-     * @param destination  
+     * Creates an edge on the graph.
+     * @param source edge start node.
+     * @param destination edge end node.
      */
-
     public void addEdge(Node source, Node destination) {
-        if (!adjMap.containsKey(source))
+        if (!adjMap.containsKey(source)) {
             adjMap.put(source, null);
+        }
 
-        if (!adjMap.containsKey(destination))
+        if (!adjMap.containsKey(destination)) {
             adjMap.put(destination, null);
+        }
 
         addEdgeHelper(source, destination);
         addEdgeHelper(destination, source);
     }
     
     /**
-     * Method help find the shortest path between the start node and goal node
-     * @param Start
-     * @param Goal
+     * Find the shortest path between two points on the graph.
+     * @param start path start point.
+     * @param goal path end point.
      */
-
-    public LinkedList<Node> findShortestPathHelper(Node Start, Node Goal){
-        if (Start != null){
-            findShortestPath(Start, Goal);
-            if (pathList.getLast().n != Start.n) {
+    public LinkedList<Node> findShortestPath(Node start, Node goal){
+        if (start != null){
+            findShortestPathRecursive(start, goal);
+            if (pathList.getLast().n != start.n) {
                 return null;
             } else {
                 return pathList;
@@ -63,24 +55,11 @@ public class Graph implements Serializable{
             return null;
         }
     }
-
-    private void findShortestPath(Node Start, Node Goal) {
-        if (Start != null){
-            pathList.add(Goal);
-            while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
-                Goal.prevVisited = true;
-                if (Goal.prev != null) {
-                    findShortestPath(Start, Goal.prev);
-                }
-            }
-        }
-    }
     
     /**
-    * Method completes a breadth first search algorithm. Searches for a node.
-    * @param node is the node to be searched for.
+    * Breadth first search algorithm that searches for a specified node.
+    * @param node node to be searched for.
     */
-
     public void breadthFirstSearch(Node node) {
         if (node == null)
             return;
@@ -110,5 +89,27 @@ public class Graph implements Serializable{
         }
     }
 
+    private void addEdgeHelper(Node a, Node b) {
+        LinkedList<Node> tmp = adjMap.get(a);
+
+        if (tmp != null) {
+            tmp.remove(b);
+        }
+        else tmp = new LinkedList<>();
+        tmp.add(b);
+        adjMap.put(a,tmp);
+    }
+
+    private void findShortestPathRecursive(Node start, Node goal) {
+        if (start != null){
+            pathList.add(goal);
+            while (!goal.prevVisited && !goal.n.equals(start.n)){
+                goal.prevVisited = true;
+                if (goal.prev != null) {
+                    findShortestPathRecursive(start, goal.prev);
+                }
+            }
+        }
+    }
 }
 
