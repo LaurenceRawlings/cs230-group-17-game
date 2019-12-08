@@ -154,6 +154,8 @@ public class GameController {
         btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
         btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
 
+
+
         game = ProfileManager.getActiveProfile().getGame();
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
@@ -203,5 +205,8 @@ public class GameController {
             SceneController.loadLanguage(language);
             onLoad();
         }
+
+        ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
+        lst_inventory.setItems(items);
     }
 }

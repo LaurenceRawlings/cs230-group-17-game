@@ -10,4 +10,9 @@ public class FireBoots extends Item{
     public FireBoots() {
         super(SceneController.getLanguageBundle().getString("item_fireBoots"), "item_fireboots");
     }
+
+    @Override
+    public String toString() {
+        return SceneController.getLanguageBundle().getString("item_fireBoots");
+    }
 }

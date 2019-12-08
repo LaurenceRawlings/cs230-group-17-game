@@ -13,9 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-
 import java.io.IOException;
 
+/**
+ *
+ * @author
+ */
 public class CharacterController {
     @FXML
     private ComboBox<String> cmb_language;
@@ -46,19 +49,6 @@ public class CharacterController {
         back();
     }
 
-    private void back() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
-            Parent root = loader.load();
-            MenuController menu = loader.getController();
-            menu.onLoad();
-
-            SceneController.activate(new Scene(root));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     @FXML
     void onClickImgMan(MouseEvent event) {
         ProfileManager.setCharacter(Player.Skin.man);
@@ -71,6 +61,14 @@ public class CharacterController {
         back();
     }
 
+    @FXML
+    void setLanguage() {
+        String language = cmb_language.getSelectionModel().getSelectedItem();
+        if (language != null) {
+            SceneController.loadLanguage(language);
+            onLoad();
+        }
+    }
 
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
@@ -94,12 +92,16 @@ public class CharacterController {
         }
     }
 
-    @FXML
-    void setLanguage() {
-        String language = cmb_language.getSelectionModel().getSelectedItem();
-        if (language != null) {
-            SceneController.loadLanguage(language);
-            onLoad();
+    private void back() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            Parent root = loader.load();
+            MenuController menu = loader.getController();
+            menu.onLoad();
+
+            SceneController.activate(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

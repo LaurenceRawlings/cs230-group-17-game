@@ -11,18 +11,21 @@ import java.util.Objects;
 
 public class Key extends Item {
     public enum KeyType{
-        red(SceneController.getLanguageBundle().getString("colour_red")),
-        green(SceneController.getLanguageBundle().getString("colour_green")),
-        blue(SceneController.getLanguageBundle().getString("colour_blue"));
-
-        private final String label;
-
-        KeyType(String label) {
-            this.label = label;
-        }
+        red,
+        green,
+        blue;
 
         String getLabel() {
-            return label;
+            switch (this) {
+                case red:
+                    return SceneController.getLanguageBundle().getString("colour_red");
+                case green:
+                    return SceneController.getLanguageBundle().getString("colour_green");
+                case blue:
+                    return SceneController.getLanguageBundle().getString("colour_blue");
+                default:
+                    return SceneController.getLanguageBundle().getString("item_key");
+            }
         }
     }
 
@@ -68,5 +71,10 @@ public class Key extends Item {
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), keyType);
+    }
+
+    @Override
+    public String toString() {
+        return keyType.getLabel() + " " + SceneController.getLanguageBundle().getString("item_key");
     }
 }

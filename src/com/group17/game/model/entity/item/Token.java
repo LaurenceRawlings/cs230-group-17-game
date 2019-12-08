@@ -10,4 +10,9 @@ public class Token extends Item {
     public Token() {
         super(SceneController.getLanguageBundle().getString("item_token"), "token");
     }
+
+    @Override
+    public String toString() {
+        return SceneController.getLanguageBundle().getString("item_token");
+    }
 }
