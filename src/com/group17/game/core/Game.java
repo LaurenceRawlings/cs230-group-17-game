@@ -1,5 +1,7 @@
 package com.group17.game.core;
 
+import com.group17.game.controller.MessageController;
+import com.group17.game.controller.SceneController;
 import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.Player;
 import com.group17.game.model.entity.item.Item;
@@ -121,6 +123,7 @@ public class Game implements Serializable {
     }
 
     private void die() {
+        MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_die_title"), SceneController.getLanguageBundle().getString("msg_die_head"), SceneController.getLanguageBundle().getString("msg_die_body"));
         levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(levelIndex);
         currentLevel.updateEnemyPositions();
