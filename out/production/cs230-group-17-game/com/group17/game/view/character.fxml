@@ -40,20 +40,20 @@
     </right>
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
-            <children>
-               <ImageView fx:id="img_man" fitHeight="300.0" fitWidth="300.0" onMouseClicked="#onClickImgMan" pickOnBounds="true" preserveRatio="true">
-                  <HBox.margin>
-                     <Insets right="20.0" />
-                  </HBox.margin>
-               </ImageView>
-               <ImageView fx:id="img_woman" fitHeight="300.0" fitWidth="300.0" onMouseClicked="#onClickImgWoman" pickOnBounds="true" preserveRatio="true">
-                  <HBox.margin>
-                     <Insets left="20.0" />
-                  </HBox.margin>
-               </ImageView>
-            </children>
-         </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                <ImageView fx:id="img_man" fitHeight="300.0" fitWidth="300.0" onMouseClicked="#onClickImgMan"
+                           pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets right="20.0"/>
+                    </HBox.margin>
+                </ImageView>
+                <ImageView fx:id="img_woman" fitHeight="300.0" fitWidth="300.0" onMouseClicked="#onClickImgWoman"
+                           pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets left="20.0"/>
+                    </HBox.margin>
+                </ImageView>
+            </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <Label id="button" fx:id="btn_back" onMouseClicked="#onClickBtnBack" stylesheets="@styles.css" text="&lt; BACK">
                     <font>
