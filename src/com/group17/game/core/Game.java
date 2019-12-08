@@ -111,7 +111,6 @@ public class Game implements Serializable {
                 int cost = ((TokenDoor) cell).getTokenCost();
                 if (player.hasItem(token, cost)) {
                     currentLevel.setCell(nextPosition, new Ground());
-                    player.useItem(token, cost);
                     return true;
                 }
             } else if (cell instanceof Obstacle) {
