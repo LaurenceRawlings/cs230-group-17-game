@@ -17,6 +17,9 @@
              <font>
                 <Font name="Segoe UI Italic" size="14.0" />
              </font>
+            <HBox.margin>
+               <Insets right="20.0" />
+            </HBox.margin>
           </Label>
           <Label fx:id="lbl_profile" text="None">
              <font>

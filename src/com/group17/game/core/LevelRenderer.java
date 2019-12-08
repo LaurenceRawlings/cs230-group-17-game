@@ -23,7 +23,7 @@ public class LevelRenderer {
         SPRITE_HEIGHT = spriteHeight;
     }
 
-    private static Image getSprite(String spriteName) {
+    public static Image getSprite(String spriteName) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
         } catch (IllegalArgumentException e) {

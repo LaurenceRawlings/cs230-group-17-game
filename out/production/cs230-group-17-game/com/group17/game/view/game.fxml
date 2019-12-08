@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.GameController">
+<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.GameController">
     <left>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" BorderPane.alignment="CENTER">
             <Label fx:id="lbl_inventory" style="-fx-underline: true;" text="Inventory">
@@ -98,6 +94,9 @@
                    <font>
                        <Font name="Segoe UI Italic" size="14.0" />
                    </font>
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
                </Label>
                <Label fx:id="lbl_profile" alignment="TOP_LEFT" text="None">
                    <font>
