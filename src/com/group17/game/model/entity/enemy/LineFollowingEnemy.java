@@ -1,3 +1,6 @@
+/**
+ * Class defining the line following enemys movement.
+ */
 package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
@@ -11,6 +14,11 @@ public class LineFollowingEnemy extends Enemy {
     public LineFollowingEnemy(Position position, Direction direction, Level level) {
         super(EnemyType.line, position, direction, level);
     }
+    
+    /**
+     * Moves the enemy to the next cell is a given direction
+     * @param player
+     */
 
     @Override
     public void move(Player player) {
