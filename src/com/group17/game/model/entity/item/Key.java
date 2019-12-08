@@ -5,13 +5,15 @@
  */
 package com.group17.game.model.entity.item;
 
+import com.group17.game.controller.SceneController;
+
 import java.util.Objects;
 
 public class Key extends Item {
     public enum KeyType{
-        red("Red"),
-        green("Green"),
-        blue("Blue");
+        red(SceneController.getLanguageBundle().getString("colour_red")),
+        green(SceneController.getLanguageBundle().getString("colour_green")),
+        blue(SceneController.getLanguageBundle().getString("colour_blue"));
 
         private final String label;
 
@@ -31,7 +33,7 @@ public class Key extends Item {
     * @param keyType
     */
     public Key(KeyType keyType) {
-        super(keyType.getLabel() + " Key", "missing_item");
+        super(keyType.getLabel() + " " + SceneController.getLanguageBundle().getString("item_key"), "missing_item");
         this.keyType = keyType;
         switch (keyType) {
             case red:

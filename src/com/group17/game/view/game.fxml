@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.canvas.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="root" style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.GameController">
+<BorderPane style="-fx-background-color: lightgrey; -fx-border-color: black;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.group17.game.controller.GameController">
     <left>
-        <VBox fx:id="root_left" alignment="TOP_CENTER" prefHeight="200.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" BorderPane.alignment="CENTER">
             <Label fx:id="lbl_inventory" style="-fx-underline: true;" text="Inventory">
                 <font>
                     <Font name="Segoe UI Italic" size="24.0" />
@@ -49,10 +53,10 @@
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
     </padding>
     <right>
-        <VBox fx:id="root_right" alignment="BOTTOM_CENTER" prefHeight="200.0" BorderPane.alignment="CENTER" />
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" BorderPane.alignment="CENTER" />
     </right>
     <center>
-        <VBox fx:id="root_main" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <Canvas fx:id="canvas" height="500.0" width="500.0">
                 <VBox.margin>
                     <Insets bottom="20.0" left="20.0" right="20.0" />
@@ -61,7 +65,7 @@
         </VBox>
     </center>
     <top>
-        <VBox fx:id="root_top" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
             <Label fx:id="lbl_title" text="Level">
                 <font>
                     <Font name="Segoe UI Black Italic" size="40.0" />
@@ -78,8 +82,8 @@
         </VBox>
     </top>
    <bottom>
-       <VBox fx:id="root_bottom" alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
-           <Label id="button" onMouseClicked="#onClickBtnSave" stylesheets="@styles.css" text="SAVE &amp; RETURN TO MENU">
+       <VBox alignment="CENTER" prefWidth="100.0" BorderPane.alignment="CENTER">
+           <Label id="button" fx:id="btn_exit" onMouseClicked="#onClickBtnSave" stylesheets="@styles.css" text="SAVE &amp; RETURN TO MENU">
               <font>
                   <Font name="Segoe UI Semibold" size="24.0" />
               </font>
@@ -90,7 +94,7 @@
                        <Insets right="20.0" />
                    </HBox.margin>
                </ComboBox>
-               <Label alignment="TOP_LEFT" text="Current Profile: ">
+               <Label fx:id="lbl_currentProfile" alignment="TOP_LEFT" text="Current Profile: ">
                    <font>
                        <Font name="Segoe UI Italic" size="14.0" />
                    </font>

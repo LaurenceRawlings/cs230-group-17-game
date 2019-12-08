@@ -1,7 +1,6 @@
 package com.group17.game.controller;
 
 import com.group17.game.core.MessageOfTheDay;
-import com.group17.game.core.Profile;
 import com.group17.game.core.ProfileManager;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,26 +14,43 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.util.Duration;
 
 import java.io.IOException;
 
 public class MenuController {
     @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_currentProfile;
+
+    @FXML
     private Label lbl_profile;
+
+    @FXML
+    private Label btn_continue;
+
+    @FXML
+    private Label btn_level;
+
+    @FXML
+    private Label btn_new;
+
+    @FXML
+    private Label btn_leaderboard;
+
+    @FXML
+    private Label btn_profile;
 
     @FXML
     private Label btn_quit;
 
     @FXML
+    private Label lbl_title;
+
+    @FXML
     private Label lbl_motd;
-
-    @FXML
-    private BorderPane root;
-
-    @FXML
-    private ComboBox<String> cmb_language;
 
     @FXML
     void initialize() {
@@ -47,7 +63,7 @@ public class MenuController {
     @FXML
     void onClickBtnContinue(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         } else {
             startGame();
         }
@@ -61,7 +77,7 @@ public class MenuController {
     @FXML
     void onClickBtnNew(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         } else {
             ProfileManager.getActiveProfile().newGame();
             startGame();
@@ -99,7 +115,7 @@ public class MenuController {
     @FXML
     void onClickBtnLevel(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage("Hold Up!","Select a Profile","Before you can begin you must either select a profile or create a new one.");
+            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         } else {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/levels.fxml"));
@@ -133,10 +149,19 @@ public class MenuController {
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
+        lbl_title.setText(SceneController.getLanguageBundle().getString("game_name"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("menu_currentProfile"));
+        btn_continue.setText(SceneController.getLanguageBundle().getString("menu_continueGame"));
+        btn_level.setText(SceneController.getLanguageBundle().getString("menu_selectProfile"));
+        btn_new.setText(SceneController.getLanguageBundle().getString("menu_newGame"));
+        btn_leaderboard.setText(SceneController.getLanguageBundle().getString("menu_leaderboard"));
+        btn_profile.setText(SceneController.getLanguageBundle().getString("menu_switchProfile"));
+        btn_quit.setText(SceneController.getLanguageBundle().getString("menu_exit"));
+
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
     }
 

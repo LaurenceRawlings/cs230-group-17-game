@@ -28,13 +28,28 @@ public class ContinueController {
     }
 
     @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
     private Label lbl_profile;
 
     @FXML
     private ListView<String> lst_times;
 
     @FXML
-    private ComboBox<String> cmb_language;
+    private Label btn_menu;
+
+    @FXML
+    private Label btn_continue;
+
+    @FXML
+    private Label lbl_title;
+
+    @FXML
+    private Label lbl_subtitle;
+
+    @FXML
+    private Label lbl_currentProfile;
 
     @FXML
     void initialize() {
@@ -76,6 +91,12 @@ public class ContinueController {
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
+        lbl_title.setText(SceneController.getLanguageBundle().getString("continue_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("continue_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        btn_menu.setText(SceneController.getLanguageBundle().getString("scene_menu"));
+        btn_continue.setText(SceneController.getLanguageBundle().getString("continue_continue"));
+
         List<String> topProfiles = Leaderboard.getTopTimes(LevelReader.getLevelQueue().get(nextLevelIndex - 1).toString(), ProfileManager.getProfileNames().size());
         List<String> topTimes = new ArrayList<>();
 
@@ -89,7 +110,7 @@ public class ContinueController {
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
     }
 

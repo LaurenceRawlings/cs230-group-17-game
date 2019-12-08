@@ -4,8 +4,10 @@
  */
 package com.group17.game.model.entity.item;
 
+import com.group17.game.controller.SceneController;
+
 public class WaterBoots extends Item {
     public WaterBoots() {
-        super("Water Boots", "item_waterboots");
+        super(SceneController.getLanguageBundle().getString("item_waterBoots"), "item_waterboots");
     }
 }

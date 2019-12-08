@@ -21,13 +21,28 @@ import java.util.List;
 
 public class LevelsController {
     @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_currentProfile;
+
+    @FXML
     private Label lbl_profile;
 
     @FXML
-    private ListView<String> lst_levels;
+    private ListView<?> lst_levels;
 
     @FXML
-    private ComboBox<String> cmb_language;
+    private Label btn_back;
+
+    @FXML
+    private Label btn_play;
+
+    @FXML
+    private Label lbl_title;
+
+    @FXML
+    private Label lbl_subtitle;
 
     @FXML
     void initialize() {
@@ -71,6 +86,12 @@ public class LevelsController {
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
+        lbl_title.setText(SceneController.getLanguageBundle().getString("level_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("level_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        btn_back.setText(SceneController.getLanguageBundle().getString("scene_back"));
+        btn_play.setText(SceneController.getLanguageBundle().getString("level_play"));
+
         List<String> availableLevels = new ArrayList<>();
         for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
             if (i < LevelReader.getLevelQueue().size()) {
@@ -83,7 +104,7 @@ public class LevelsController {
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
     }
 

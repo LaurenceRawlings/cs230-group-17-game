@@ -19,16 +19,31 @@ import java.io.IOException;
 
 public class ProfilesController {
     @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_currentProfile;
+
+    @FXML
     private Label lbl_profile;
 
     @FXML
     private ListView<String> lst_profiles;
 
     @FXML
-    private ComboBox<String> cmb_language;
+    private Label btn_create;
+
+    @FXML
+    private Label btn_delete;
+
+    @FXML
+    private Label btn_enter;
 
     @FXML
     private Label lbl_title;
+
+    @FXML
+    private Label lbl_subtitle;
 
     @FXML
     void initialize() {
@@ -65,8 +80,7 @@ public class ProfilesController {
 
     @FXML
     void onClickBtnCreate(MouseEvent event) {
-        String name = "Player";
-        name = MessageController.inputDialog("New Profile", "Create A New Profile", "Enter the name for the new profile: ", "New Profile");
+        String name = MessageController.inputDialog(SceneController.getLanguageBundle().getString("msg_createProfile_title"), SceneController.getLanguageBundle().getString("msg_createProfile_head"), SceneController.getLanguageBundle().getString("msg_createProfile_body"), SceneController.getLanguageBundle().getString("msg_createProfile_default"));
         if (name != null) {
             if (!ProfileManager.exists(name)) {
                 Profile profile = new Profile(name);
@@ -103,6 +117,12 @@ public class ProfilesController {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
         lbl_title.setText(SceneController.getLanguageBundle().getString("profiles_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("profiles_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        btn_create.setText(SceneController.getLanguageBundle().getString("profiles_create"));
+        btn_delete.setText(SceneController.getLanguageBundle().getString("profiles_delete"));
+        btn_enter.setText(SceneController.getLanguageBundle().getString("profiles_enter"));
+
 
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());

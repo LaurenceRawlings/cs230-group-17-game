@@ -25,6 +25,22 @@ public class GameController {
     private Game game;
     private Timeline timer;
 
+
+    @FXML
+    private Label lbl_inventory;
+
+    @FXML
+    private ListView<String> lst_inventory;
+
+    @FXML
+    private Label lbl_fov;
+
+    @FXML
+    private Label btn_zoomIn;
+
+    @FXML
+    private Label btn_zoomOut;
+
     @FXML
     private Canvas canvas;
 
@@ -35,13 +51,16 @@ public class GameController {
     private Label lbl_timer;
 
     @FXML
-    private Label lbl_profile;
-
-    @FXML
-    private ListView<String> lst_inventory;
+    private Label btn_exit;
 
     @FXML
     private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_currentProfile;
+
+    @FXML
+    private Label lbl_profile;
 
     @FXML
     void initialize() {
@@ -122,17 +141,24 @@ public class GameController {
 
     private void drawGame() {
         LevelRenderer.render(game, canvas);
-        lbl_title.setText(game.getCurrentLevel().toString());
     }
 
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
+        lbl_title.setText(game.getCurrentLevel().toString());
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        lbl_inventory.setText(SceneController.getLanguageBundle().getString("game_inventory"));
+        lbl_fov.setText(SceneController.getLanguageBundle().getString("game_fov"));
+        btn_exit.setText(SceneController.getLanguageBundle().getString("game_saveAndReturn"));
+        btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
+        btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
+
         game = ProfileManager.getActiveProfile().getGame();
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
         drawGame();
         lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));

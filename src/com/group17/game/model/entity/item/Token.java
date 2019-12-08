@@ -4,8 +4,10 @@
  */
 package com.group17.game.model.entity.item;
 
+import com.group17.game.controller.SceneController;
+
 public class Token extends Item {
     public Token() {
-        super("Token", "token");
+        super(SceneController.getLanguageBundle().getString("item_token"), "token");
     }
 }

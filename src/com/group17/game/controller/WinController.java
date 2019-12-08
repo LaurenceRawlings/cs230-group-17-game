@@ -17,16 +17,32 @@ import java.io.IOException;
 import java.util.List;
 
 public class WinController {
+    @FXML
+    private ComboBox<String> cmb_language;
+
+    @FXML
+    private Label lbl_currentProfile;
 
     @FXML
     private Label lbl_profile;
-
 
     @FXML
     private Label lbl_time;
 
     @FXML
-    private ComboBox<String> cmb_language;
+    private Label btn_menu;
+
+    @FXML
+    private Label btn_leaderboard;
+
+    @FXML
+    private Label lbl_title;
+
+    @FXML
+    private Label lbl_subtitle;
+
+    @FXML
+    private Label lbl_subtitle2;
 
 
     @FXML
@@ -60,6 +76,14 @@ public class WinController {
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
+        lbl_title.setText(SceneController.getLanguageBundle().getString("win_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("win_subtitle"));
+        lbl_subtitle2.setText(SceneController.getLanguageBundle().getString("win_subtitle2"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        btn_leaderboard.setText(SceneController.getLanguageBundle().getString("win_leaderboard"));
+        btn_menu.setText(SceneController.getLanguageBundle().getString("scene_menu"));
+
+
         int totalTime = 0;
         List<String> levels = LevelReader.getLevelNames();
         for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel(); i++) {
@@ -73,7 +97,7 @@ public class WinController {
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
     }
 

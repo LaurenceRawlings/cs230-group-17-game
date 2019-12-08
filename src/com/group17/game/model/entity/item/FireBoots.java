@@ -4,8 +4,10 @@
  */
 package com.group17.game.model.entity.item;
 
+import com.group17.game.controller.SceneController;
+
 public class FireBoots extends Item{
     public FireBoots() {
-        super("Fire Boots", "item_fireboots");
+        super(SceneController.getLanguageBundle().getString("item_fireBoots"), "item_fireboots");
     }
 }
