@@ -14,10 +14,10 @@ public class SceneController {
     private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("fa"));
     private static final List<String> languages = new ArrayList<String>() {
         {
-            add("en");
-            add("uk");
-            add("ru");
-            add("fas");
+            add("EN");
+            add("UK");
+            add("RU");
+            add("FA");
         }
     };
 
@@ -38,7 +38,7 @@ public class SceneController {
     }
 
     public static void loadLanguage(String language) {
-        Locale locale = new Locale(language);
+        Locale locale = new Locale(language.toLowerCase());
         languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", locale);
     }
 }

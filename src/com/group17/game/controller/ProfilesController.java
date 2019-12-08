@@ -46,7 +46,7 @@ public class ProfilesController {
             enter();
         }
         else {
-            MessageController.showMessage("Hold Up!", "Select a Profile", "Please select or create a profile before entering.");
+            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         }
     }
 
@@ -75,7 +75,7 @@ public class ProfilesController {
                 initialize();
                 onLoad();
             } else {
-                MessageController.showMessage("Hold Up!", "Profile Already Exists!", "A profile with that name already exists, choose another name.");
+                MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_profileExists_title"), SceneController.getLanguageBundle().getString("msg_profileExists_head"), SceneController.getLanguageBundle().getString("msg_profileExists_body"));
             }
         }
     }
@@ -107,7 +107,7 @@ public class ProfilesController {
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
         } else {
-            lbl_profile.setText("None");
+            lbl_profile.setText("");
         }
     }
 
