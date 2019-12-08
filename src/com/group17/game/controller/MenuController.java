@@ -53,6 +53,10 @@ public class MenuController {
     private Label lbl_motd;
 
     @FXML
+    private Label btn_character;
+
+
+    @FXML
     void initialize() {
         lbl_motd.setText(MessageOfTheDay.get());
         Timeline timer = new Timeline(new KeyFrame(Duration.seconds(30), event -> lbl_motd.setText(MessageOfTheDay.get())));
@@ -91,6 +95,20 @@ public class MenuController {
             Parent root = loader.load();
             ProfilesController profiles = loader.getController();
             profiles.onLoad();
+
+            SceneController.activate(new Scene(root));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void onClickBtnCharacter(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/character.fxml"));
+            Parent root = loader.load();
+            CharacterController character = loader.getController();
+            character.onLoad();
 
             SceneController.activate(new Scene(root));
         } catch (IOException e) {

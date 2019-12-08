@@ -1,5 +1,7 @@
 package com.group17.game.core;
 
+import com.group17.game.model.entity.Player;
+
 import java.io.*;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -14,6 +16,15 @@ public class ProfileManager {
     private static final String PROFILE_FILE_EXTENSION = "save";
 
     private static Profile activeProfile;
+    private static Player.Skin character = Player.Skin.man;
+
+    public static Player.Skin getCharacter() {
+        return character;
+    }
+
+    public static void setCharacter(Player.Skin character) {
+        ProfileManager.character = character;
+    }
 
     public static Profile getActiveProfile() {
         return activeProfile;

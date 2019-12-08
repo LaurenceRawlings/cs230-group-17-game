@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 import com.group17.game.core.LevelRenderer;
 import com.group17.game.core.ProfileManager;
+import com.group17.game.model.entity.Player;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -42,6 +43,10 @@ public class CharacterController {
 
     @FXML
     void onClickBtnBack(MouseEvent event) {
+        back();
+    }
+
+    private void back() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
@@ -54,12 +59,24 @@ public class CharacterController {
         }
     }
 
+    @FXML
+    void onClickImgMan(MouseEvent event) {
+        ProfileManager.setCharacter(Player.Skin.man);
+        back();
+    }
+
+    @FXML
+    void onClickImgWoman(MouseEvent event) {
+        ProfileManager.setCharacter(Player.Skin.woman);
+        back();
+    }
+
 
     public void onLoad() {
         cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("continue_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("continue_subtitle"));
+        lbl_title.setText(SceneController.getLanguageBundle().getString("character_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("character_subtitle"));
         lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
         btn_back.setText(SceneController.getLanguageBundle().getString("scene_back"));
 

@@ -6,17 +6,33 @@
 package com.group17.game.model.entity;
 
 import com.group17.game.core.Position;
+import com.group17.game.core.ProfileManager;
 import com.group17.game.model.GameObject;
 import com.group17.game.model.entity.item.Item;
 
 import java.util.*;
 
 public class Player extends GameObject {
+    public enum Skin {
+        man("player"),
+        woman("player2");
+
+        private final String skinSprite;
+
+        Skin(String skinSprite) {
+            this.skinSprite = skinSprite;
+        }
+
+        public String getSkinSprite() {
+            return skinSprite;
+        }
+    }
+
     private Position position;
     private Map inventory;
 
     public Player(Position position) {
-        super("player");
+        super(ProfileManager.getCharacter().getSkinSprite());
         inventory = new HashMap();
         this.position = position;
     }
