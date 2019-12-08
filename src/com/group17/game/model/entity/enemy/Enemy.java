@@ -40,7 +40,7 @@ public abstract class Enemy implements Serializable {
     
     /**
      * Method to set an enemys position, direction, enum and level
-     * @param enemType
+     * @param enemyType
      * @param position
      * @param direction
      * @param level

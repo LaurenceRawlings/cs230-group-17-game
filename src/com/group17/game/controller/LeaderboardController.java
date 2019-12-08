@@ -21,10 +21,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- *
- * @author
+ * Controller for the Leaderboard scene.
+ * @author Tom Ling
+ * @version 1.0
  */
-public class LeaderboardController extends Controller {
+public class LeaderboardController implements Controller {
     private Timeline timer;
     private Label[] podium;
 
@@ -106,7 +107,7 @@ public class LeaderboardController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

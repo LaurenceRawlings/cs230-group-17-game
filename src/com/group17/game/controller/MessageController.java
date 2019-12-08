@@ -5,8 +5,9 @@ import javafx.scene.control.TextInputDialog;
 import java.util.Optional;
 
 /**
- *
- * @author
+ * Collection of static methods to help show message and input dialogs.
+ * @author Vlad Kashtelyanov
+ * @version 1.0
  */
 public class MessageController {
     public static void showMessage(String title, String header, String message) {

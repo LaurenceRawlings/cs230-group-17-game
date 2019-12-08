@@ -15,10 +15,11 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- *
- * @author
+ * Controller for the Game Win scene.
+ * @author Tom Ling
+ * @version 1.0
  */
-public class WinController extends Controller {
+public class WinController implements Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -75,7 +76,7 @@ public class WinController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

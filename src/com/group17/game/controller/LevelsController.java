@@ -18,10 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author
+ * Controller for the Level Selection scene.
+ * @author Sam Murphy
+ * @version 1.0
  */
-public class LevelsController extends Controller {
+public class LevelsController implements Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -81,7 +82,7 @@ public class LevelsController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

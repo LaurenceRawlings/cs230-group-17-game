@@ -16,10 +16,11 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 /**
- *
- * @author
+ * Controller for Character Selection scene.
+ * @author Sam Murphy
+ * @version 1.0
  */
-public class CharacterController extends Controller {
+public class CharacterController implements Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -62,7 +63,7 @@ public class CharacterController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

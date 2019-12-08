@@ -21,10 +21,11 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 /**
- *
- * @author
+ * Controller for the game scene. Handles user key input and checks if the game is won.
+ * @author Laurence Rawlings
+ * @version 2.0
  */
-public class GameController extends Controller {
+public class GameController implements Controller {
     private Game game;
     private Timeline timer;
 
@@ -176,7 +177,7 @@ public class GameController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

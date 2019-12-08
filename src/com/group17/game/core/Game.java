@@ -1,8 +1,4 @@
-/**
- * This class is the manager for the game. It allows the levels to change and update the positions
- * of entities as well as defines where entities can and cannot move.
- * @author
- */
+
 package com.group17.game.core;
 
 import com.group17.game.controller.MessageController;
@@ -13,10 +9,15 @@ import com.group17.game.model.entity.item.Item;
 import com.group17.game.model.entity.item.Key;
 import com.group17.game.model.entity.item.Token;
 import com.group17.game.model.world.*;
-
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Models a game session for a Profile. It allows the levels to change and update the positions
+ * of entities as well as defines where entities can and cannot move.
+ * @author Laurence Rawlings
+ * @version 3.0
+ */
 public class Game implements Serializable {
     private List<Level> levelQueue;
     private Level currentLevel;
@@ -35,7 +36,6 @@ public class Game implements Serializable {
      * Method to get the current level
      * @return currentLevel
      */
-    
     public Level getCurrentLevel() {
         return currentLevel;
     }
@@ -44,7 +44,6 @@ public class Game implements Serializable {
      * Method to get the player
      * @return player 
      */
-    
     public Player getPlayer() {
         return player;
     }
@@ -63,7 +62,6 @@ public class Game implements Serializable {
      * Method to set the current level based on the level index and update the enemy positions
      * @param levelIndex
      */
-
     public Game(int levelIndex) {
         levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(levelIndex);
@@ -77,7 +75,6 @@ public class Game implements Serializable {
      * Method to get the index of the current level
      * @return levelIndex
      */
-
     public int getLevelIndex() {
         return levelIndex;
     }
@@ -86,7 +83,6 @@ public class Game implements Serializable {
      * Method sets the current level to the next indexed level
      * @return true if next level is present false if not
      */
-
     public boolean nextLevel() {
         try {
             currentLevel = levelQueue.get(++levelIndex);
@@ -103,7 +99,6 @@ public class Game implements Serializable {
      * teleportation and enemy contact with the player.
      * @param direction
      */
-
     public void move(Direction direction) {
         Position next = Position.nextPosition(player.getPosition(), direction);
 

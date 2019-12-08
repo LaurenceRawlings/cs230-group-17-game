@@ -32,7 +32,7 @@ public class Main extends Application {
 
     /**
      * Auto generated method to launch javafx application.
-     * @param args
+     * @param args launch arguments
      */
     public static void main(String[] args) {
         launch(args);

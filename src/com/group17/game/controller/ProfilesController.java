@@ -15,10 +15,11 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 
 /**
- *
- * @author
+ * Controller for the Profile Selection scene.
+ * @author Laurence Rawlings
+ * @version 1.0
  */
-public class ProfilesController extends Controller {
+public class ProfilesController implements Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -102,7 +103,7 @@ public class ProfilesController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

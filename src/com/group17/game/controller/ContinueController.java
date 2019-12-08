@@ -19,13 +19,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author
+ * Controller for the Continue scene after a level is completed.
+ * @author Tom Ling
+ * @version 1.0
  */
-public class ContinueController extends Controller {
+public class ContinueController implements Controller {
     private int nextLevelIndex = 0;
 
-    public void setNextLevelIndex(int nextLevelIndex) {
+    void setNextLevelIndex(int nextLevelIndex) {
         this.nextLevelIndex = nextLevelIndex;
     }
 
@@ -86,7 +87,7 @@ public class ContinueController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);

@@ -18,10 +18,11 @@ import javafx.util.Duration;
 import java.io.IOException;
 
 /**
- *
- * @author
+ * Controller for the Main Menu scene.
+ * @author Laurence Rawlings
+ * @version 2.0
  */
-public class MenuController extends Controller {
+public class MenuController implements Controller {
     @FXML
     private ComboBox<String> cmb_language;
 
@@ -153,7 +154,7 @@ public class MenuController extends Controller {
     }
 
     @FXML @Override
-    void setLanguage() {
+    public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
             SceneController.loadLanguage(language);
