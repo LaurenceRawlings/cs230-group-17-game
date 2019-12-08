@@ -9,12 +9,12 @@ import com.group17.game.model.GameObject;
 import java.util.Objects;
 
 public abstract class Item extends GameObject {
-    private String name;
+    private final String name;
     
     /**
-     * Method determines wether the current object is the same as another.
+     * Method determines whether the current object is the same as another.
      * @param o
-     * @return true or false depending on wether they are equal or not
+     * @return true or false depending on whether they are equal or not
      */
 
     @Override
@@ -40,8 +40,8 @@ public abstract class Item extends GameObject {
      * @param name
      * @param spriteName
      */
-    
-    public Item(String name, String spriteName) {
+
+    Item(String name, String spriteName) {
         super(spriteName);
         this.name = name;
     }

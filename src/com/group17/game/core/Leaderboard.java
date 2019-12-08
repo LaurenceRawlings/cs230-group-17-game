@@ -3,13 +3,10 @@ package com.group17.game.core;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 public class Leaderboard {
     private static String compareLevel;
-
-    public static void setCompareLevel(String levelName) {
-        compareLevel = levelName;
-    }
 
     public static String getCompareLevel() {
         return compareLevel;
@@ -50,6 +47,6 @@ public class Leaderboard {
     }
 
     public static int getProfileTime(String profileName, String levelName) {
-        return ProfileManager.load(profileName).getLevelTime(levelName);
+        return Objects.requireNonNull(ProfileManager.load(profileName)).getLevelTime(levelName);
     }
 }

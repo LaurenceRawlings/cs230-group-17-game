@@ -13,8 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 public class ProfilesController {

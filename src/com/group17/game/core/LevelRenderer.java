@@ -15,11 +15,11 @@ public class LevelRenderer {
     private static int SPRITE_WIDTH = 100;
     private static int SPRITE_HEIGHT = 100;
 
-    public static void setSpriteWidth(int spriteWidth) {
+    private static void setSpriteWidth(int spriteWidth) {
         SPRITE_WIDTH = spriteWidth;
     }
 
-    public static void setSpriteHeight(int spriteHeight) {
+    private static void setSpriteHeight(int spriteHeight) {
         SPRITE_HEIGHT = spriteHeight;
     }
 
@@ -55,7 +55,6 @@ public class LevelRenderer {
                     gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                 } else {
                     if (level.getCell(new Position(x, y)) != null) {
-                        Image i = getSprite(level.getCell(new Position(x, y)).getSpriteName());
                         gc.drawImage(getSprite(level.getCell(new Position(x, y)).getSpriteName()), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                         if (level.getCell(new Position(x, y)) instanceof TokenDoor) {
                             gc.setFill(Color.web("#ffffff"));

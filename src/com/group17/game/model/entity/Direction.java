@@ -4,6 +4,8 @@
  */
 package com.group17.game.model.entity;
 
+import java.util.Objects;
+
 public enum Direction {
     up,
     down,
@@ -47,7 +49,7 @@ public enum Direction {
             case down :
                 return this.flip();
             case left :
-                return this.rotateRight().flip();
+                return Objects.requireNonNull(this.rotateRight()).flip();
             case right :
                 return this.rotateRight();
         }

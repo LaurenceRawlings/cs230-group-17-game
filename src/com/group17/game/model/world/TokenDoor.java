@@ -1,7 +1,7 @@
 package com.group17.game.model.world;
 
 public class TokenDoor extends Cell {
-    private int tokenCost;
+    private final int tokenCost;
 
     public TokenDoor(int tokenCost) {
         super(false, "door_token");

@@ -14,7 +14,7 @@ public abstract class GameObject implements Serializable {
         this.spriteName = spriteName;
     }
 
-    public GameObject(String spriteName) {
+    protected GameObject(String spriteName) {
         setSpriteName(spriteName);
     }
 }

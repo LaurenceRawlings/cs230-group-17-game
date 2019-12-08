@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Level implements Comparable<Level>, Serializable, Cloneable {
-    private Cell[][] cells;
-    private Item[][] items;
+    private final Cell[][] cells;
+    private final Item[][] items;
     private Enemy.EnemyType[][] enemyPositions;
-    private List<Enemy> enemies;
-    private int levelNumber;
-    private String levelName;
-    private Position start;
-    private Position finish;
-    private int width;
-    private int height;
+    private final List<Enemy> enemies;
+    private final int levelNumber;
+    private final String levelName;
+    private final Position start;
+    private final Position finish;
+    private final int width;
+    private final int height;
     private int time;
 
     public int getTime() {
@@ -65,7 +65,7 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
         enemies = new ArrayList<>();
     }
 
-    public int getLevelNumber() {
+    private int getLevelNumber() {
         return levelNumber;
     }
 
@@ -112,5 +112,4 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
         return enemyPositions[position.y()][position.x()];
     }
 
-    public List<Enemy> getEnemies(){return enemies;}
 }

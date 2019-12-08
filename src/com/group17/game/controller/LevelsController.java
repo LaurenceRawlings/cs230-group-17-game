@@ -1,7 +1,6 @@
 package com.group17.game.controller;
 
 import com.group17.game.core.LevelReader;
-import com.group17.game.core.Profile;
 import com.group17.game.core.ProfileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,11 +42,6 @@ public class LevelsController {
 
     @FXML
     private Label lbl_subtitle;
-
-    @FXML
-    void initialize() {
-
-    }
 
     @FXML
     void onClickBtnBack(MouseEvent event) {

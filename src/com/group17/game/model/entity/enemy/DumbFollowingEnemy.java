@@ -18,7 +18,7 @@ public class DumbFollowingEnemy extends Enemy {
         moveDumb(player);
     }
 
-    public void moveDumb(Player player) {
+    private void moveDumb(Player player) {
         int xDif = (position.x() - player.getPosition().x());
         int yDif = (position.y() - player.getPosition().y());
 

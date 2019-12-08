@@ -2,7 +2,6 @@ package com.group17.game.controller;
 
 import com.group17.game.core.MessageOfTheDay;
 import com.group17.game.core.ProfileManager;
-import com.group17.game.model.entity.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;

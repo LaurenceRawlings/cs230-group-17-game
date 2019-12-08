@@ -21,12 +21,12 @@ public class Key extends Item {
             this.label = label;
         }
 
-        public String getLabel() {
+        String getLabel() {
             return label;
         }
     }
 
-    private KeyType keyType;
+    private final KeyType keyType;
     
    /**
     * This key method sets the sprite names according to their colour
@@ -48,15 +48,6 @@ public class Key extends Item {
             default:
                 break;
         }
-    }
-    
-   /**
-    * Returns the type of key
-    * @return keyType
-    */
-
-    public KeyType getKeyType() {
-        return keyType;
     }
 
     /**

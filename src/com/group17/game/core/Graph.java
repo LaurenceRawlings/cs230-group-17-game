@@ -7,14 +7,14 @@ import java.util.LinkedList;
 public class Graph implements Serializable{
 
     // Each node maps to a list of all his neighbors
-    private HashMap<Node, LinkedList<Node>> adjMap;
-    public LinkedList<Node> pathList = new LinkedList<>();
+    private final HashMap<Node, LinkedList<Node>> adjMap;
+    private final LinkedList<Node> pathList = new LinkedList<>();
 
     public Graph() {
         adjMap = new HashMap<>();
     }
 
-    public void addEdgeHelper(Node a, Node b) {
+    private void addEdgeHelper(Node a, Node b) {
         LinkedList<Node> tmp = adjMap.get(a);
 
         if (tmp != null) {
@@ -50,7 +50,7 @@ public class Graph implements Serializable{
         }
     }
 
-    void findShortestPath(Node Start, Node Goal) {
+    private void findShortestPath(Node Start, Node Goal) {
         if (Start != null){ //check if player is on an obstacle
             pathList.add(Goal);
             while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
@@ -60,10 +60,6 @@ public class Graph implements Serializable{
                 }
             }
         }
-    }
-
-    public boolean hasEdge(Node source, Node destination) {
-        return adjMap.containsKey(source) && adjMap.get(source).contains(destination);
     }
 
     public void breadthFirstSearch(Node node) {

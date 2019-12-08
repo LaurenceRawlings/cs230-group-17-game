@@ -3,8 +3,8 @@ package com.group17.game.model.world;
 import com.group17.game.core.Position;
 
 public class Teleporter extends Cell {
-    private Teleporter destination;
-    private Position position;
+    private final Teleporter destination;
+    private final Position position;
 
     public Teleporter(Position position, Position destinationPosition) {
         super(true, "Teleporter");
@@ -12,7 +12,7 @@ public class Teleporter extends Cell {
         destination = new Teleporter(destinationPosition, this);
     }
 
-    public Teleporter(Position position, Teleporter destination) {
+    private Teleporter(Position position, Teleporter destination) {
         super(true, "Teleporter");
         this.position = position;
         this.destination = destination;

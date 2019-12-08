@@ -14,7 +14,6 @@ public class SmartFollowingEnemy extends Enemy {
     private Position nextPosition;
     private Position nextDumbPosition;
     private boolean smartFail;
-    public Node[][] nodeMap;
 
     public SmartFollowingEnemy(Position position, Direction direction, Level level, Position initialTarget) {
         super(EnemyType.smart, position, direction, level);
@@ -38,8 +37,8 @@ public class SmartFollowingEnemy extends Enemy {
         moveDumb(player);
     }
 
-    public void calculatePath(Player player) {
-        nodeMap = new Node[level.getWidth() - 1][level.getHeight() - 1];
+    private void calculatePath(Player player) {
+        Node[][] nodeMap = new Node[level.getWidth() - 1][level.getHeight() - 1];
 
         Graph graph = new Graph();
         for (int i = 0; i < level.getWidth(); i++) { //populating our arrays of nodes
@@ -81,7 +80,7 @@ public class SmartFollowingEnemy extends Enemy {
         }
     }
 
-    public void moveDumb(Player player) {
+    private void moveDumb(Player player) {
         int xDif = (position.x() - player.getPosition().x());
         int yDif = (position.y() - player.getPosition().y());
 

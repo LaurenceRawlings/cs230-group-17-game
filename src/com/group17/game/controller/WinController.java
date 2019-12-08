@@ -3,7 +3,6 @@ package com.group17.game.controller;
 import com.group17.game.core.Leaderboard;
 import com.group17.game.core.LevelReader;
 import com.group17.game.core.ProfileManager;
-import com.group17.game.model.world.Level;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

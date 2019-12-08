@@ -3,15 +3,14 @@ package com.group17.game.core;
 import java.io.Serializable;
 
 public class Node implements Serializable {
-    Position n;
-    boolean visited;
+    final Position n;
+    private boolean visited;
     Node prev;
     boolean prevVisited;
 
     public Node(Position n) {
         this.n = n;
         visited = false;
-        Node prev = null;
         prevVisited = false;
 
     }
@@ -29,11 +28,7 @@ public class Node implements Serializable {
     }
 
     public boolean isVisited() {
-        if (this.visited){
-            return true;
-        } else {
-            return false;
-        }
+        return this.visited;
     }
 
     @Override

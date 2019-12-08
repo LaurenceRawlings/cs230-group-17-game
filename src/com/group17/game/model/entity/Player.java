@@ -23,13 +23,13 @@ public class Player extends GameObject {
             this.skinSprite = skinSprite;
         }
 
-        public String getSkinSprite() {
+        String getSkinSprite() {
             return skinSprite;
         }
     }
 
     private Position position;
-    private Map inventory;
+    private final Map inventory;
 
     public Player(Position position) {
         super(ProfileManager.getCharacter().getSkinSprite());
@@ -59,7 +59,7 @@ public class Player extends GameObject {
     }
     
     /**
-     * Gets the ammount of items present in the inventory or returns
+     * Gets the amount of items present in the inventory or returns
      * false if item is not present in the players inventory
      * @param item is the item which is checked for
      * @return integer quantity of the items present false if none of the items are present
@@ -104,33 +104,27 @@ public class Player extends GameObject {
      * Checks if the player has the item and takes it from the players
      * inventory if they have an item of that type
      * @param item to be used by the player
-     * @return true if the player has the item and false if the player does not have the item
      */
     
-    public boolean useItem(Item item) {
+    public void useItem(Item item) {
         if (hasItem(item)) {
             int current = (int) inventory.get(item);
             inventory.put(item, --current);
-            return true;
         }
-        return false;
     }
 
     /**
      * Checks if the player has a certain amount of an item
-     * takes an amount from the player accoringly
+     * takes an amount from the player accordingly
      * @param item
      * @param amount to be used
-     * @return true after taking the amount from inventory false if items are not present
- 	 */
+     */
     
-    public boolean useItem(Item item, int amount) {
+    public void useItem(Item item, int amount) {
         if (hasItem(item, amount)) {
             int current = (int) inventory.get(item);
             inventory.put(item, current-amount);
-            return true;
         }
-        return false;
     }
 
     public List<String> getItems() {

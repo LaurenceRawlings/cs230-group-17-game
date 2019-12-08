@@ -28,27 +28,19 @@ public abstract class Enemy implements Serializable {
         }
     }
 
-    protected Position position;
-    protected Direction direction;
-    protected EnemyType enemyType;
-    protected Level level;
+    Position position;
+    Direction direction;
+    private final EnemyType enemyType;
+    final Level level;
 
-    public Level getLevel() {
-        return level;
-    }
-
-    public void setLevel(Level level) {
-        this.level = level;
-    }
-
-    public Enemy(EnemyType enemyType, Position position, Direction direction, Level level) {
+    Enemy(EnemyType enemyType, Position position, Direction direction, Level level) {
         this.position = position;
         this.direction = direction;
         this.enemyType = enemyType;
         this.level = level;
     }
 
-    protected boolean move(Position nextPosition) {
+    boolean move(Position nextPosition) {
         if (canMove(nextPosition)) {
             position = nextPosition;
             return true;
@@ -57,50 +49,12 @@ public abstract class Enemy implements Serializable {
         }
     }
 
-    public boolean canMove(Position nextPosition){
+    boolean canMove(Position nextPosition){
         return level.getCell(nextPosition) instanceof Ground;
-    }
-
-    public void rotateRight(){
-        switch (getDirection()){
-            case up:
-                setDirection(Direction.right);
-            case left:
-                setDirection(Direction.up);
-            case down:
-                setDirection(Direction.left);
-            case right:
-                setDirection(Direction.down);
-        }
-    }
-
-    public void rotateLeft(){
-        switch (getDirection()){
-            case up:
-                setDirection(Direction.left);
-            case left:
-                setDirection(Direction.down);
-            case down:
-                setDirection(Direction.right);
-            case right:
-                setDirection(Direction.up);
-        }
     }
 
     public Position getPosition() {
         return position;
-    }
-
-    public Direction getDirection() {
-        return direction;
-    }
-
-    public void setDirection(Direction direction) {
-        this.direction = direction;
-    }
-
-    public void setPosition(Position position) {
-        this.position = position;
     }
 
     public EnemyType getEnemyType() {

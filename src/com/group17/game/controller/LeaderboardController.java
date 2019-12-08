@@ -75,8 +75,8 @@ public class LeaderboardController {
 
     @FXML
     void levelChanged(ActionEvent event) {
-        for (int i = 0; i < podium.length; i++) {
-            podium[i].setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
+        for (Label label : podium) {
+            label.setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
         }
         String level  = cmb_levels.getSelectionModel().getSelectedItem();
         List<String> profiles = Leaderboard.getTopTimes(level, 3);
@@ -108,8 +108,8 @@ public class LeaderboardController {
         lbl_title.setText(SceneController.getLanguageBundle().getString("leaderboard_title"));
         lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
 
-        for (int i = 0; i < podium.length; i++) {
-            podium[i].setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
+        for (Label label : podium) {
+            label.setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
         }
 
         lbl_selectLevel.setText(SceneController.getLanguageBundle().getString("leaderboard_selectLevel"));

@@ -3,9 +3,9 @@ package com.group17.game.model.world;
 import com.group17.game.model.GameObject;
 
 public abstract class Cell extends GameObject {
-    private boolean walkable;
+    private final boolean walkable;
 
-    public Cell(boolean walkable, String spriteName) {
+    Cell(boolean walkable, String spriteName) {
         super(spriteName);
         this.walkable = walkable;
     }

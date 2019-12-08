@@ -113,9 +113,7 @@ public class Game implements Serializable {
                     return true;
                 }
             } else if (cell instanceof Obstacle) {
-                if (player.hasItem(((Obstacle) cell).getCounterItem())) {
-                    return true;
-                }
+                return player.hasItem(((Obstacle) cell).getCounterItem());
             }
 
         }

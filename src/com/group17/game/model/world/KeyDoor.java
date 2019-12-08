@@ -3,9 +3,9 @@ package com.group17.game.model.world;
 import com.group17.game.model.entity.item.Key;
 
 public abstract class KeyDoor extends Cell {
-    private Key.KeyType key;
+    private final Key.KeyType key;
 
-    public KeyDoor(Key.KeyType key, String spriteName) {
+    KeyDoor(Key.KeyType key, String spriteName) {
         super(false, spriteName);
         this.key = key;
     }

@@ -117,7 +117,7 @@ public class ProfileManager {
         return profiles;
     }
 
-    public static List<Profile> getProfiles() {
+    private static List<Profile> getProfiles() {
         List<Profile> profiles = new ArrayList<>();
         for (String name : getProfileNames()) {
             profiles.add(load(name));

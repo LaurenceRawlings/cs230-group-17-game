@@ -2,7 +2,6 @@ package com.group17.game.controller;
 
 import com.group17.game.core.Leaderboard;
 import com.group17.game.core.LevelReader;
-import com.group17.game.core.Profile;
 import com.group17.game.core.ProfileManager;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -50,11 +49,6 @@ public class ContinueController {
 
     @FXML
     private Label lbl_currentProfile;
-
-    @FXML
-    void initialize() {
-
-    }
 
     @FXML
     void onClickBtnMenu(MouseEvent event) {

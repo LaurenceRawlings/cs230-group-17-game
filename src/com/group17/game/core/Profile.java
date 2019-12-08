@@ -3,12 +3,11 @@ package com.group17.game.core;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class Profile implements Serializable, Comparable<Profile> {
     private Game game;
-    private String name;
-    private Map levelTimes;
+    private final String name;
+    private final Map levelTimes;
     private int highestLevel;
 
     public int getHighestLevel() {
@@ -67,12 +66,6 @@ public class Profile implements Serializable, Comparable<Profile> {
             return 0;
         }
 
-        if (getLevelTime(compareLevel) == profile.getLevelTime(compareLevel)) {
-            return 0;
-        } else if (getLevelTime(compareLevel) > profile.getLevelTime(compareLevel)) {
-            return 1;
-        } else {
-            return -1;
-        }
+        return Integer.compare(getLevelTime(compareLevel), profile.getLevelTime(compareLevel));
     }
 }
