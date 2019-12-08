@@ -11,13 +11,14 @@ import java.util.ResourceBundle;
 public class SceneController {
     private static Stage main = new Stage();
 
-    private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("fa"));
+    private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("en"));
     private static final List<String> languages = new ArrayList<String>() {
         {
             add("EN");
             add("UK");
             add("RU");
             add("FA");
+            add("TR");
         }
     };
 
