@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 /**
  * Models the graph structure of a level. Contains methods to generate paths for smart enemies.
- * @author Vlad Kashtelynov
+ * @author Vlad Kashtelyanov
  * @version 2.0
  */
 public class Graph implements Serializable {

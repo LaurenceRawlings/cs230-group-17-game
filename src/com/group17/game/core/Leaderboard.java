@@ -17,7 +17,6 @@ public class Leaderboard {
     * Method to get the level to be compared.
     * @return compareLevel
     */
-
     public static String getCompareLevel() {
         return compareLevel;
     }
@@ -28,7 +27,6 @@ public class Leaderboard {
 	 * @param amount
 	 * @return topProfiles
 	 */
-
     public static List<String> getTopTimes(String levelName, int amount) {
         compareLevel = levelName;
         List<Profile> profiles = ProfileManager.getProfiles(levelName);
@@ -50,7 +48,6 @@ public class Leaderboard {
 	 * @param seconds
 	 * @return days, hours, minutes, seconds depending on the parameter amount
 	 */
-
     public static String formatTime(int seconds) {
         int minutes = seconds / 60;
         seconds = seconds % 60;
@@ -75,7 +72,6 @@ public class Leaderboard {
 	 * @param levelName
 	 * @return levelName and profileName that are not null
 	 */
-
     public static int getProfileTime(String profileName, String levelName) {
         return Objects.requireNonNull(ProfileManager.load(profileName)).getLevelTime(levelName);
     }

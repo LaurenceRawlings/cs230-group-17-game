@@ -1,32 +1,27 @@
-/**
- * Class defines node necessary for the graph used sprite movement
- * @author
- */
 package com.group17.game.core;
 
 import java.io.Serializable;
 
-public class Node implements Serializable {
+/**
+ * Models a node on a graph. Used by the Graph class.
+ * @author Vlad Kashtelyanov
+ * @version 1.0
+ */
+public class Node extends Graph implements Serializable {
     final Position n;
     private boolean visited;
     Node prev;
     boolean prevVisited;
 
     /**
-	 * Method to set a node. Node is not visited and has no previously visited nodes.
-	 * @param n
+	 * Node constructor to create a node at the specified position.
+	 * @param n position of the node.
 	 */
-    
     public Node(Position n) {
         this.n = n;
         visited = false;
         prevVisited = false;
     }
-    
-    /**
-	 * Method to get the position of a node
-	 * @return n the current objects position
-	 */
 
     public Position getPos(){
         return this.n;
@@ -40,20 +35,10 @@ public class Node implements Serializable {
         this.prev = prev;
     }
 
-    /**
-	 * Method to determine whether a node is visited or not.
-	 * @return visited true or false based on if the current node is visited or not
-	 */
-    
-    public boolean isVisited() {
+    boolean isVisited() {
         return this.visited;
     }
     
-    /**
-	 * Method returns a string representing the x and y coordinates of a node
-	 * @return a string containing x and y
-	 */
-
     @Override
     public String toString(){
         return "Node (" + n.x() + " " + n.y() + ")";
