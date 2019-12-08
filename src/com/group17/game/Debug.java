@@ -3,6 +3,11 @@ package com.group17.game;
 import com.group17.game.core.Profile;
 import com.group17.game.core.ProfileManager;
 
+/**
+ * Console app to run various code snippets for testing. Creates master profiles for testing.
+ * @author Laurence Rawlings
+ * @version 1.0
+ */
 public class Debug {
     public static void main(String[] args) {
         //Create Master Profiles
