@@ -66,6 +66,7 @@ public class GameController {
             int time = game.getCurrentLevel().getTime();
             game.getCurrentLevel().setTime(++time);
             lbl_timer.setText(Leaderboard.formatTime(time));
+            drawGame();
         }));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
