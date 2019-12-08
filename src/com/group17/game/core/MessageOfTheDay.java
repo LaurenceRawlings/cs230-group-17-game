@@ -1,3 +1,7 @@
+/**
+ * Class to retrieve the message of the day from a URL.
+ * @author
+ */
 package com.group17.game.core;
 
 import java.io.BufferedReader;
@@ -7,6 +11,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MessageOfTheDay {
+    
+    /**
+	 * Method the get the message from the URL using private methods below
+	 * @return the message
+	 */
+    
     public static String get() {
         String solution = solve(httpGet("http://cswebcat.swan.ac.uk/puzzle"));
         return httpGet("http://cswebcat.swan.ac.uk/message?solution=" + solution);
