@@ -95,7 +95,9 @@ public class GameController {
         if (game.getPlayer().getPosition().equals(game.getCurrentLevel().getFinish())) {
             int currentLevelIndex = game.getLevelIndex();
             Level currentLevel = game.getCurrentLevel();
-            ProfileManager.getActiveProfile().setHighestLevel(game.getLevelIndex());
+            if (ProfileManager.getActiveProfile().getHighestLevel() < game.getLevelIndex()) {
+                ProfileManager.getActiveProfile().setHighestLevel(game.getLevelIndex());
+            }
             if (currentLevel.getTime() < ProfileManager.getActiveProfile().getLevelTime(currentLevel.toString())) {
                 ProfileManager.getActiveProfile().setLevelTime(currentLevel.toString(), currentLevel.getTime());
             }
