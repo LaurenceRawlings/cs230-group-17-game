@@ -1,3 +1,8 @@
+/**
+ * Class defining the wall following enemys movement.
+ * @author
+ */
+
 package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
@@ -14,6 +19,11 @@ public class WallFollowingEnemy extends Enemy {
         super(EnemyType.wall, position, direction, level);
         reachedWall = false;
     }
+    
+    /**
+     * Method for the movement of the enemy relative to a wall
+     * @param player
+     */
 
     @Override
     public void move(Player player) {
