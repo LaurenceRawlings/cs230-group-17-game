@@ -1,4 +1,3 @@
-
 package com.group17.game.core;
 
 import com.group17.game.controller.MessageController;
@@ -28,27 +27,26 @@ public class Game implements Serializable {
     public int getFov() {
         return fov;
     }
+
+    public Level getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public int getLevelIndex() {
+        return levelIndex;
+    }
+
     public void setFov(int fov) {
         this.fov = fov;
     }
 
     /**
-     * Method to get the current level
-     * @return currentLevel
+     * Game constructor. Sets the default values for a new game.
      */
-    public Level getCurrentLevel() {
-        return currentLevel;
-    }
-    
-    /**
-     * Method to get the player
-     * @return player 
-     */
-    public Player getPlayer() {
-        return player;
-    }
-
-
     public Game() {
         levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(0);
@@ -59,8 +57,8 @@ public class Game implements Serializable {
     }
     
     /**
-     * Method to set the current level based on the level index and update the enemy positions
-     * @param levelIndex
+     * Game constructor which take in a level index to determine which level to start at.
+     * @param levelIndex level index to start at.
      */
     public Game(int levelIndex) {
         levelQueue = LevelReader.getLevelQueue();
@@ -72,16 +70,8 @@ public class Game implements Serializable {
     }
     
     /**
-     * Method to get the index of the current level
-     * @return levelIndex
-     */
-    public int getLevelIndex() {
-        return levelIndex;
-    }
-    
-    /**
-     * Method sets the current level to the next indexed level
-     * @return true if next level is present false if not
+     * Sets the current level to the next indexed level in the level queue.
+     * @return true if next level is present false if not. If true switch to the next level.
      */
     public boolean nextLevel() {
         try {
@@ -95,9 +85,8 @@ public class Game implements Serializable {
     }
     
     /**
-     * Method to update the positions of entities. Establishes laws concerning item pickup,
-     * teleportation and enemy contact with the player.
-     * @param direction
+     * Move the player in the specified direction. Depending on where the player wants to move complete the required action.
+     * @param direction the direction in which to move.
      */
     public void move(Direction direction) {
         Position next = Position.nextPosition(player.getPosition(), direction);
@@ -117,7 +106,7 @@ public class Game implements Serializable {
             }
             currentLevel.moveEnemies(player);
             if (currentLevel.getEnemy(current) != null) {
-                die();
+                restartLevel();
             }
         }
     }
@@ -127,7 +116,7 @@ public class Game implements Serializable {
         if (cell.isWalkable()) {
             if (currentLevel.getEnemy(nextPosition) != null) {
                 player.setPosition(nextPosition);
-                die();
+                restartLevel();
                 return false;
             }
             return true;
@@ -154,7 +143,7 @@ public class Game implements Serializable {
         return false;
     }
 
-    private void die() {
+    private void restartLevel() {
         MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_die_title"), SceneController.getLanguageBundle().getString("msg_die_head"), SceneController.getLanguageBundle().getString("msg_die_body"));
         levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(levelIndex);
