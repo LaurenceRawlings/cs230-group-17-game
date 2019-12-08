@@ -177,6 +177,8 @@ public class MenuController {
         btn_leaderboard.setText(SceneController.getLanguageBundle().getString("menu_leaderboard"));
         btn_profile.setText(SceneController.getLanguageBundle().getString("menu_switchProfile"));
         btn_quit.setText(SceneController.getLanguageBundle().getString("menu_exit"));
+        btn_character.setText(SceneController.getLanguageBundle().getString("menu_character"));
+
 
         if (ProfileManager.getActiveProfile() != null) {
             lbl_profile.setText(ProfileManager.getActiveProfile().toString());
