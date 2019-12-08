@@ -81,6 +81,7 @@ public class Game implements Serializable {
             }
             if (cell instanceof Teleporter) {
                 player.setPosition(((Teleporter) currentLevel.getCell(current)).getDestination().getPosition());
+                move(direction);
             }
             currentLevel.moveEnemies(player);
             if (currentLevel.getEnemy(current) != null) {
