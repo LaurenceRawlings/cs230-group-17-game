@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Graph implements Serializable{
-
-    // Each node maps to a list of all his neighbors
     private final HashMap<Node, LinkedList<Node>> adjMap;
     private final LinkedList<Node> pathList = new LinkedList<>();
 
@@ -26,7 +24,6 @@ public class Graph implements Serializable{
     }
 
     public void addEdge(Node source, Node destination) {
-        // We make sure that every used node shows up
         if (!adjMap.containsKey(source))
             adjMap.put(source, null);
 
@@ -51,7 +48,7 @@ public class Graph implements Serializable{
     }
 
     private void findShortestPath(Node Start, Node Goal) {
-        if (Start != null){ //check if player is on an obstacle
+        if (Start != null){
             pathList.add(Goal);
             while (!Goal.prevVisited && !Goal.n.equals(Start.n)){
                 Goal.prevVisited = true;
@@ -72,11 +69,9 @@ public class Graph implements Serializable{
         while (!queue.isEmpty()) {
             Node currentFirst = queue.removeFirst();
 
-            // Skip the node if we already visited it
             if (currentFirst.isVisited())
                 continue;
 
-            // Mark the node as visited
             currentFirst.visit();
 
             LinkedList<Node> allNeighbors = adjMap.get(currentFirst);
@@ -91,7 +86,6 @@ public class Graph implements Serializable{
                 }
             }
         }
-        System.out.println();
     }
 
 }

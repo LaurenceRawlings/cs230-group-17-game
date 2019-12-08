@@ -18,13 +18,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
-
 import java.io.IOException;
 
 public class GameController {
     private Game game;
     private Timeline timer;
-
 
     @FXML
     private Label lbl_inventory;
@@ -137,7 +135,6 @@ public class GameController {
         lst_inventory.setItems(items);
 
         drawGame();
-
         event.consume();
     }
 

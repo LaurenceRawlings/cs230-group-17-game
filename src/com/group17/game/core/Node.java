@@ -12,7 +12,6 @@ public class Node implements Serializable {
         this.n = n;
         visited = false;
         prevVisited = false;
-
     }
 
     public Position getPos(){
