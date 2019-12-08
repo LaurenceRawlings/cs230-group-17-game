@@ -1,3 +1,7 @@
+/**
+ * This class reads in the txt level files and maps out objects accordingly.
+ * @author
+ */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Direction;
@@ -79,7 +83,12 @@ public class LevelReader {
     }});
 
     private static List<Level> levelQueue;
-
+    
+    /**
+	 * Method to get the levels in the form of a queue
+	 * @return levelQueue
+	 */
+    
     public static List<Level> getLevelQueue() {
         readLevels();
         return levelQueue;
@@ -223,6 +232,11 @@ public class LevelReader {
             return null;
         }
     }
+    
+    /**
+	 * Method gets the names of the levels in the form of a string being added to an array
+	 * @return levelNames
+	 */
 
     public static List<String> getLevelNames() {
         List<String> levelNames = new ArrayList<>();
