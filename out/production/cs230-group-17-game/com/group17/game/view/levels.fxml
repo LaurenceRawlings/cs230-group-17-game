@@ -39,7 +39,7 @@
     </right>
     <center>
         <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <ListView fx:id="lst_levels" focusTraversable="false" prefHeight="600.0" prefWidth="200.0" stylesheets="@styles.css" />
+            <ListView fx:id="lst_levels" focusTraversable="false" minHeight="-Infinity" prefHeight="500.0" prefWidth="200.0" stylesheets="@styles.css" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                 <Label id="button" fx:id="btn_back" onMouseClicked="#onClickBtnBack" stylesheets="@styles.css" text="&lt; BACK">
                     <font>
