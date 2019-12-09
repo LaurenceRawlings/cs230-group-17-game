@@ -13,12 +13,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Controller for the Level Selection scene.
+ *
  * @author Sam Murphy
  * @version 1.0
  */
@@ -81,7 +83,8 @@ public class LevelsController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

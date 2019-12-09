@@ -4,6 +4,7 @@ import com.group17.game.controller.SceneController;
 
 /**
  * Models the token item in the game.
+ *
  * @author Tom Ling
  * @version 1.0
  */

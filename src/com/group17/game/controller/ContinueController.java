@@ -14,45 +14,39 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Controller for the Continue scene after a level is completed.
+ *
  * @author Tom Ling
  * @version 1.0
  */
 public class ContinueController implements Controller {
     private int nextLevelIndex = 0;
+    @FXML
+    private ComboBox<String> cmb_language;
+    @FXML
+    private Label lbl_profile;
+    @FXML
+    private ListView<String> lst_times;
+    @FXML
+    private Label btn_menu;
+    @FXML
+    private Label btn_continue;
+    @FXML
+    private Label lbl_title;
+    @FXML
+    private Label lbl_subtitle;
+    @FXML
+    private Label lbl_currentProfile;
 
     void setNextLevelIndex(int nextLevelIndex) {
         this.nextLevelIndex = nextLevelIndex;
     }
-
-    @FXML
-    private ComboBox<String> cmb_language;
-
-    @FXML
-    private Label lbl_profile;
-
-    @FXML
-    private ListView<String> lst_times;
-
-    @FXML
-    private Label btn_menu;
-
-    @FXML
-    private Label btn_continue;
-
-    @FXML
-    private Label lbl_title;
-
-    @FXML
-    private Label lbl_subtitle;
-
-    @FXML
-    private Label lbl_currentProfile;
 
     @FXML
     void onClickBtnMenu(MouseEvent event) {
@@ -86,7 +80,8 @@ public class ContinueController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

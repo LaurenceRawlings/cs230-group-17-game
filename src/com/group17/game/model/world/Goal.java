@@ -2,6 +2,7 @@ package com.group17.game.model.world;
 
 /**
  * Models the goal cell in the game.
+ *
  * @author Sam Murphey
  * @version 1.0
  */

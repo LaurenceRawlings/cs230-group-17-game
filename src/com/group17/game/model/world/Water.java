@@ -4,6 +4,7 @@ import com.group17.game.model.entity.item.WaterBoots;
 
 /**
  * Models the fire cell in the game.
+ *
  * @author Sam Murphey
  * @version 1.0
  */

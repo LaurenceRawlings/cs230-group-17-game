@@ -1,6 +1,6 @@
-#button:hover{     
-  -fx-text-fill:blue;
-  -fx-font-weight:bold; 
+#button:hover {
+    -fx-text-fill: blue;
+    -fx-font-weight: bold;
 }
 
 .list-cell:filled:selected:focused, .list-cell:filled:selected {
@@ -8,8 +8,8 @@
     -fx-text-fill: white;
 }
 
-.list-cell, .combo-box{
-    -fx-font-size:24.0;
+.list-cell, .combo-box {
+    -fx-font-size: 24.0;
     -fx-font-family: "Segoe UI";
 }
 

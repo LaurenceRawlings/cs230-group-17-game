@@ -12,6 +12,7 @@ import javafx.scene.text.Font;
 /**
  * The purpose of this class is to draw out the game itself. Defines the size of sprite's
  * and of the canvas.
+ *
  * @author Laurence Rawlings
  * @version 2.0
  */
@@ -30,10 +31,11 @@ public class LevelRenderer {
     }
 
     /**
-	 * Get a sprite's image according to the sprite's filename
-	 * @param spriteName the sprites filename.
-	 * @return image object loaded from the sprite file.
-	 */
+     * Get a sprite's image according to the sprite's filename
+     *
+     * @param spriteName the sprites filename.
+     * @return image object loaded from the sprite file.
+     */
     public static Image getSprite(String spriteName) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
@@ -49,9 +51,10 @@ public class LevelRenderer {
 
     /**
      * Get a sprite's image according to the sprite's filename and set its width and height.
+     *
      * @param spriteName the sprites filename.
-     * @param height height to load the image.
-     * @param width width to load the image.
+     * @param height     height to load the image.
+     * @param width      width to load the image.
      * @return image object loaded from the sprite file.
      */
     public static Image getSprite(String spriteName, int width, int height) {
@@ -66,12 +69,13 @@ public class LevelRenderer {
         }
         return null;
     }
-    
+
     /**
-	 * Render the game canvas by drawing on all the sprites and writing required text.
-	 * @param game the game to render the state of.
-	 * @param canvas the canvas to draw the frame to.
-	 */
+     * Render the game canvas by drawing on all the sprites and writing required text.
+     *
+     * @param game   the game to render the state of.
+     * @param canvas the canvas to draw the frame to.
+     */
     public static void render(Game game, Canvas canvas) {
         LevelRenderer.setSpriteHeight((int) canvas.getHeight() / (game.getFov() * 2 + 1));
         LevelRenderer.setSpriteWidth((int) canvas.getWidth() / (game.getFov() * 2 + 1));
@@ -87,7 +91,7 @@ public class LevelRenderer {
 
         for (int y = playerPosition.y() - fov; y <= playerPosition.y() + fov; y++) {
             for (int x = playerPosition.x() - fov; x <= playerPosition.x() + fov; x++) {
-                if (y < 0 || x < 0 || y > level.getHeight()-1 || x > level.getWidth()-1) {
+                if (y < 0 || x < 0 || y > level.getHeight() - 1 || x > level.getWidth() - 1) {
                     gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
                 } else {
                     if (level.getCell(new Position(x, y)) != null) {
@@ -95,7 +99,7 @@ public class LevelRenderer {
                         if (level.getCell(new Position(x, y)) instanceof TokenDoor) {
                             gc.setFill(Color.web("#ffffff"));
                             gc.setFont(Font.font("Segoe UI", 18));
-                            gc.fillText(Integer.toString(((TokenDoor) level.getCell(new Position(x, y))).getTokenCost()), drawX * SPRITE_WIDTH + (float) SPRITE_WIDTH/2, drawY * SPRITE_HEIGHT + (float) SPRITE_HEIGHT/2);
+                            gc.fillText(Integer.toString(((TokenDoor) level.getCell(new Position(x, y))).getTokenCost()), drawX * SPRITE_WIDTH + (float) SPRITE_WIDTH / 2, drawY * SPRITE_HEIGHT + (float) SPRITE_HEIGHT / 2);
                         }
                     } else {
                         gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);

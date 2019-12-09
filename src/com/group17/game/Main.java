@@ -11,10 +11,20 @@ import javafx.stage.Stage;
 
 /**
  * Launches the game javafx window. Entry point for the application.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */
 public class Main extends Application {
+    /**
+     * Auto generated method to launch javafx application.
+     *
+     * @param args launch arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         SceneController.setMain(primaryStage);
@@ -28,14 +38,6 @@ public class Main extends Application {
 
         SceneController.activate(new Scene(root, 800, 800));
         primaryStage.show();
-    }
-
-    /**
-     * Auto generated method to launch javafx application.
-     * @param args launch arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
     }
 
     /**

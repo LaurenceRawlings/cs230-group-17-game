@@ -5,6 +5,7 @@ import com.group17.game.core.ProfileManager;
 
 /**
  * Console app to run various code snippets for testing. Creates master profiles for testing.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */

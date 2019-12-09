@@ -1,46 +1,22 @@
 package com.group17.game.model.entity.item;
 
 import com.group17.game.controller.SceneController;
+
 import java.util.Objects;
 
 /**
  * Models key item.
+ *
  * @author Vlad Kashtelyanov
  */
 public class Key extends Item {
-    /**
-     * Enum for all the different key colours.
-     */
-    public enum KeyType{
-        red,
-        green,
-        blue;
-
-        /**
-         * Gets the corresponding label for the key colour.
-         * @return the colour string.
-         */
-        @Override
-        public String toString() {
-            switch (this) {
-                case red:
-                    return SceneController.getLanguageBundle().getString("colour_red");
-                case green:
-                    return SceneController.getLanguageBundle().getString("colour_green");
-                case blue:
-                    return SceneController.getLanguageBundle().getString("colour_blue");
-                default:
-                    return SceneController.getLanguageBundle().getString("item_key");
-            }
-        }
-    }
-
     private final KeyType keyType;
-    
-   /**
-    * This key method sets the sprite names according to their colour
-    * @param keyType
-    */
+
+    /**
+     * This key method sets the sprite names according to their colour
+     *
+     * @param keyType
+     */
     public Key(KeyType keyType) {
         super(keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key"), "missing_item");
         this.keyType = keyType;
@@ -61,10 +37,11 @@ public class Key extends Item {
 
     /**
      * Two instances of a key object are compared
+     *
      * @param o
      * @return true if the two instances have the same key type
      */
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -73,7 +50,7 @@ public class Key extends Item {
         Key key = (Key) o;
         return keyType == key.keyType;
     }
-    
+
     @Override
     public int hashCode() {
         return Objects.hash(super.hashCode(), keyType);
@@ -82,5 +59,33 @@ public class Key extends Item {
     @Override
     public String toString() {
         return keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key");
+    }
+
+    /**
+     * Enum for all the different key colours.
+     */
+    public enum KeyType {
+        red,
+        green,
+        blue;
+
+        /**
+         * Gets the corresponding label for the key colour.
+         *
+         * @return the colour string.
+         */
+        @Override
+        public String toString() {
+            switch (this) {
+                case red:
+                    return SceneController.getLanguageBundle().getString("colour_red");
+                case green:
+                    return SceneController.getLanguageBundle().getString("colour_green");
+                case blue:
+                    return SceneController.getLanguageBundle().getString("colour_blue");
+                default:
+                    return SceneController.getLanguageBundle().getString("item_key");
+            }
+        }
     }
 }

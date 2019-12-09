@@ -7,6 +7,7 @@ import com.group17.game.model.world.Level;
 
 /**
  * Models the dumb following enemy in the game.
+ *
  * @author Vlad Kashtelynov
  * @version 2.0
  */
@@ -15,16 +16,17 @@ public class DumbFollowingEnemy extends Enemy {
 
     /**
      * Create a new dumb enemy.
-     * @param position start position.
-     * @param direction starting direction.
-     * @param level reference to the parent level.
+     *
+     * @param position      start position.
+     * @param direction     starting direction.
+     * @param level         reference to the parent level.
      * @param initialTarget initial target i.e. the spawn of the player.
      */
     public DumbFollowingEnemy(Position position, Direction direction, Level level, Position initialTarget) {
         super(EnemyType.dumb, position, direction, level);
         moveDumb(new Player(initialTarget));
     }
-    
+
     @Override
     public void move(Player player) {
         move(nextDumbPosition);
@@ -39,7 +41,7 @@ public class DumbFollowingEnemy extends Enemy {
             if (!moveX(xDif)) {
                 moveY(yDif);
             }
-        } else{
+        } else {
             if (!moveY(yDif)) {
                 moveX(xDif);
             }
@@ -48,12 +50,12 @@ public class DumbFollowingEnemy extends Enemy {
 
     private boolean moveX(int xDif) {
         if (xDif > 0) {
-            if(super.canMove(Position.nextPosition(position, Direction.left))){
+            if (super.canMove(Position.nextPosition(position, Direction.left))) {
                 nextDumbPosition = Position.nextPosition(position, Direction.left);
                 return true;
             }
         } else if (xDif < 0) {
-            if(super.canMove(Position.nextPosition(position, Direction.right))){
+            if (super.canMove(Position.nextPosition(position, Direction.right))) {
                 nextDumbPosition = Position.nextPosition(position, Direction.right);
                 return true;
             }
@@ -63,12 +65,12 @@ public class DumbFollowingEnemy extends Enemy {
 
     private boolean moveY(int yDif) {
         if (yDif > 0) {
-            if(super.canMove(Position.nextPosition(position, Direction.up))){
+            if (super.canMove(Position.nextPosition(position, Direction.up))) {
                 nextDumbPosition = Position.nextPosition(position, Direction.up);
                 return true;
             }
         } else if (yDif < 0) {
-            if(super.canMove(Position.nextPosition(position, Direction.down))){
+            if (super.canMove(Position.nextPosition(position, Direction.down))) {
                 nextDumbPosition = Position.nextPosition(position, Direction.down);
                 return true;
             }

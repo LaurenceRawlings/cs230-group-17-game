@@ -17,11 +17,13 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.util.List;
 
 /**
  * Controller for the Leaderboard scene.
+ *
  * @author Tom Ling
  * @version 1.0
  */
@@ -70,7 +72,7 @@ public class LeaderboardController implements Controller {
         timer.play();
         ObservableList<String> levels = FXCollections.observableArrayList(LevelReader.getLevelNames());
         cmb_levels.setItems(levels);
-        podium = new Label[] {
+        podium = new Label[]{
                 lbl_first,
                 lbl_second,
                 lbl_third
@@ -82,7 +84,7 @@ public class LeaderboardController implements Controller {
         for (Label label : podium) {
             label.setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
         }
-        String level  = cmb_levels.getSelectionModel().getSelectedItem();
+        String level = cmb_levels.getSelectionModel().getSelectedItem();
         List<String> profiles = Leaderboard.getTopTimes(level, 3);
         int podiumPosition = 0;
         for (String profile : profiles) {
@@ -106,7 +108,8 @@ public class LeaderboardController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

@@ -4,6 +4,7 @@ import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.enemy.*;
 import com.group17.game.model.entity.item.*;
 import com.group17.game.model.world.*;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
@@ -34,6 +35,7 @@ import java.util.*;
 
 /**
  * Methods to parse txt level files and build level objects from the data.
+ *
  * @author Laurence Rawlings
  * @version 3.0
  */
@@ -86,9 +88,10 @@ public class LevelReader {
     private static List<Level> levelQueue;
 
     /**
-	 * Get the list of levels sorted by level number.
-	 * @return the queue of levels.
-	 */
+     * Get the list of levels sorted by level number.
+     *
+     * @return the queue of levels.
+     */
     public static List<Level> getLevelQueue() {
         readLevels();
         return levelQueue;
@@ -96,6 +99,7 @@ public class LevelReader {
 
     /**
      * Gets a lists of all the level names.
+     *
      * @return list of level names.
      */
     public static List<String> getLevelNames() {

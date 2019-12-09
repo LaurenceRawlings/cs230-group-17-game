@@ -4,6 +4,7 @@ import com.group17.game.controller.SceneController;
 
 /**
  * Models waterboots item.
+ *
  * @author Sam Murphy, Oscar Howard
  * @version 1.0
  */

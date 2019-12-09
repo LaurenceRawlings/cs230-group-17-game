@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 /**
  * Template for FXML controller classes.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */

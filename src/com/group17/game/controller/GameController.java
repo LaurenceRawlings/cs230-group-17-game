@@ -1,6 +1,9 @@
 package com.group17.game.controller;
 
-import com.group17.game.core.*;
+import com.group17.game.core.Game;
+import com.group17.game.core.Leaderboard;
+import com.group17.game.core.LevelRenderer;
+import com.group17.game.core.ProfileManager;
 import com.group17.game.model.entity.Direction;
 import com.group17.game.model.world.Level;
 import javafx.animation.KeyFrame;
@@ -18,10 +21,12 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
 import java.io.IOException;
 
 /**
  * Controller for the game scene. Handles user key input and checks if the game is won.
+ *
  * @author Laurence Rawlings
  * @version 2.0
  */
@@ -176,7 +181,8 @@ public class GameController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {
@@ -198,7 +204,6 @@ public class GameController implements Controller {
         btn_exit.setText(SceneController.getLanguageBundle().getString("game_saveAndReturn"));
         btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
         btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
-
 
 
         game = ProfileManager.getActiveProfile().getGame();

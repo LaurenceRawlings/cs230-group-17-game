@@ -4,6 +4,7 @@ import com.group17.game.model.entity.item.Key;
 
 /**
  * Models the blue door cell in the game.
+ *
  * @author Oscar Howard
  * @version 1.0
  */

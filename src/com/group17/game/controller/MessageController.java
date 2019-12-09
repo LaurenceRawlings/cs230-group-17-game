@@ -2,10 +2,12 @@ package com.group17.game.controller;
 
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextInputDialog;
+
 import java.util.Optional;
 
 /**
  * Collection of static methods to help show message and input dialogs.
+ *
  * @author Vlad Kashtelyanov
  * @version 1.0
  */

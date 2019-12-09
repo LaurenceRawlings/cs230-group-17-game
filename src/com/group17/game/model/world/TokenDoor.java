@@ -2,6 +2,7 @@ package com.group17.game.model.world;
 
 /**
  * Models the token door cell in the game.
+ *
  * @author Hadi Jalali
  * @version 1.0
  */

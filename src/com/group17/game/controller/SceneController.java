@@ -2,6 +2,7 @@ package com.group17.game.controller;
 
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -9,12 +10,11 @@ import java.util.ResourceBundle;
 
 /**
  * Controller to manage scene switching and language selection.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */
 public class SceneController {
-    private static Stage main;
-    private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("en"));
     private static final List<String> languages = new ArrayList<String>() {
         {
             add("EN");
@@ -24,6 +24,8 @@ public class SceneController {
             add("TR");
         }
     };
+    private static Stage main;
+    private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("en"));
 
     public static ResourceBundle getLanguageBundle() {
         return languageBundle;
@@ -39,6 +41,7 @@ public class SceneController {
 
     /**
      * Switches the scene of the current stage.
+     *
      * @param scene the scene to switch to.
      */
     public static void activate(Scene scene) {
@@ -47,6 +50,7 @@ public class SceneController {
 
     /**
      * Loads in the language bundle for the specified language.
+     *
      * @param language the language code of the locale to be loaded.
      */
     static void loadLanguage(String language) {

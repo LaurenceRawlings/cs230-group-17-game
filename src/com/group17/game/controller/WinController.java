@@ -11,11 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.util.List;
 
 /**
  * Controller for the Game Win scene.
+ *
  * @author Tom Ling
  * @version 1.0
  */
@@ -75,7 +77,8 @@ public class WinController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

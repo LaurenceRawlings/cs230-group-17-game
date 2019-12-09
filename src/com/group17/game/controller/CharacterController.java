@@ -13,10 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 
 /**
  * Controller for Character Selection scene.
+ *
  * @author Sam Murphy
  * @version 1.0
  */
@@ -62,7 +64,8 @@ public class CharacterController implements Controller {
         back();
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

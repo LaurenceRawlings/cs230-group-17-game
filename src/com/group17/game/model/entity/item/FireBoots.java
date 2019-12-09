@@ -4,6 +4,7 @@ import com.group17.game.controller.SceneController;
 
 /**
  * Models fireboots item.
+ *
  * @author Sam Murphy, Alex Hughes
  * @version 1.0
  */

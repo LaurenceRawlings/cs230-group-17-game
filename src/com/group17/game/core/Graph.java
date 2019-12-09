@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 /**
  * Models the graph structure of a level. Contains methods to generate paths for smart enemies.
+ *
  * @author Vlad Kashtelyanov
  * @version 2.0
  */
@@ -19,10 +20,11 @@ public class Graph implements Serializable {
     public Graph() {
         adjMap = new HashMap<>();
     }
-    
+
     /**
      * Creates an edge on the graph.
-     * @param source edge start node.
+     *
+     * @param source      edge start node.
      * @param destination edge end node.
      */
     public void addEdge(Node source, Node destination) {
@@ -37,29 +39,31 @@ public class Graph implements Serializable {
         addEdgeHelper(source, destination);
         addEdgeHelper(destination, source);
     }
-    
+
     /**
      * Find the shortest path between two points on the graph.
+     *
      * @param start path start point.
-     * @param goal path end point.
+     * @param goal  path end point.
      */
-    public LinkedList<Node> findShortestPath(Node start, Node goal){
-        if (start != null){
+    public LinkedList<Node> findShortestPath(Node start, Node goal) {
+        if (start != null) {
             findShortestPathRecursive(start, goal);
             if (pathList.getLast().n != start.n) {
                 return null;
             } else {
                 return pathList;
             }
-        } else{
+        } else {
             return null;
         }
     }
-    
+
     /**
-    * Breadth first search algorithm that searches for a specified node.
-    * @param node node to be searched for.
-    */
+     * Breadth first search algorithm that searches for a specified node.
+     *
+     * @param node node to be searched for.
+     */
     public void breadthFirstSearch(Node node) {
         if (node == null)
             return;
@@ -94,16 +98,15 @@ public class Graph implements Serializable {
 
         if (tmp != null) {
             tmp.remove(b);
-        }
-        else tmp = new LinkedList<>();
+        } else tmp = new LinkedList<>();
         tmp.add(b);
-        adjMap.put(a,tmp);
+        adjMap.put(a, tmp);
     }
 
     private void findShortestPathRecursive(Node start, Node goal) {
-        if (start != null){
+        if (start != null) {
             pathList.add(goal);
-            while (!goal.prevVisited && !goal.n.equals(start.n)){
+            while (!goal.prevVisited && !goal.n.equals(start.n)) {
                 goal.prevVisited = true;
                 if (goal.prev != null) {
                     findShortestPathRecursive(start, goal.prev);

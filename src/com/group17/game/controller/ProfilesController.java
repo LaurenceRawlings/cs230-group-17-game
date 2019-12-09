@@ -12,10 +12,12 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 
 /**
  * Controller for the Profile Selection scene.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */
@@ -61,8 +63,7 @@ public class ProfilesController implements Controller {
             enter();
         } else if (ProfileManager.getActiveProfile() != null) {
             enter();
-        }
-        else {
+        } else {
             MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
         }
     }
@@ -102,7 +103,8 @@ public class ProfilesController implements Controller {
         onLoad();
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

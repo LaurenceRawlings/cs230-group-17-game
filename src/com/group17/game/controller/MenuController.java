@@ -15,10 +15,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
+
 import java.io.IOException;
 
 /**
  * Controller for the Main Menu scene.
+ *
  * @author Laurence Rawlings
  * @version 2.0
  */
@@ -153,7 +155,8 @@ public class MenuController implements Controller {
         }
     }
 
-    @FXML @Override
+    @FXML
+    @Override
     public void setLanguage() {
         String language = cmb_language.getSelectionModel().getSelectedItem();
         if (language != null) {

@@ -1,6 +1,7 @@
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Player;
+
 import java.io.*;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -12,6 +13,7 @@ import java.util.List;
 
 /**
  * Methods to manage profiles. Serialise profiles to save and load them.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */
@@ -25,12 +27,12 @@ public class ProfileManager {
         return character;
     }
 
-    public static Profile getActiveProfile() {
-        return activeProfile;
-    }
-
     public static void setCharacter(Player.Skin character) {
         ProfileManager.character = character;
+    }
+
+    public static Profile getActiveProfile() {
+        return activeProfile;
     }
 
     public static void setActiveProfile(Profile activeProfile) {
@@ -39,9 +41,10 @@ public class ProfileManager {
 
     /**
      * Loads a profile of the specified name from the file system.
-	 * @param name the name of the profile to be loaded.
-	 * @return De-serialized profile object.
-	 */
+     *
+     * @param name the name of the profile to be loaded.
+     * @return De-serialized profile object.
+     */
     public static Profile load(String name) {
         if (exists(name)) {
             Profile profile = null;
@@ -53,10 +56,10 @@ public class ProfileManager {
 
                 serial.close();
                 file.close();
-            } catch(IOException e) {
+            } catch (IOException e) {
                 System.out.println("Save file not Found!");
                 e.printStackTrace();
-            } catch(ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 
@@ -67,9 +70,10 @@ public class ProfileManager {
     }
 
     /**
-	 * Save a profile. Serialise the passed profile object and save it to the file system.
-	 * @param profile the profile to be saved.
-	 */
+     * Save a profile. Serialise the passed profile object and save it to the file system.
+     *
+     * @param profile the profile to be saved.
+     */
     public static void save(Profile profile) {
         try {
             FileOutputStream file = new FileOutputStream(PROFILE_DIR + "/" + profile.toString() + "." + PROFILE_FILE_EXTENSION);
@@ -86,6 +90,7 @@ public class ProfileManager {
 
     /**
      * Check if a profile exists.
+     *
      * @param name name of the profile to check.
      * @return true iff the profile exists.
      */
@@ -94,32 +99,34 @@ public class ProfileManager {
     }
 
     /**
-	 * Deletes the specified profile.
-	 * @param name name of the profile to delete.
-	 */
+     * Deletes the specified profile.
+     *
+     * @param name name of the profile to delete.
+     */
     public static void delete(String name) throws Exception {
         if (exists(name)) {
             try {
                 Files.deleteIfExists(Paths.get(PROFILE_DIR + "/" + name + "." + PROFILE_FILE_EXTENSION));
-            } catch(NoSuchFileException e) {
+            } catch (NoSuchFileException e) {
                 e.printStackTrace();
                 System.out.println("No such file/directory exists");
-            } catch(DirectoryNotEmptyException e) {
+            } catch (DirectoryNotEmptyException e) {
                 e.printStackTrace();
                 System.out.println("Directory is not empty.");
-            } catch(IOException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
                 System.out.println("Invalid permissions.");
             }
-        } else{
+        } else {
             throw new Exception("Profile not found!");
         }
     }
 
     /**
-	 * Get a list of the profile names on the file system.
-	 * @return list of profile names.
-	 */
+     * Get a list of the profile names on the file system.
+     *
+     * @return list of profile names.
+     */
     public static List<String> getProfileNames() {
         File profileDirectory = new File(PROFILE_DIR);
         File[] saveFiles = profileDirectory.listFiles();
@@ -131,7 +138,7 @@ public class ProfileManager {
                     String[] savePath = save.getAbsolutePath().split("\\.");
                     if (savePath[savePath.length - 1].equals(PROFILE_FILE_EXTENSION) && save.isFile()) {
                         String[] name = save.getName().split("\\.");
-                        profiles.add(String.join(".", Arrays.copyOf(name, name.length-1)));
+                        profiles.add(String.join(".", Arrays.copyOf(name, name.length - 1)));
                     }
                 }
             }
@@ -144,6 +151,7 @@ public class ProfileManager {
 
     /**
      * Get list of rofile names that have completed the specified level.
+     *
      * @param levelName level to have been completed.
      * @return the list of profiles names that have completed the level.
      */

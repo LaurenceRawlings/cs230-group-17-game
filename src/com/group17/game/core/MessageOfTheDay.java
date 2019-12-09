@@ -8,14 +8,16 @@ import java.net.URL;
 
 /**
  * Methods to retrieve the message of the day from the web server.
+ *
  * @author Laurence Rawlings
  * @version 1.0
  */
 public class MessageOfTheDay {
     /**
-	 * Get the message of the day from the URL.
-	 * @return the message
-	 */
+     * Get the message of the day from the URL.
+     *
+     * @return the message
+     */
     public static String get() {
         String solution = solve(httpGet("http://cswebcat.swan.ac.uk/puzzle"));
         return httpGet("http://cswebcat.swan.ac.uk/message?solution=" + solution);
@@ -31,13 +33,13 @@ public class MessageOfTheDay {
                 if (current == 'Z') {
                     solution.append('A');
                 } else {
-                    solution.append((char)(((int)current)+1));
+                    solution.append((char) (((int) current) + 1));
                 }
             } else {
                 if (current == 'A') {
                     solution.append('Z');
                 } else {
-                    solution.append((char)(((int)current)-1));
+                    solution.append((char) (((int) current) - 1));
                 }
             }
             shiftDirection = !shiftDirection;

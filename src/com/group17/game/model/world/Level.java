@@ -4,19 +4,20 @@ import com.group17.game.core.Position;
 import com.group17.game.model.entity.Player;
 import com.group17.game.model.entity.enemy.Enemy;
 import com.group17.game.model.entity.item.Item;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Models a level in the game. Track the positions of all cells, items and enemies.
+ *
  * @author Laurence Rawlings
  * @version 3.0
  */
 public class Level implements Comparable<Level>, Serializable, Cloneable {
     private final Cell[][] cells;
     private final Item[][] items;
-    private Enemy.EnemyType[][] enemyPositions;
     private final List<Enemy> enemies;
     private final int levelNumber;
     private final String levelName;
@@ -24,39 +25,13 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
     private final Position finish;
     private final int width;
     private final int height;
+    private Enemy.EnemyType[][] enemyPositions;
     private int time;
-
-    public int getTime() {
-        return time;
-    }
-
-    public Position getStart() {
-        return start;
-    }
-
-    public Position getFinish() {
-        return finish;
-    }
-    
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    private int getLevelNumber() {
-        return levelNumber;
-    }
-
-    public void setTime(int time) {
-        this.time = time;
-    }
 
     /**
      * Method sets multiple aspects of the level including height and width
      * of cells, items and enemy positions
+     *
      * @param start
      * @param finish
      * @param levelNumber
@@ -78,6 +53,34 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
         enemies = new ArrayList<>();
     }
 
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
+
+    public Position getStart() {
+        return start;
+    }
+
+    public Position getFinish() {
+        return finish;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    private int getLevelNumber() {
+        return levelNumber;
+    }
+
     @Override
     public String toString() {
         return levelName;
@@ -87,9 +90,10 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
     public int compareTo(Level level) {
         return Integer.compare(levelNumber, level.getLevelNumber());
     }
-    
+
     /**
      * Get the cell at the specified position.
+     *
      * @param position position of the cell.
      * @return cell at the position.
      */
@@ -99,6 +103,7 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
 
     /**
      * Get the item at the specified position.
+     *
      * @param position position of the item.
      * @return item at the position.
      */
@@ -108,8 +113,9 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
 
     /**
      * Set the cell at the specified position.
+     *
      * @param position position to set.
-     * @param cell the cell.
+     * @param cell     the cell.
      */
     public void setCell(Position position, Cell cell) {
         cells[position.y()][position.x()] = cell;
@@ -117,15 +123,17 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
 
     /**
      * Set the item at the specified position.
+     *
      * @param position position to set.
-     * @param item the item.
+     * @param item     the item.
      */
     public void setItem(Position position, Item item) {
         items[position.y()][position.x()] = item;
     }
-    
+
     /**
      * Adds an enemy to the level.
+     *
      * @param enemy the enemy instance.
      */
     public void addEnemy(Enemy enemy) {
@@ -141,9 +149,10 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
             enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = enemy.getEnemyType();
         }
     }
-    
+
     /**
      * Calls the move method on each enemy in the enemy list.
+     *
      * @param player reference to the player to act as target for the enemies.
      */
     public void moveEnemies(Player player) {
@@ -152,13 +161,14 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
             updateEnemyPositions();
         }
     }
-    
+
     /**
      * MGet the type of enemy at the specified position.
+     *
      * @param position the position to check
      * @return the enemy type of the enemy at the position. Return null if no enemy present at the position.
      */
-    public Enemy.EnemyType getEnemy(Position position){
+    public Enemy.EnemyType getEnemy(Position position) {
         return enemyPositions[position.y()][position.x()];
     }
 }
