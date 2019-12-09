@@ -1,19 +1,15 @@
-/**
- * This class reads in the txt level files and maps out objects accordingly.
- * @author
- */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.enemy.*;
 import com.group17.game.model.entity.item.*;
 import com.group17.game.model.world.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
 //File Layout
+//This is how to formal level files.
 /*
 
 <Level File>                    //Level File Declarator
@@ -36,6 +32,11 @@ import java.util.*;
 
 */
 
+/**
+ * Methods to parse txt level files and build level objects from the data.
+ * @author Laurence Rawlings
+ * @version 3.0
+ */
 public class LevelReader {
     private static final String LEVEL_DIR = "./src/com/group17/game/resources/levels";
     private static final String LEVEL_FILE_DECLARATOR = "<Level File>";
@@ -83,15 +84,26 @@ public class LevelReader {
     }});
 
     private static List<Level> levelQueue;
-    
+
     /**
-	 * Method to get the levels in the form of a queue
-	 * @return levelQueue
+	 * Get the list of levels sorted by level number.
+	 * @return the queue of levels.
 	 */
-    
     public static List<Level> getLevelQueue() {
         readLevels();
         return levelQueue;
+    }
+
+    /**
+     * Gets a lists of all the level names.
+     * @return list of level names.
+     */
+    public static List<String> getLevelNames() {
+        List<String> levelNames = new ArrayList<>();
+        for (Level level : getLevelQueue()) {
+            levelNames.add(level.toString());
+        }
+        return levelNames;
     }
 
     private static void readLevels() {
@@ -231,18 +243,5 @@ public class LevelReader {
             e.printStackTrace();
             return null;
         }
-    }
-    
-    /**
-	 * Method gets the names of the levels in the form of a string being added to an array
-	 * @return levelNames
-	 */
-
-    public static List<String> getLevelNames() {
-        List<String> levelNames = new ArrayList<>();
-        for (Level level : getLevelQueue()) {
-            levelNames.add(level.toString());
-        }
-        return levelNames;
     }
 }
