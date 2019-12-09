@@ -1,11 +1,6 @@
-/**
- * The purpose of this class is to manage in game profiles allowing profiles to be saved.
- * @author
- */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Player;
-
 import java.io.*;
 import java.nio.file.DirectoryNotEmptyException;
 import java.nio.file.Files;
@@ -15,56 +10,38 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Methods to manage profiles. Serialise profiles to save and load them.
+ * @author Laurence Rawlings
+ * @version 1.0
+ */
 public class ProfileManager {
     private static final String PROFILE_DIR = "./src/com/group17/game/resources/profiles";
     private static final String PROFILE_FILE_EXTENSION = "save";
-
     private static Profile activeProfile;
     private static Player.Skin character = Player.Skin.man;
-    
-    /**
-	 * Method to get the character
-	 * @return character
-	 */
 
     public static Player.Skin getCharacter() {
         return character;
     }
-    
-    /**
-	 * Method to set the character
-	 * @param character
-	 */
-
-    public static void setCharacter(Player.Skin character) {
-        ProfileManager.character = character;
-    }
-    
-    /**
-	 * Method to get any profiles still active
-	 * @return activeProfile
-	 */
 
     public static Profile getActiveProfile() {
         return activeProfile;
     }
-    
-    /**
-	 * Method to set any active profile
-	 * @param activeProfile
-	 */
+
+    public static void setCharacter(Player.Skin character) {
+        ProfileManager.character = character;
+    }
 
     public static void setActiveProfile(Profile activeProfile) {
         ProfileManager.activeProfile = activeProfile;
     }
-    
-    /**
-	 * Method to load a profile if the parameter exists. If a profile cannot be found a
-	 * message is displayed
-	 * @param name
-	 * @return profile
-	 */
 
+    /**
+     * Loads a profile of the specified name from the file system.
+	 * @param name the name of the profile to be loaded.
+	 * @return De-serialized profile object.
+	 */
     public static Profile load(String name) {
         if (exists(name)) {
             Profile profile = null;
@@ -88,12 +65,11 @@ public class ProfileManager {
             return null;
         }
     }
-    
-    /**
-	 * Method to save a profile
-	 * @param profile
-	 */
 
+    /**
+	 * Save a profile. Serialise the passed profile object and save it to the file system.
+	 * @param profile the profile to be saved.
+	 */
     public static void save(Profile profile) {
         try {
             FileOutputStream file = new FileOutputStream(PROFILE_DIR + "/" + profile.toString() + "." + PROFILE_FILE_EXTENSION);
@@ -108,15 +84,19 @@ public class ProfileManager {
         }
     }
 
+    /**
+     * Check if a profile exists.
+     * @param name name of the profile to check.
+     * @return true iff the profile exists.
+     */
     public static boolean exists(String name) {
         return getProfileNames().contains(name);
     }
-    
+
     /**
-	 * Method to delete a profile. Will check for the profiles existence and delete will it
-	 * @param name
+	 * Deletes the specified profile.
+	 * @param name name of the profile to delete.
 	 */
-    
     public static void delete(String name) throws Exception {
         if (exists(name)) {
             try {
@@ -135,12 +115,11 @@ public class ProfileManager {
             throw new Exception("Profile not found!");
         }
     }
-    
-    /**
-	 * Method to get names of the profiles.
-	 * @return profiles
-	 */
 
+    /**
+	 * Get a list of the profile names on the file system.
+	 * @return list of profile names.
+	 */
     public static List<String> getProfileNames() {
         File profileDirectory = new File(PROFILE_DIR);
         File[] saveFiles = profileDirectory.listFiles();
@@ -163,20 +142,12 @@ public class ProfileManager {
         return profiles;
     }
 
-    private static List<Profile> getProfiles() {
-        List<Profile> profiles = new ArrayList<>();
-        for (String name : getProfileNames()) {
-            profiles.add(load(name));
-        }
-        return profiles;
-    }
-
     /**
-	 * Method to get the profiles
-	 * @param levelName
-	 */
-    
-    public static List<Profile> getProfiles(String levelName) {
+     * Get list of rofile names that have completed the specified level.
+     * @param levelName level to have been completed.
+     * @return the list of profiles names that have completed the level.
+     */
+    static List<Profile> getProfiles(String levelName) {
         List<Profile> profiles = getProfiles();
         List<Profile> returnProfiles = new ArrayList<>();
 
@@ -186,5 +157,13 @@ public class ProfileManager {
             }
         }
         return returnProfiles;
+    }
+
+    private static List<Profile> getProfiles() {
+        List<Profile> profiles = new ArrayList<>();
+        for (String name : getProfileNames()) {
+            profiles.add(load(name));
+        }
+        return profiles;
     }
 }
