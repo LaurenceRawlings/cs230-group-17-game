@@ -1,8 +1,3 @@
-/**
- * Class defines the leader board. This class contains the methods required
- * to order profiles in accordance to the level reached and amount of time for completion.
- * @author
- */
 package com.group17.game.core;
 
 import java.util.ArrayList;
@@ -10,22 +5,23 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Helper methods to calculate the leaderboards for levels using the profiles completion times.
+ * @author Hadi Jalali
+ * @version 1.0
+ */
 public class Leaderboard {
     private static String compareLevel;
-    
-   /**
-    * Method to get the level to be compared.
-    * @return compareLevel
-    */
-    public static String getCompareLevel() {
+
+    static String getCompareLevel() {
         return compareLevel;
     }
     
     /**
-	 * Method to get all of the top times.
-	 * @param levelName
-	 * @param amount
-	 * @return topProfiles
+	 * Get top x times for the specified level, where x is the amount to be returned.
+	 * @param levelName level to check.
+	 * @param amount amount of top times to return.
+	 * @return list of profile names in order of best time.
 	 */
     public static List<String> getTopTimes(String levelName, int amount) {
         compareLevel = levelName;
@@ -44,9 +40,9 @@ public class Leaderboard {
     }
     
     /**
-	 * Method to get the time calculated based off of time in seconds.
-	 * @param seconds
-	 * @return days, hours, minutes, seconds depending on the parameter amount
+	 * Formats and returns a string when given a time integer in seconds.
+	 * @param seconds integer to be formatted.
+	 * @return days, hours, minutes, seconds in string format.
 	 */
     public static String formatTime(int seconds) {
         int minutes = seconds / 60;
@@ -67,10 +63,10 @@ public class Leaderboard {
     }
     
     /**
-	 * Method to get the level name, profile name and time taken to complete the attempt
-	 * @param profileName
-	 * @param levelName
-	 * @return levelName and profileName that are not null
+	 * Gets the time taken by a specified profile for the specified level.
+	 * @param profileName profile to read.
+	 * @param levelName level to check.
+	 * @return integer time taken by the profile to complete the level in seconds.
 	 */
     public static int getProfileTime(String profileName, String levelName) {
         return Objects.requireNonNull(ProfileManager.load(profileName)).getLevelTime(levelName);

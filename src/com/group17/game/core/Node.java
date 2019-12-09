@@ -38,7 +38,7 @@ public class Node extends Graph implements Serializable {
     boolean isVisited() {
         return this.visited;
     }
-    
+
     @Override
     public String toString(){
         return "Node (" + n.x() + " " + n.y() + ")";
