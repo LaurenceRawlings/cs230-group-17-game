@@ -24,6 +24,10 @@ public class ProfileManager {
     private static Profile activeProfile;
     private static Player.Skin character = Player.Skin.man;
 
+    public static String getProfileDir() {
+        return PROFILE_DIR;
+    }
+
     public static Player.Skin getCharacter() {
         return character;
     }

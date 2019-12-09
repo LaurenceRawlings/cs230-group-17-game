@@ -9,6 +9,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 /**
  * Launches the game javafx window. Entry point for the application.
  *
@@ -22,6 +24,10 @@ public class Main extends Application {
      * @param args launch arguments
      */
     public static void main(String[] args) {
+        File profilesDirectory = new File(ProfileManager.getProfileDir());
+        if (!profilesDirectory.exists()){
+            profilesDirectory.mkdir();
+        }
         launch(args);
     }
 
