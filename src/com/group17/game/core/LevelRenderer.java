@@ -20,15 +20,15 @@ public class LevelRenderer {
     private static final String SPRITE_DIR =
             "com/group17/game/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
-    private static int SPRITE_WIDTH = 100;
-    private static int SPRITE_HEIGHT = 100;
+    private static int spriteWidth = 100;
+    private static int spriteHeight = 100;
 
     private static void setSpriteWidth(int spriteWidth) {
-        SPRITE_WIDTH = spriteWidth;
+        LevelRenderer.spriteWidth = spriteWidth;
     }
 
     private static void setSpriteHeight(int spriteHeight) {
-        SPRITE_HEIGHT = spriteHeight;
+        LevelRenderer.spriteHeight = spriteHeight;
     }
 
     /**
@@ -41,12 +41,12 @@ public class LevelRenderer {
         try {
             return new Image(
                     SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION,
-                    SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+                    spriteWidth, spriteHeight, false, true);
         } catch (IllegalArgumentException e) {
             try {
                 return new Image(
                         SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION,
-                        SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+                        spriteWidth, spriteHeight, false, true);
             } catch (IllegalArgumentException e2) {
                 e2.printStackTrace();
             }
@@ -71,7 +71,7 @@ public class LevelRenderer {
             try {
                 return new Image(
                         SPRITE_DIR + "/missing." + SPRITE_FILE_EXTENSION,
-                        SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
+                        spriteWidth, spriteHeight, false, true);
             } catch (IllegalArgumentException e2) {
                 e2.printStackTrace();
             }
@@ -106,38 +106,39 @@ public class LevelRenderer {
                  x <= playerPosition.x() + fov; x++) {
                 if (y < 0 || x < 0 || y > level.getHeight() - 1 ||
                         x > level.getWidth() - 1) {
-                    gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH,
-                            drawY * SPRITE_HEIGHT);
+                    gc.drawImage(getSprite("null"), drawX * spriteWidth,
+                            drawY * spriteHeight);
                 } else {
                     if (level.getCell(new Position(x, y)) != null) {
                         gc.drawImage(getSprite(level.getCell(new Position(x, y))
-                                        .getSpriteName()), drawX * SPRITE_WIDTH,
-                                drawY * SPRITE_HEIGHT);
+                                        .getSpriteName()), drawX * spriteWidth,
+                                drawY * spriteHeight);
                         if (level.getCell(
                                 new Position(x, y)) instanceof TokenDoor) {
                             gc.setFill(Color.web("#ffffff"));
                             gc.setFont(Font.font("Segoe UI", 18));
                             gc.fillText(Integer.toString(((TokenDoor) level
                                             .getCell(new Position(x, y)))
-                                            .getTokenCost()), drawX * SPRITE_WIDTH +
-                                            (float) SPRITE_WIDTH / 2,
-                                    drawY * SPRITE_HEIGHT +
-                                            (float) SPRITE_HEIGHT / 2);
+                                            .getTokenCost()), drawX *
+                                            spriteWidth +
+                                            (float) spriteWidth / 2,
+                                    drawY * spriteHeight +
+                                            (float) spriteHeight / 2);
                         }
                     } else {
-                        gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH,
-                                drawY * SPRITE_HEIGHT);
+                        gc.drawImage(getSprite("null"), drawX * spriteWidth,
+                                drawY * spriteHeight);
                     }
                     if (level.getItem(new Position(x, y)) != null) {
                         gc.drawImage(getSprite(level.getItem(new Position(x, y))
-                                        .getSpriteName()), drawX * SPRITE_WIDTH,
-                                drawY * SPRITE_HEIGHT);
+                                        .getSpriteName()), drawX * spriteWidth,
+                                drawY * spriteHeight);
                     }
                     if (level.getEnemy(new Position(x, y)) != null) {
                         gc.drawImage(getSprite(
                                 level.getEnemy(new Position(x, y))
-                                        .getSpriteName()), drawX * SPRITE_WIDTH,
-                                drawY * SPRITE_HEIGHT);
+                                        .getSpriteName()), drawX * spriteWidth,
+                                drawY * spriteHeight);
                     }
                 }
                 drawX++;
@@ -145,8 +146,8 @@ public class LevelRenderer {
             drawX = 0;
             drawY++;
         }
-        gc.drawImage(getSprite(player.getSpriteName()), fov * SPRITE_WIDTH,
-                fov * SPRITE_HEIGHT);
+        gc.drawImage(getSprite(player.getSpriteName()), fov * spriteWidth,
+                fov * spriteHeight);
         gc.drawImage(getSprite("overlay", (int) canvas.getWidth(),
                 (int) canvas.getHeight()), 0, 0);
     }
