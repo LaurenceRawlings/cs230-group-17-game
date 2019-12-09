@@ -22,7 +22,8 @@ public class DumbFollowingEnemy extends Enemy {
      * @param level         reference to the parent level.
      * @param initialTarget initial target i.e. the spawn of the player.
      */
-    public DumbFollowingEnemy(Position position, Direction direction, Level level, Position initialTarget) {
+    public DumbFollowingEnemy(Position position, Direction direction,
+                              Level level, Position initialTarget) {
         super(EnemyType.dumb, position, direction, level);
         moveDumb(new Player(initialTarget));
     }
@@ -50,13 +51,17 @@ public class DumbFollowingEnemy extends Enemy {
 
     private boolean moveX(int xDif) {
         if (xDif > 0) {
-            if (super.canMove(Position.nextPosition(position, Direction.left))) {
-                nextDumbPosition = Position.nextPosition(position, Direction.left);
+            if (super
+                    .canMove(Position.nextPosition(position, Direction.left))) {
+                nextDumbPosition =
+                        Position.nextPosition(position, Direction.left);
                 return true;
             }
         } else if (xDif < 0) {
-            if (super.canMove(Position.nextPosition(position, Direction.right))) {
-                nextDumbPosition = Position.nextPosition(position, Direction.right);
+            if (super.canMove(
+                    Position.nextPosition(position, Direction.right))) {
+                nextDumbPosition =
+                        Position.nextPosition(position, Direction.right);
                 return true;
             }
         }
@@ -66,12 +71,15 @@ public class DumbFollowingEnemy extends Enemy {
     private boolean moveY(int yDif) {
         if (yDif > 0) {
             if (super.canMove(Position.nextPosition(position, Direction.up))) {
-                nextDumbPosition = Position.nextPosition(position, Direction.up);
+                nextDumbPosition =
+                        Position.nextPosition(position, Direction.up);
                 return true;
             }
         } else if (yDif < 0) {
-            if (super.canMove(Position.nextPosition(position, Direction.down))) {
-                nextDumbPosition = Position.nextPosition(position, Direction.down);
+            if (super
+                    .canMove(Position.nextPosition(position, Direction.down))) {
+                nextDumbPosition =
+                        Position.nextPosition(position, Direction.down);
                 return true;
             }
         }

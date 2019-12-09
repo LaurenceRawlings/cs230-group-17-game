@@ -11,6 +11,8 @@ public class TokenDoor extends Cell {
 
     /**
      * Constructor to create a new instance.
+     *
+     * @param tokenCost cost in tokens to open the door.
      */
     public TokenDoor(int tokenCost) {
         super(false, "door_token");

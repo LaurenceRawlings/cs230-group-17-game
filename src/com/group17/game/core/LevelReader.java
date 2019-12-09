@@ -40,7 +40,8 @@ import java.util.*;
  * @version 3.0
  */
 public class LevelReader {
-    private static final String LEVEL_DIR = "./src/com/group17/game/resources/levels";
+    private static final String LEVEL_DIR =
+            "./src/com/group17/game/resources/levels";
     private static final String LEVEL_FILE_DECLARATOR = "<Level File>";
     private static final String LEVEL_FILE_EXTENSION = "txt";
 
@@ -52,38 +53,42 @@ public class LevelReader {
     private static final int LEVEL_ITEMS = 5;
     private static final int LEVEL_GRID = 6;
 
-    private static final Map cellMap = Collections.unmodifiableMap(new HashMap() {{
-        put('#', new Wall());
-        put(' ', new Ground());
-        put("water", new Water());
-        put("fire", new Fire());
-        put('R', new RedDoor());
-        put('G', new GreenDoor());
-        put('B', new BlueDoor());
-    }});
+    private static final Map cellMap =
+            Collections.unmodifiableMap(new HashMap() {{
+                put('#', new Wall());
+                put(' ', new Ground());
+                put("water", new Water());
+                put("fire", new Fire());
+                put('R', new RedDoor());
+                put('G', new GreenDoor());
+                put('B', new BlueDoor());
+            }});
 
-    private static final Map itemMap = Collections.unmodifiableMap(new HashMap() {{
-        put('@', new Token());
-        put("fire boots", new FireBoots());
-        put("water boots", new WaterBoots());
-        put('r', new Key(Key.KeyType.red));
-        put('g', new Key(Key.KeyType.green));
-        put('b', new Key(Key.KeyType.blue));
-    }});
+    private static final Map itemMap =
+            Collections.unmodifiableMap(new HashMap() {{
+                put('@', new Token());
+                put("fire boots", new FireBoots());
+                put("water boots", new WaterBoots());
+                put('r', new Key(Key.KeyType.red));
+                put('g', new Key(Key.KeyType.green));
+                put('b', new Key(Key.KeyType.blue));
+            }});
 
-    private static final Map enemyMap = Collections.unmodifiableMap(new HashMap() {{
-        put("smart", Enemy.EnemyType.smart);
-        put("dumb", Enemy.EnemyType.dumb);
-        put("wall", Enemy.EnemyType.wall);
-        put("line", Enemy.EnemyType.line);
-    }});
+    private static final Map enemyMap =
+            Collections.unmodifiableMap(new HashMap() {{
+                put("smart", Enemy.EnemyType.smart);
+                put("dumb", Enemy.EnemyType.dumb);
+                put("wall", Enemy.EnemyType.wall);
+                put("line", Enemy.EnemyType.line);
+            }});
 
-    private static final Map directionMap = Collections.unmodifiableMap(new HashMap() {{
-        put("up", Direction.up);
-        put("down", Direction.down);
-        put("left", Direction.left);
-        put("right", Direction.right);
-    }});
+    private static final Map directionMap =
+            Collections.unmodifiableMap(new HashMap() {{
+                put("up", Direction.up);
+                put("down", Direction.down);
+                put("left", Direction.left);
+                put("right", Direction.right);
+            }});
 
     private static List<Level> levelQueue;
 
@@ -119,15 +124,18 @@ public class LevelReader {
             if (levelFiles != null) {
                 for (File level : levelFiles) {
                     String[] levelPath = level.getAbsolutePath().split("\\.");
-                    if (levelPath[levelPath.length - 1].equals(LEVEL_FILE_EXTENSION) && level.isFile()) {
+                    if (levelPath[levelPath.length - 1]
+                            .equals(LEVEL_FILE_EXTENSION) && level.isFile()) {
                         Scanner scanner = new Scanner(level);
                         if (scanner.hasNextLine()) {
-                            if (scanner.nextLine().equals(LEVEL_FILE_DECLARATOR)) {
+                            if (scanner.nextLine()
+                                    .equals(LEVEL_FILE_DECLARATOR)) {
                                 List<String> levelData = new ArrayList<>();
                                 while (scanner.hasNextLine()) {
                                     levelData.add(scanner.nextLine());
                                 }
-                                levels.add(buildLevel(levelData.toArray(new String[0])));
+                                levels.add(buildLevel(
+                                        levelData.toArray(new String[0])));
                             }
                         }
                         scanner.close();
@@ -156,15 +164,18 @@ public class LevelReader {
             String[] obstacles = levelData[LEVEL_OBSTACLES].split(";");
             String[] items = levelData[LEVEL_ITEMS].split(";");
 
-            Level newLevel = new Level(new Position(Integer.parseInt(start[0]), Integer.parseInt(start[1])),
-                    new Position(Integer.parseInt(finish[0]), Integer.parseInt(finish[1])),
+            Level newLevel = new Level(new Position(Integer.parseInt(start[0]),
+                    Integer.parseInt(start[1])),
+                    new Position(Integer.parseInt(finish[0]),
+                            Integer.parseInt(finish[1])),
                     Integer.parseInt(details[0]),
                     details[1],
                     Integer.parseInt(dimensions[0]),
                     Integer.parseInt(dimensions[1]));
 
             int yOffset = LEVEL_GRID;
-            for (int y = yOffset; y < Integer.parseInt(dimensions[1]) + yOffset; y++) {
+            for (int y = yOffset;
+                 y < Integer.parseInt(dimensions[1]) + yOffset; y++) {
                 for (int x = 0; x < levelData[y].length(); x++) {
                     char current = levelData[y].charAt(x);
                     Position position = new Position(x, y - yOffset);
@@ -174,7 +185,8 @@ public class LevelReader {
                         newLevel.setItem(position, (Item) itemMap.get(current));
                         newLevel.setCell(position, (Cell) cellMap.get(' '));
                     } else if (Character.isDigit(current)) {
-                        newLevel.setCell(position, new TokenDoor(Integer.parseInt(Character.toString(current))));
+                        newLevel.setCell(position, new TokenDoor(
+                                Integer.parseInt(Character.toString(current))));
                     } else {
                         newLevel.setCell(position, (Cell) cellMap.get(' '));
                     }
@@ -184,11 +196,15 @@ public class LevelReader {
             if (!teleporters[0].equals("")) {
                 for (String teleporter : teleporters) {
                     String[] teleporterDetails = teleporter.split(",");
-                    Teleporter t = new Teleporter(new Position(Integer.parseInt(teleporterDetails[0]), Integer.parseInt(teleporterDetails[1])),
-                            new Position(Integer.parseInt(teleporterDetails[2]), Integer.parseInt(teleporterDetails[3])));
+                    Teleporter t = new Teleporter(
+                            new Position(Integer.parseInt(teleporterDetails[0]),
+                                    Integer.parseInt(teleporterDetails[1])),
+                            new Position(Integer.parseInt(teleporterDetails[2]),
+                                    Integer.parseInt(teleporterDetails[3])));
 
                     newLevel.setCell(t.getPosition(), t);
-                    newLevel.setCell(t.getDestination().getPosition(), t.getDestination());
+                    newLevel.setCell(t.getDestination().getPosition(),
+                            t.getDestination());
                 }
             }
 
@@ -196,21 +212,42 @@ public class LevelReader {
                 for (String enemy : enemies) {
                     String[] enemyDetails = enemy.split(",");
 
-                    if (enemyMap.containsKey(enemyDetails[2]) && directionMap.containsKey(enemyDetails[3])) {
-                        Direction direction = (Direction) directionMap.get(enemyDetails[3]);
-                        Position position = new Position(Integer.parseInt(enemyDetails[0]), Integer.parseInt(enemyDetails[1]));
-                        switch ((Enemy.EnemyType) enemyMap.get(enemyDetails[2])) {
+                    if (enemyMap.containsKey(enemyDetails[2]) &&
+                            directionMap.containsKey(enemyDetails[3])) {
+                        Direction direction =
+                                (Direction) directionMap.get(enemyDetails[3]);
+                        Position position =
+                                new Position(Integer.parseInt(enemyDetails[0]),
+                                        Integer.parseInt(enemyDetails[1]));
+                        switch ((Enemy.EnemyType) enemyMap
+                                .get(enemyDetails[2])) {
                             case smart:
-                                newLevel.addEnemy(new SmartFollowingEnemy(position, direction, newLevel, new Position(Integer.parseInt(start[0]), Integer.parseInt(start[1]))));
+                                newLevel.addEnemy(
+                                        new SmartFollowingEnemy(position,
+                                                direction, newLevel,
+                                                new Position(Integer.parseInt(
+                                                        start[0]),
+                                                        Integer.parseInt(
+                                                                start[1]))));
                                 break;
                             case dumb:
-                                newLevel.addEnemy(new DumbFollowingEnemy(position, direction, newLevel, new Position(Integer.parseInt(start[0]), Integer.parseInt(start[1]))));
+                                newLevel.addEnemy(
+                                        new DumbFollowingEnemy(position,
+                                                direction, newLevel,
+                                                new Position(Integer.parseInt(
+                                                        start[0]),
+                                                        Integer.parseInt(
+                                                                start[1]))));
                                 break;
                             case wall:
-                                newLevel.addEnemy(new WallFollowingEnemy(position, direction, newLevel));
+                                newLevel.addEnemy(
+                                        new WallFollowingEnemy(position,
+                                                direction, newLevel));
                                 break;
                             case line:
-                                newLevel.addEnemy(new LineFollowingEnemy(position, direction, newLevel));
+                                newLevel.addEnemy(
+                                        new LineFollowingEnemy(position,
+                                                direction, newLevel));
                                 break;
                         }
                     }
@@ -222,8 +259,10 @@ public class LevelReader {
                     String[] obstacleDetails = obstacle.split(",");
 
                     if (cellMap.containsKey(obstacleDetails[2])) {
-                        newLevel.setCell(new Position(Integer.parseInt(obstacleDetails[0]),
-                                Integer.parseInt(obstacleDetails[1])), (Cell) cellMap.get(obstacleDetails[2]));
+                        newLevel.setCell(new Position(
+                                        Integer.parseInt(obstacleDetails[0]),
+                                        Integer.parseInt(obstacleDetails[1])),
+                                (Cell) cellMap.get(obstacleDetails[2]));
                     }
                 }
             }
@@ -233,13 +272,16 @@ public class LevelReader {
                     String[] itemDetails = item.split(",");
 
                     if (itemMap.containsKey(itemDetails[2])) {
-                        newLevel.setItem(new Position(Integer.parseInt(itemDetails[0]),
-                                Integer.parseInt(itemDetails[1])), (Item) itemMap.get(itemDetails[2]));
+                        newLevel.setItem(
+                                new Position(Integer.parseInt(itemDetails[0]),
+                                        Integer.parseInt(itemDetails[1])),
+                                (Item) itemMap.get(itemDetails[2]));
                     }
                 }
             }
 
-            newLevel.setCell(new Position(Integer.parseInt(finish[0]), Integer.parseInt(finish[1])), new Goal());
+            newLevel.setCell(new Position(Integer.parseInt(finish[0]),
+                    Integer.parseInt(finish[1])), new Goal());
 
             return newLevel;
         } catch (Exception e) {

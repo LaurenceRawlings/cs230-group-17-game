@@ -53,7 +53,8 @@ public class Profile implements Serializable, Comparable<Profile> {
             return 0;
         }
 
-        return Integer.compare(getLevelTime(compareLevel), profile.getLevelTime(compareLevel));
+        return Integer.compare(getLevelTime(compareLevel),
+                profile.getLevelTime(compareLevel));
     }
 
     /**

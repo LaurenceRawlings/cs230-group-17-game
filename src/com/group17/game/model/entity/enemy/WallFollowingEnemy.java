@@ -23,7 +23,8 @@ public class WallFollowingEnemy extends Enemy {
      * @param direction starting direction.
      * @param level     reference to the parent level.
      */
-    public WallFollowingEnemy(Position position, Direction direction, Level level) {
+    public WallFollowingEnemy(Position position, Direction direction,
+                              Level level) {
         super(EnemyType.wall, position, direction, level);
         reachedWall = false;
     }
@@ -31,19 +32,30 @@ public class WallFollowingEnemy extends Enemy {
     @Override
     public void move(Player player) {
         if (reachedWall) {
-            if (!move(Position.nextPosition(position, Objects.requireNonNull(Direction.right.relative(direction))))) {
-                if (!move(Position.nextPosition(position, Objects.requireNonNull(Direction.up.relative(direction))))) {
-                    direction = Objects.requireNonNull(direction.rotateRight()).flip();
-                    if (!move(Position.nextPosition(position, Objects.requireNonNull(Direction.up.relative(Objects.requireNonNull(direction)))))) {
-                        direction = Objects.requireNonNull(direction.rotateRight()).flip();
-                        move(Position.nextPosition(position, Objects.requireNonNull(Direction.up.relative(Objects.requireNonNull(direction)))));
+            if (!move(Position.nextPosition(position, Objects.requireNonNull(
+                    Direction.right.relative(direction))))) {
+                if (!move(Position.nextPosition(position,
+                        Objects.requireNonNull(
+                                Direction.up.relative(direction))))) {
+                    direction = Objects.requireNonNull(direction.rotateRight())
+                            .flip();
+                    if (!move(Position.nextPosition(position,
+                            Objects.requireNonNull(Direction.up.relative(
+                                    Objects.requireNonNull(direction)))))) {
+                        direction =
+                                Objects.requireNonNull(direction.rotateRight())
+                                        .flip();
+                        move(Position.nextPosition(position,
+                                Objects.requireNonNull(Direction.up.relative(
+                                        Objects.requireNonNull(direction)))));
                     }
                 }
             } else {
                 direction = direction.rotateRight();
             }
         } else {
-            if (!move(Position.nextPosition(position, Objects.requireNonNull(Direction.right.relative(direction))))) {
+            if (!move(Position.nextPosition(position, Objects.requireNonNull(
+                    Direction.right.relative(direction))))) {
                 reachedWall = true;
                 move(player);
             }

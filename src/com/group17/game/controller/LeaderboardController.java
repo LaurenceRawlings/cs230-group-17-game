@@ -67,10 +67,12 @@ public class LeaderboardController implements Controller {
     @FXML
     void initialize() {
         lbl_motd.setText(MessageOfTheDay.get());
-        timer = new Timeline(new KeyFrame(Duration.seconds(30), event -> lbl_motd.setText(MessageOfTheDay.get())));
+        timer = new Timeline(new KeyFrame(Duration.seconds(30),
+                event -> lbl_motd.setText(MessageOfTheDay.get())));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
-        ObservableList<String> levels = FXCollections.observableArrayList(LevelReader.getLevelNames());
+        ObservableList<String> levels =
+                FXCollections.observableArrayList(LevelReader.getLevelNames());
         cmb_levels.setItems(levels);
         podium = new Label[]{
                 lbl_first,
@@ -82,13 +84,15 @@ public class LeaderboardController implements Controller {
     @FXML
     void levelChanged(ActionEvent event) {
         for (Label label : podium) {
-            label.setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
+            label.setText(SceneController.getLanguageBundle()
+                    .getString("leaderboard_empty"));
         }
         String level = cmb_levels.getSelectionModel().getSelectedItem();
         List<String> profiles = Leaderboard.getTopTimes(level, 3);
         int podiumPosition = 0;
         for (String profile : profiles) {
-            podium[podiumPosition].setText(profile + " - " + Leaderboard.formatTime(Leaderboard.getProfileTime(profile, level)));
+            podium[podiumPosition].setText(profile + " - " + Leaderboard
+                    .formatTime(Leaderboard.getProfileTime(profile, level)));
             podiumPosition++;
         }
     }
@@ -97,7 +101,8 @@ public class LeaderboardController implements Controller {
     void obClickBtnBack(MouseEvent event) {
         try {
             timer.stop();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();
@@ -120,17 +125,23 @@ public class LeaderboardController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("leaderboard_title"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
+        lbl_title.setText(SceneController.getLanguageBundle()
+                .getString("leaderboard_title"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
 
         for (Label label : podium) {
-            label.setText(SceneController.getLanguageBundle().getString("leaderboard_empty"));
+            label.setText(SceneController.getLanguageBundle()
+                    .getString("leaderboard_empty"));
         }
 
-        lbl_selectLevel.setText(SceneController.getLanguageBundle().getString("leaderboard_selectLevel"));
-        btn_back.setText(SceneController.getLanguageBundle().getString("scene_back"));
+        lbl_selectLevel.setText(SceneController.getLanguageBundle()
+                .getString("leaderboard_selectLevel"));
+        btn_back.setText(
+                SceneController.getLanguageBundle().getString("scene_back"));
 
 
         if (ProfileManager.getActiveProfile() != null) {

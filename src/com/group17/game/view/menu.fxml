@@ -4,11 +4,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" style="-fx-background-color: lightgrey; -fx-border-color: black;"
-            xmlns="http://javafx.com/javafx/8.0.171" fx:controller="com.group17.game.controller.MenuController">
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            style="-fx-background-color: lightgrey; -fx-border-color: black;"
+            xmlns="http://javafx.com/javafx/8.0.171"
+            fx:controller="com.group17.game.controller.MenuController">
     <bottom>
-        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800" BorderPane.alignment="CENTER">
-            <ComboBox fx:id="cmb_language" focusTraversable="false" onAction="#setLanguage" promptText="🌍">
+        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800"
+              BorderPane.alignment="CENTER">
+            <ComboBox fx:id="cmb_language" focusTraversable="false"
+                      onAction="#setLanguage" promptText="🌍">
                 <HBox.margin>
                     <Insets right="20.0"/>
                 </HBox.margin>
@@ -29,17 +33,22 @@
         </HBox>
     </bottom>
     <left>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER"/>
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER"/>
     </left>
     <padding>
         <Insets bottom="25.0" left="25.0" right="25.0" top="25.0"/>
     </padding>
     <right>
-        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER"/>
+        <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER"/>
     </right>
     <center>
-        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label id="button" fx:id="btn_continue" onMouseClicked="#onClickBtnContinue" stylesheets="@styles.css"
+        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
+            <Label id="button" fx:id="btn_continue"
+                   onMouseClicked="#onClickBtnContinue"
+                   stylesheets="@styles.css"
                    text="Continue Game &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -51,7 +60,8 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_level" onMouseClicked="#onClickBtnLevel" stylesheets="@styles.css"
+            <Label id="button" fx:id="btn_level"
+                   onMouseClicked="#onClickBtnLevel" stylesheets="@styles.css"
                    text="Select Level &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -63,7 +73,8 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_new" onMouseClicked="#onClickBtnNew" stylesheets="@styles.css"
+            <Label id="button" fx:id="btn_new" onMouseClicked="#onClickBtnNew"
+                   stylesheets="@styles.css"
                    text="New Game &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -75,7 +86,9 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_character" onMouseClicked="#onClickBtnCharacter" stylesheets="@styles.css"
+            <Label id="button" fx:id="btn_character"
+                   onMouseClicked="#onClickBtnCharacter"
+                   stylesheets="@styles.css"
                    text="Pick Character &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -87,7 +100,9 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_leaderboard" onMouseClicked="#onClickBtnLeaderboard" stylesheets="@styles.css"
+            <Label id="button" fx:id="btn_leaderboard"
+                   onMouseClicked="#onClickBtnLeaderboard"
+                   stylesheets="@styles.css"
                    text="Leaderboard &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -99,7 +114,8 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_profile" onMouseClicked="#onClickBtnProfile" stylesheets="@styles.css"
+            <Label id="button" fx:id="btn_profile"
+                   onMouseClicked="#onClickBtnProfile" stylesheets="@styles.css"
                    text="Switch Profile &gt;">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
@@ -111,7 +127,8 @@
                     <Insets bottom="20.0"/>
                 </VBox.margin>
             </Label>
-            <Label id="button" fx:id="btn_quit" onMouseClicked="#onClickBtnQuit" stylesheets="@styles.css" text="EXIT">
+            <Label id="button" fx:id="btn_quit" onMouseClicked="#onClickBtnQuit"
+                   stylesheets="@styles.css" text="EXIT">
                 <font>
                     <Font name="Segoe UI Semibold" size="24.0"/>
                 </font>
@@ -122,13 +139,16 @@
         </VBox>
     </center>
     <top>
-        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-            <Label fx:id="lbl_title" text="Indiana Jones and the Last Assignment">
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0"
+              BorderPane.alignment="CENTER">
+            <Label fx:id="lbl_title"
+                   text="Indiana Jones and the Last Assignment">
                 <font>
                     <Font name="Segoe UI Black Italic" size="40.0"/>
                 </font>
             </Label>
-            <Label fx:id="lbl_motd" text="MOTD" textAlignment="CENTER" wrapText="true">
+            <Label fx:id="lbl_motd" text="MOTD" textAlignment="CENTER"
+                   wrapText="true">
                 <font>
                     <Font name="Segoe UI Light" size="18.0"/>
                 </font>

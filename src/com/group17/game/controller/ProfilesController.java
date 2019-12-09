@@ -51,26 +51,42 @@ public class ProfilesController implements Controller {
 
     @FXML
     void initialize() {
-        ObservableList<String> profiles = FXCollections.observableArrayList(ProfileManager.getProfileNames());
+        ObservableList<String> profiles = FXCollections
+                .observableArrayList(ProfileManager.getProfileNames());
         lst_profiles.setItems(profiles);
     }
 
     @FXML
     void onClickBtnEnter(MouseEvent event) {
-        String selectedProfile = lst_profiles.getSelectionModel().getSelectedItem();
+        String selectedProfile =
+                lst_profiles.getSelectionModel().getSelectedItem();
         if (selectedProfile != null) {
-            ProfileManager.setActiveProfile(ProfileManager.load(selectedProfile));
+            ProfileManager
+                    .setActiveProfile(ProfileManager.load(selectedProfile));
             enter();
         } else if (ProfileManager.getActiveProfile() != null) {
             enter();
         } else {
-            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
+            MessageController.showMessage(SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_title"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_head"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_body"));
         }
     }
 
     @FXML
     void onClickBtnCreate(MouseEvent event) {
-        String name = MessageController.inputDialog(SceneController.getLanguageBundle().getString("msg_createProfile_title"), SceneController.getLanguageBundle().getString("msg_createProfile_head"), SceneController.getLanguageBundle().getString("msg_createProfile_body"), SceneController.getLanguageBundle().getString("msg_createProfile_default"));
+        String name = MessageController.inputDialog(
+                SceneController.getLanguageBundle()
+                        .getString("msg_createProfile_title"),
+                SceneController.getLanguageBundle()
+                        .getString("msg_createProfile_head"),
+                SceneController.getLanguageBundle()
+                        .getString("msg_createProfile_body"),
+                SceneController.getLanguageBundle()
+                        .getString("msg_createProfile_default"));
         if (name != null) {
             if (!ProfileManager.exists(name)) {
                 Profile profile = new Profile(name);
@@ -79,7 +95,13 @@ public class ProfilesController implements Controller {
                 initialize();
                 onLoad();
             } else {
-                MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_profileExists_title"), SceneController.getLanguageBundle().getString("msg_profileExists_head"), SceneController.getLanguageBundle().getString("msg_profileExists_body"));
+                MessageController.showMessage(
+                        SceneController.getLanguageBundle()
+                                .getString("msg_profileExists_title"),
+                        SceneController.getLanguageBundle()
+                                .getString("msg_profileExists_head"),
+                        SceneController.getLanguageBundle()
+                                .getString("msg_profileExists_body"));
             }
         }
     }
@@ -90,7 +112,8 @@ public class ProfilesController implements Controller {
             String profile = lst_profiles.getSelectionModel().getSelectedItem();
             if (profile != null) {
                 if (ProfileManager.getActiveProfile() != null) {
-                    if (profile.equals(ProfileManager.getActiveProfile().toString())) {
+                    if (profile.equals(ProfileManager.getActiveProfile()
+                            .toString())) {
                         ProfileManager.setActiveProfile(null);
                     }
                 }
@@ -115,14 +138,21 @@ public class ProfilesController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("profiles_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("profiles_subtitle"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_create.setText(SceneController.getLanguageBundle().getString("profiles_create"));
-        btn_delete.setText(SceneController.getLanguageBundle().getString("profiles_delete"));
-        btn_enter.setText(SceneController.getLanguageBundle().getString("profiles_enter"));
+        lbl_title.setText(SceneController.getLanguageBundle()
+                .getString("profiles_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle()
+                .getString("profiles_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_create.setText(SceneController.getLanguageBundle()
+                .getString("profiles_create"));
+        btn_delete.setText(SceneController.getLanguageBundle()
+                .getString("profiles_delete"));
+        btn_enter.setText(SceneController.getLanguageBundle()
+                .getString("profiles_enter"));
 
 
         if (ProfileManager.getActiveProfile() != null) {
@@ -134,7 +164,8 @@ public class ProfilesController implements Controller {
 
     private void enter() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();

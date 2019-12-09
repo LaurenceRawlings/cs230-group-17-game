@@ -52,7 +52,8 @@ public class WinController implements Controller {
     @FXML
     void onClickBtnLeaderboard(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/leaderboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("../view/leaderboard.fxml"));
             Parent root = loader.load();
             LeaderboardController leaderboard = loader.getController();
             leaderboard.onLoad();
@@ -66,7 +67,8 @@ public class WinController implements Controller {
     @FXML
     void onClickBtnMenu(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();
@@ -89,21 +91,31 @@ public class WinController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("win_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("win_subtitle"));
-        lbl_subtitle2.setText(SceneController.getLanguageBundle().getString("win_subtitle2"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_leaderboard.setText(SceneController.getLanguageBundle().getString("win_leaderboard"));
-        btn_menu.setText(SceneController.getLanguageBundle().getString("scene_menu"));
+        lbl_title.setText(
+                SceneController.getLanguageBundle().getString("win_title"));
+        lbl_subtitle.setText(
+                SceneController.getLanguageBundle().getString("win_subtitle"));
+        lbl_subtitle2.setText(
+                SceneController.getLanguageBundle().getString("win_subtitle2"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_leaderboard.setText(SceneController.getLanguageBundle()
+                .getString("win_leaderboard"));
+        btn_menu.setText(
+                SceneController.getLanguageBundle().getString("scene_menu"));
 
 
         int totalTime = 0;
         List<String> levels = LevelReader.getLevelNames();
-        for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel(); i++) {
+        for (int i = 0;
+             i <= ProfileManager.getActiveProfile().getHighestLevel(); i++) {
             if (!(i >= levels.size())) {
-                totalTime += Leaderboard.getProfileTime(ProfileManager.getActiveProfile().toString(), levels.get(i));
+                totalTime += Leaderboard.getProfileTime(
+                        ProfileManager.getActiveProfile().toString(),
+                        levels.get(i));
             }
         }
 

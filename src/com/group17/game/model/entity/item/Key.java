@@ -8,6 +8,7 @@ import java.util.Objects;
  * Models key item.
  *
  * @author Vlad Kashtelyanov
+ * @version 1.0
  */
 public class Key extends Item {
     private final KeyType keyType;
@@ -15,10 +16,12 @@ public class Key extends Item {
     /**
      * This key method sets the sprite names according to their colour
      *
-     * @param keyType
+     * @param keyType colour of the key.
      */
     public Key(KeyType keyType) {
-        super(keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key"), "missing_item");
+        super(keyType.toString() + " " +
+                        SceneController.getLanguageBundle().getString("item_key"),
+                "missing_item");
         this.keyType = keyType;
         switch (keyType) {
             case red:
@@ -34,13 +37,6 @@ public class Key extends Item {
                 break;
         }
     }
-
-    /**
-     * Two instances of a key object are compared
-     *
-     * @param o
-     * @return true if the two instances have the same key type
-     */
 
     @Override
     public boolean equals(Object o) {
@@ -58,7 +54,8 @@ public class Key extends Item {
 
     @Override
     public String toString() {
-        return keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key");
+        return keyType.toString() + " " +
+                SceneController.getLanguageBundle().getString("item_key");
     }
 
     /**
@@ -78,13 +75,17 @@ public class Key extends Item {
         public String toString() {
             switch (this) {
                 case red:
-                    return SceneController.getLanguageBundle().getString("colour_red");
+                    return SceneController.getLanguageBundle()
+                            .getString("colour_red");
                 case green:
-                    return SceneController.getLanguageBundle().getString("colour_green");
+                    return SceneController.getLanguageBundle()
+                            .getString("colour_green");
                 case blue:
-                    return SceneController.getLanguageBundle().getString("colour_blue");
+                    return SceneController.getLanguageBundle()
+                            .getString("colour_blue");
                 default:
-                    return SceneController.getLanguageBundle().getString("item_key");
+                    return SceneController.getLanguageBundle()
+                            .getString("item_key");
             }
         }
     }

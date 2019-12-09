@@ -29,9 +29,11 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         SceneController.setMain(primaryStage);
 
-        primaryStage.setTitle("Indiana Jones and the Last Assignment - Group 17");
+        primaryStage
+                .setTitle("Indiana Jones and the Last Assignment - Group 17");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view/profiles.fxml"));
+        FXMLLoader loader =
+                new FXMLLoader(getClass().getResource("view/profiles.fxml"));
         Parent root = loader.load();
         ProfilesController profiles = loader.getController();
         profiles.onLoad();

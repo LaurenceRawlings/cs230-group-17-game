@@ -51,7 +51,8 @@ public class ContinueController implements Controller {
     @FXML
     void onClickBtnMenu(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();
@@ -65,7 +66,8 @@ public class ContinueController implements Controller {
     @FXML
     void onClickBtnContinue(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/game.fxml"));
             Parent root = loader.load();
             GameController game = loader.getController();
 
@@ -92,19 +94,31 @@ public class ContinueController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("continue_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("continue_subtitle"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_menu.setText(SceneController.getLanguageBundle().getString("scene_menu"));
-        btn_continue.setText(SceneController.getLanguageBundle().getString("continue_continue"));
+        lbl_title.setText(SceneController.getLanguageBundle()
+                .getString("continue_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle()
+                .getString("continue_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_menu.setText(
+                SceneController.getLanguageBundle().getString("scene_menu"));
+        btn_continue.setText(SceneController.getLanguageBundle()
+                .getString("continue_continue"));
 
-        List<String> topProfiles = Leaderboard.getTopTimes(LevelReader.getLevelQueue().get(nextLevelIndex - 1).toString(), ProfileManager.getProfileNames().size());
+        List<String> topProfiles = Leaderboard.getTopTimes(
+                LevelReader.getLevelQueue().get(nextLevelIndex - 1).toString(),
+                ProfileManager.getProfileNames().size());
         List<String> topTimes = new ArrayList<>();
 
         for (String profile : topProfiles) {
-            topTimes.add((topProfiles.indexOf(profile) + 1) + ". " + profile + " - " + Leaderboard.formatTime(Leaderboard.getProfileTime(profile, LevelReader.getLevelQueue().get(nextLevelIndex - 1).toString())));
+            topTimes.add((topProfiles.indexOf(profile) + 1) + ". " + profile +
+                    " - " + Leaderboard.formatTime(Leaderboard
+                    .getProfileTime(profile,
+                            LevelReader.getLevelQueue().get(nextLevelIndex - 1)
+                                    .toString())));
         }
 
         ObservableList times = FXCollections.observableArrayList(topTimes);

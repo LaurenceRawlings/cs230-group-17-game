@@ -19,6 +19,7 @@ public abstract class Enemy implements Serializable {
     private final EnemyType enemyType;
     protected Position position;
     protected Direction direction;
+
     /**
      * Abstract constructor to set the attributes of the enemy.
      *
@@ -27,7 +28,8 @@ public abstract class Enemy implements Serializable {
      * @param direction starting direction.
      * @param level     reference to the parent level.
      */
-    Enemy(EnemyType enemyType, Position position, Direction direction, Level level) {
+    Enemy(EnemyType enemyType, Position position, Direction direction,
+          Level level) {
         this.position = position;
         this.direction = direction;
         this.enemyType = enemyType;

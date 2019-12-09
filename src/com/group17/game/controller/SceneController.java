@@ -25,7 +25,8 @@ public class SceneController {
         }
     };
     private static Stage main;
-    private static ResourceBundle languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", new Locale("en"));
+    private static ResourceBundle languageBundle = ResourceBundle
+            .getBundle("com.group17.game.locale.lang", new Locale("en"));
 
     public static ResourceBundle getLanguageBundle() {
         return languageBundle;
@@ -55,6 +56,7 @@ public class SceneController {
      */
     static void loadLanguage(String language) {
         Locale locale = new Locale(language.toLowerCase());
-        languageBundle = ResourceBundle.getBundle("com.group17.game.locale.lang", locale);
+        languageBundle = ResourceBundle
+                .getBundle("com.group17.game.locale.lang", locale);
     }
 }

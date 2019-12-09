@@ -106,7 +106,8 @@ public class Game implements Serializable {
                 currentLevel.setItem(current, null);
             }
             if (cell instanceof Teleporter) {
-                player.setPosition(((Teleporter) currentLevel.getCell(current)).getDestination().getPosition());
+                player.setPosition(((Teleporter) currentLevel.getCell(current))
+                        .getDestination().getPosition());
                 move(direction);
             }
             currentLevel.moveEnemies(player);
@@ -149,7 +150,10 @@ public class Game implements Serializable {
     }
 
     private void restartLevel() {
-        MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_die_title"), SceneController.getLanguageBundle().getString("msg_die_head"), SceneController.getLanguageBundle().getString("msg_die_body"));
+        MessageController.showMessage(
+                SceneController.getLanguageBundle().getString("msg_die_title"),
+                SceneController.getLanguageBundle().getString("msg_die_head"),
+                SceneController.getLanguageBundle().getString("msg_die_body"));
         levelQueue = LevelReader.getLevelQueue();
         currentLevel = levelQueue.get(levelIndex);
         currentLevel.updateEnemyPositions();

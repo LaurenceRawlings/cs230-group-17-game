@@ -45,6 +45,7 @@ public class Graph implements Serializable {
      *
      * @param start path start point.
      * @param goal  path end point.
+     * @return linked list of nodes in the shortest path.
      */
     public LinkedList<Node> findShortestPath(Node start, Node goal) {
         if (start != null) {
@@ -65,8 +66,9 @@ public class Graph implements Serializable {
      * @param node node to be searched for.
      */
     public void breadthFirstSearch(Node node) {
-        if (node == null)
+        if (node == null) {
             return;
+        }
 
         LinkedList<Node> queue = new LinkedList<>();
         queue.add(node);
@@ -74,15 +76,17 @@ public class Graph implements Serializable {
         while (!queue.isEmpty()) {
             Node currentFirst = queue.removeFirst();
 
-            if (currentFirst.isVisited())
+            if (currentFirst.isVisited()) {
                 continue;
+            }
 
             currentFirst.visit();
 
             LinkedList<Node> allNeighbors = adjMap.get(currentFirst);
 
-            if (allNeighbors == null)
+            if (allNeighbors == null) {
                 continue;
+            }
 
             for (Node neighbor : allNeighbors) {
                 if (!neighbor.isVisited()) {
@@ -98,7 +102,9 @@ public class Graph implements Serializable {
 
         if (tmp != null) {
             tmp.remove(b);
-        } else tmp = new LinkedList<>();
+        } else {
+            tmp = new LinkedList<>();
+        }
         tmp.add(b);
         adjMap.put(a, tmp);
     }

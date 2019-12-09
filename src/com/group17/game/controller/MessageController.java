@@ -12,7 +12,8 @@ import java.util.Optional;
  * @version 1.0
  */
 public class MessageController {
-    public static void showMessage(String title, String header, String message) {
+    public static void showMessage(String title, String header,
+                                   String message) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(header);
@@ -20,7 +21,8 @@ public class MessageController {
         alert.showAndWait();
     }
 
-    public static String inputDialog(String title, String header, String message, String defaultText) {
+    public static String inputDialog(String title, String header,
+                                     String message, String defaultText) {
         TextInputDialog alert = new TextInputDialog(defaultText);
         alert.setTitle(title);
         alert.setHeaderText(header);

@@ -29,17 +29,17 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
     private int time;
 
     /**
-     * Method sets multiple aspects of the level including height and width
-     * of cells, items and enemy positions
+     * Create a new instance of a level with the specified parameters.
      *
-     * @param start
-     * @param finish
-     * @param levelNumber
-     * @param levelName
-     * @param width
-     * @param height
+     * @param start       player spawn point.
+     * @param finish      level finish position.
+     * @param levelNumber level number. Levels are player in order of level number.
+     * @param levelName   name of the level.
+     * @param width       width in cells of the level.
+     * @param height      height in cells of the level.
      */
-    public Level(Position start, Position finish, int levelNumber, String levelName, int width, int height) {
+    public Level(Position start, Position finish, int levelNumber,
+                 String levelName, int width, int height) {
         this.levelNumber = levelNumber;
         this.levelName = levelName;
         this.start = start;
@@ -146,7 +146,8 @@ public class Level implements Comparable<Level>, Serializable, Cloneable {
     public void updateEnemyPositions() {
         enemyPositions = new Enemy.EnemyType[height][width];
         for (Enemy enemy : enemies) {
-            enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] = enemy.getEnemyType();
+            enemyPositions[enemy.getPosition().y()][enemy.getPosition().x()] =
+                    enemy.getEnemyType();
         }
     }
 

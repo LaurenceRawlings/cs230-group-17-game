@@ -18,7 +18,8 @@ import java.util.List;
  * @version 1.0
  */
 public class ProfileManager {
-    private static final String PROFILE_DIR = "./src/com/group17/game/resources/profiles";
+    private static final String PROFILE_DIR =
+            "./src/com/group17/game/resources/profiles";
     private static final String PROFILE_FILE_EXTENSION = "save";
     private static Profile activeProfile;
     private static Player.Skin character = Player.Skin.man;
@@ -49,7 +50,9 @@ public class ProfileManager {
         if (exists(name)) {
             Profile profile = null;
             try {
-                FileInputStream file = new FileInputStream(PROFILE_DIR + "/" + name + "." + PROFILE_FILE_EXTENSION);
+                FileInputStream file = new FileInputStream(
+                        PROFILE_DIR + "/" + name + "." +
+                                PROFILE_FILE_EXTENSION);
                 ObjectInputStream serial = new ObjectInputStream(file);
 
                 profile = (Profile) serial.readObject();
@@ -76,7 +79,9 @@ public class ProfileManager {
      */
     public static void save(Profile profile) {
         try {
-            FileOutputStream file = new FileOutputStream(PROFILE_DIR + "/" + profile.toString() + "." + PROFILE_FILE_EXTENSION);
+            FileOutputStream file = new FileOutputStream(
+                    PROFILE_DIR + "/" + profile.toString() + "." +
+                            PROFILE_FILE_EXTENSION);
             ObjectOutputStream serial = new ObjectOutputStream(file);
 
             serial.writeObject(profile);
@@ -103,23 +108,29 @@ public class ProfileManager {
      *
      * @param name name of the profile to delete.
      */
-    public static void delete(String name) throws Exception {
-        if (exists(name)) {
-            try {
-                Files.deleteIfExists(Paths.get(PROFILE_DIR + "/" + name + "." + PROFILE_FILE_EXTENSION));
-            } catch (NoSuchFileException e) {
-                e.printStackTrace();
-                System.out.println("No such file/directory exists");
-            } catch (DirectoryNotEmptyException e) {
-                e.printStackTrace();
-                System.out.println("Directory is not empty.");
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.out.println("Invalid permissions.");
+    public static void delete(String name) {
+        try {
+            if (exists(name)) {
+                try {
+                    Files.deleteIfExists(Paths.get(
+                            PROFILE_DIR + "/" + name + "." +
+                                    PROFILE_FILE_EXTENSION));
+                } catch (NoSuchFileException e) {
+                    e.printStackTrace();
+                    System.out.println("No such file/directory exists");
+                } catch (DirectoryNotEmptyException e) {
+                    e.printStackTrace();
+                    System.out.println("Directory is not empty.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.out.println("Invalid permissions.");
+                }
             }
-        } else {
-            throw new Exception("Profile not found!");
+        } catch (Exception e) {
+            System.out.println("Profile not found!");
+            e.printStackTrace();
         }
+
     }
 
     /**
@@ -136,9 +147,11 @@ public class ProfileManager {
             if (saveFiles != null) {
                 for (File save : saveFiles) {
                     String[] savePath = save.getAbsolutePath().split("\\.");
-                    if (savePath[savePath.length - 1].equals(PROFILE_FILE_EXTENSION) && save.isFile()) {
+                    if (savePath[savePath.length - 1]
+                            .equals(PROFILE_FILE_EXTENSION) && save.isFile()) {
                         String[] name = save.getName().split("\\.");
-                        profiles.add(String.join(".", Arrays.copyOf(name, name.length - 1)));
+                        profiles.add(String.join(".",
+                                Arrays.copyOf(name, name.length - 1)));
                     }
                 }
             }

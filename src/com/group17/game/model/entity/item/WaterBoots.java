@@ -13,7 +13,8 @@ public class WaterBoots extends Item {
      * Create new instance of waterboots.
      */
     public WaterBoots() {
-        super(SceneController.getLanguageBundle().getString("item_waterBoots"), "item_waterboots");
+        super(SceneController.getLanguageBundle().getString("item_waterBoots"),
+                "item_waterboots");
     }
 
     @Override

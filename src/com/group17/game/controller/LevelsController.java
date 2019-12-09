@@ -52,7 +52,8 @@ public class LevelsController implements Controller {
     @FXML
     void onClickBtnBack(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();
@@ -67,13 +68,15 @@ public class LevelsController implements Controller {
     void onClickBtnPlay(MouseEvent event) {
         if (lst_levels.getSelectionModel().getSelectedItem() != null) {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("../view/game.fxml"));
                 Parent root = loader.load();
                 GameController game = loader.getController();
 
                 Scene scene = new Scene(root);
                 scene.addEventFilter(KeyEvent.KEY_PRESSED, game::keyPressed);
-                ProfileManager.getActiveProfile().newGame(lst_levels.getSelectionModel().getSelectedIndex());
+                ProfileManager.getActiveProfile().newGame(
+                        lst_levels.getSelectionModel().getSelectedIndex());
 
                 game.onLoad();
                 SceneController.activate(scene);
@@ -95,21 +98,30 @@ public class LevelsController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("level_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("level_subtitle"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_back.setText(SceneController.getLanguageBundle().getString("scene_back"));
-        btn_play.setText(SceneController.getLanguageBundle().getString("level_play"));
+        lbl_title.setText(
+                SceneController.getLanguageBundle().getString("level_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle()
+                .getString("level_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_back.setText(
+                SceneController.getLanguageBundle().getString("scene_back"));
+        btn_play.setText(
+                SceneController.getLanguageBundle().getString("level_play"));
 
         List<String> availableLevels = new ArrayList<>();
-        for (int i = 0; i <= ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
+        for (int i = 0; i <=
+                ProfileManager.getActiveProfile().getHighestLevel() + 1; i++) {
             if (i < LevelReader.getLevelQueue().size()) {
-                availableLevels.add(LevelReader.getLevelQueue().get(i).toString());
+                availableLevels
+                        .add(LevelReader.getLevelQueue().get(i).toString());
             }
         }
-        ObservableList levels = FXCollections.observableArrayList(availableLevels);
+        ObservableList levels =
+                FXCollections.observableArrayList(availableLevels);
         lst_levels.setItems(levels);
 
         if (ProfileManager.getActiveProfile() != null) {

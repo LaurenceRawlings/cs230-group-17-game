@@ -73,6 +73,7 @@ public class Leaderboard {
      * @return integer time taken by the profile to complete the level in seconds.
      */
     public static int getProfileTime(String profileName, String levelName) {
-        return Objects.requireNonNull(ProfileManager.load(profileName)).getLevelTime(levelName);
+        return Objects.requireNonNull(ProfileManager.load(profileName))
+                .getLevelTime(levelName);
     }
 }

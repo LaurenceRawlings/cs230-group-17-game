@@ -65,7 +65,8 @@ public class MenuController implements Controller {
     @FXML
     void initialize() {
         lbl_motd.setText(MessageOfTheDay.get());
-        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(30), event -> lbl_motd.setText(MessageOfTheDay.get())));
+        Timeline timer = new Timeline(new KeyFrame(Duration.seconds(30),
+                event -> lbl_motd.setText(MessageOfTheDay.get())));
         timer.setCycleCount(Timeline.INDEFINITE);
         timer.play();
     }
@@ -73,9 +74,15 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnContinue(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
+            MessageController.showMessage(SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_title"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_head"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_body"));
         } else {
-            ProfileManager.getActiveProfile().getGame().getPlayer().setSprite(ProfileManager.getCharacter());
+            ProfileManager.getActiveProfile().getGame().getPlayer()
+                    .setSprite(ProfileManager.getCharacter());
             startGame();
         }
     }
@@ -88,7 +95,12 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnNew(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
+            MessageController.showMessage(SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_title"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_head"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_body"));
         } else {
             ProfileManager.getActiveProfile().newGame();
             startGame();
@@ -98,7 +110,8 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnProfile(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/profiles.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("../view/profiles.fxml"));
             Parent root = loader.load();
             ProfilesController profiles = loader.getController();
             profiles.onLoad();
@@ -112,7 +125,8 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnCharacter(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/character.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("../view/character.fxml"));
             Parent root = loader.load();
             CharacterController character = loader.getController();
             character.onLoad();
@@ -126,7 +140,8 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnLeaderboard(MouseEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/leaderboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("../view/leaderboard.fxml"));
             Parent root = loader.load();
             LeaderboardController leaderboard = loader.getController();
             leaderboard.onLoad();
@@ -140,10 +155,16 @@ public class MenuController implements Controller {
     @FXML
     void onClickBtnLevel(MouseEvent event) {
         if (ProfileManager.getActiveProfile() == null) {
-            MessageController.showMessage(SceneController.getLanguageBundle().getString("msg_selectProfile_title"), SceneController.getLanguageBundle().getString("msg_selectProfile_head"), SceneController.getLanguageBundle().getString("msg_selectProfile_body"));
+            MessageController.showMessage(SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_title"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_head"),
+                    SceneController.getLanguageBundle()
+                            .getString("msg_selectProfile_body"));
         } else {
             try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/levels.fxml"));
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("../view/levels.fxml"));
                 Parent root = loader.load();
                 LevelsController levels = loader.getController();
                 levels.onLoad();
@@ -167,17 +188,27 @@ public class MenuController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("game_name"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_continue.setText(SceneController.getLanguageBundle().getString("menu_continueGame"));
-        btn_level.setText(SceneController.getLanguageBundle().getString("menu_selectProfile"));
-        btn_new.setText(SceneController.getLanguageBundle().getString("menu_newGame"));
-        btn_leaderboard.setText(SceneController.getLanguageBundle().getString("menu_leaderboard"));
-        btn_profile.setText(SceneController.getLanguageBundle().getString("menu_switchProfile"));
-        btn_quit.setText(SceneController.getLanguageBundle().getString("menu_exit"));
-        btn_character.setText(SceneController.getLanguageBundle().getString("menu_character"));
+        lbl_title.setText(
+                SceneController.getLanguageBundle().getString("game_name"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_continue.setText(SceneController.getLanguageBundle()
+                .getString("menu_continueGame"));
+        btn_level.setText(SceneController.getLanguageBundle()
+                .getString("menu_selectProfile"));
+        btn_new.setText(
+                SceneController.getLanguageBundle().getString("menu_newGame"));
+        btn_leaderboard.setText(SceneController.getLanguageBundle()
+                .getString("menu_leaderboard"));
+        btn_profile.setText(SceneController.getLanguageBundle()
+                .getString("menu_switchProfile"));
+        btn_quit.setText(
+                SceneController.getLanguageBundle().getString("menu_exit"));
+        btn_character.setText(SceneController.getLanguageBundle()
+                .getString("menu_character"));
 
 
         if (ProfileManager.getActiveProfile() != null) {
@@ -189,7 +220,8 @@ public class MenuController implements Controller {
 
     private void startGame() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/game.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/game.fxml"));
             Parent root = loader.load();
             GameController game = loader.getController();
 

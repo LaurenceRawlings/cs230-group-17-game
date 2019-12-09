@@ -76,12 +76,17 @@ public class CharacterController implements Controller {
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_title.setText(SceneController.getLanguageBundle().getString("character_title"));
-        lbl_subtitle.setText(SceneController.getLanguageBundle().getString("character_subtitle"));
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        btn_back.setText(SceneController.getLanguageBundle().getString("scene_back"));
+        lbl_title.setText(SceneController.getLanguageBundle()
+                .getString("character_title"));
+        lbl_subtitle.setText(SceneController.getLanguageBundle()
+                .getString("character_subtitle"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        btn_back.setText(
+                SceneController.getLanguageBundle().getString("scene_back"));
 
         Image man = LevelRenderer.getSprite("player");
         Image woman = LevelRenderer.getSprite("player2");
@@ -99,7 +104,8 @@ public class CharacterController implements Controller {
 
     private void back() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             menu.onLoad();

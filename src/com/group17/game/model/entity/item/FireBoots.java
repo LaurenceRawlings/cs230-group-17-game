@@ -13,7 +13,8 @@ public class FireBoots extends Item {
      * Create new instance of fireboots.
      */
     public FireBoots() {
-        super(SceneController.getLanguageBundle().getString("item_fireBoots"), "item_fireboots");
+        super(SceneController.getLanguageBundle().getString("item_fireBoots"),
+                "item_fireboots");
     }
 
     @Override

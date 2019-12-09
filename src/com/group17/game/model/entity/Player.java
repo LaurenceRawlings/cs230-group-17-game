@@ -15,6 +15,7 @@ import java.util.*;
 public class Player extends GameObject {
     private final Map inventory;
     private Position position;
+
     /**
      * Constructor creates a new instance of player entity at the given position.
      *

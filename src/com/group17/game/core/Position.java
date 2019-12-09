@@ -33,20 +33,25 @@ public class Position implements Serializable {
      * @param direction       direction in which to move.
      * @return the next position.
      */
-    public static Position nextPosition(Position currentPosition, Direction direction) {
+    public static Position nextPosition(Position currentPosition,
+                                        Direction direction) {
         Position next = null;
         switch (direction) {
             case right:
-                next = new Position(currentPosition.x() + 1, currentPosition.y());
+                next = new Position(currentPosition.x() + 1,
+                        currentPosition.y());
                 break;
             case left:
-                next = new Position(currentPosition.x() - 1, currentPosition.y());
+                next = new Position(currentPosition.x() - 1,
+                        currentPosition.y());
                 break;
             case up:
-                next = new Position(currentPosition.x(), currentPosition.y() - 1);
+                next = new Position(currentPosition.x(),
+                        currentPosition.y() - 1);
                 break;
             case down:
-                next = new Position(currentPosition.x(), currentPosition.y() + 1);
+                next = new Position(currentPosition.x(),
+                        currentPosition.y() + 1);
                 break;
         }
 

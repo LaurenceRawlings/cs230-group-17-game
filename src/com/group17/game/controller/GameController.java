@@ -101,19 +101,26 @@ public class GameController implements Controller {
                 break;
         }
 
-        if (game.getPlayer().getPosition().equals(game.getCurrentLevel().getFinish())) {
+        if (game.getPlayer().getPosition()
+                .equals(game.getCurrentLevel().getFinish())) {
             int currentLevelIndex = game.getLevelIndex();
             Level currentLevel = game.getCurrentLevel();
-            if (ProfileManager.getActiveProfile().getHighestLevel() < game.getLevelIndex()) {
-                ProfileManager.getActiveProfile().setHighestLevel(game.getLevelIndex());
+            if (ProfileManager.getActiveProfile().getHighestLevel() <
+                    game.getLevelIndex()) {
+                ProfileManager.getActiveProfile()
+                        .setHighestLevel(game.getLevelIndex());
             }
-            if (currentLevel.getTime() < ProfileManager.getActiveProfile().getLevelTime(currentLevel.toString())) {
-                ProfileManager.getActiveProfile().setLevelTime(currentLevel.toString(), currentLevel.getTime());
+            if (currentLevel.getTime() < ProfileManager.getActiveProfile()
+                    .getLevelTime(currentLevel.toString())) {
+                ProfileManager.getActiveProfile()
+                        .setLevelTime(currentLevel.toString(),
+                                currentLevel.getTime());
             }
             if (!game.nextLevel()) {
                 try {
                     timer.stop();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/win.fxml"));
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("../view/win.fxml"));
                     Parent root = loader.load();
                     WinController win = loader.getController();
                     ProfileManager.save(ProfileManager.getActiveProfile());
@@ -126,7 +133,8 @@ public class GameController implements Controller {
             } else {
                 try {
                     timer.stop();
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/continue.fxml"));
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("../view/continue.fxml"));
                     Parent root = loader.load();
                     ContinueController continueC = loader.getController();
                     ProfileManager.save(ProfileManager.getActiveProfile());
@@ -142,7 +150,8 @@ public class GameController implements Controller {
             }
         }
 
-        ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
+        ObservableList items =
+                FXCollections.observableArrayList(game.getPlayer().getItems());
         lst_inventory.setItems(items);
 
         drawGame();
@@ -153,7 +162,8 @@ public class GameController implements Controller {
     void onClickBtnSave(MouseEvent event) {
         try {
             timer.stop();
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/menu.fxml"));
+            FXMLLoader loader =
+                    new FXMLLoader(getClass().getResource("../view/menu.fxml"));
             Parent root = loader.load();
             MenuController menu = loader.getController();
             ProfileManager.save(ProfileManager.getActiveProfile());
@@ -190,20 +200,28 @@ public class GameController implements Controller {
             onLoad();
         }
 
-        ObservableList items = FXCollections.observableArrayList(game.getPlayer().getItems());
+        ObservableList items =
+                FXCollections.observableArrayList(game.getPlayer().getItems());
         lst_inventory.setItems(items);
     }
 
     @Override
     public void onLoad() {
-        cmb_language.setItems(FXCollections.observableArrayList(SceneController.getLanguages()));
+        cmb_language.setItems(FXCollections
+                .observableArrayList(SceneController.getLanguages()));
 
-        lbl_currentProfile.setText(SceneController.getLanguageBundle().getString("scene_currentProfile"));
-        lbl_inventory.setText(SceneController.getLanguageBundle().getString("game_inventory"));
-        lbl_fov.setText(SceneController.getLanguageBundle().getString("game_fov"));
-        btn_exit.setText(SceneController.getLanguageBundle().getString("game_saveAndReturn"));
-        btn_zoomIn.setText(SceneController.getLanguageBundle().getString("game_zoomIn"));
-        btn_zoomOut.setText(SceneController.getLanguageBundle().getString("game_zoomOut"));
+        lbl_currentProfile.setText(SceneController.getLanguageBundle()
+                .getString("scene_currentProfile"));
+        lbl_inventory.setText(SceneController.getLanguageBundle()
+                .getString("game_inventory"));
+        lbl_fov.setText(
+                SceneController.getLanguageBundle().getString("game_fov"));
+        btn_exit.setText(SceneController.getLanguageBundle()
+                .getString("game_saveAndReturn"));
+        btn_zoomIn.setText(
+                SceneController.getLanguageBundle().getString("game_zoomIn"));
+        btn_zoomOut.setText(
+                SceneController.getLanguageBundle().getString("game_zoomOut"));
 
 
         game = ProfileManager.getActiveProfile().getGame();
@@ -213,7 +231,8 @@ public class GameController implements Controller {
             lbl_profile.setText("");
         }
         drawGame();
-        lbl_timer.setText(Leaderboard.formatTime(game.getCurrentLevel().getTime()));
+        lbl_timer.setText(
+                Leaderboard.formatTime(game.getCurrentLevel().getTime()));
     }
 
     private void drawGame() {

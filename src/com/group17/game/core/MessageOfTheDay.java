@@ -20,7 +20,8 @@ public class MessageOfTheDay {
      */
     public static String get() {
         String solution = solve(httpGet("http://cswebcat.swan.ac.uk/puzzle"));
-        return httpGet("http://cswebcat.swan.ac.uk/message?solution=" + solution);
+        return httpGet(
+                "http://cswebcat.swan.ac.uk/message?solution=" + solution);
     }
 
     private static String solve(String puzzle) {
@@ -51,9 +52,11 @@ public class MessageOfTheDay {
         StringBuilder response = new StringBuilder();
         try {
             URL _url = new URL(url);
-            HttpURLConnection connection = (HttpURLConnection) _url.openConnection();
+            HttpURLConnection connection =
+                    (HttpURLConnection) _url.openConnection();
             connection.setRequestMethod("GET");
-            BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream()));
             String line;
 
             while ((line = in.readLine()) != null) {

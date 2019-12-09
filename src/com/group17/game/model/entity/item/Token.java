@@ -13,7 +13,8 @@ public class Token extends Item {
      * Create a new instance of a token item.
      */
     public Token() {
-        super(SceneController.getLanguageBundle().getString("item_token"), "token");
+        super(SceneController.getLanguageBundle().getString("item_token"),
+                "token");
     }
 
     @Override

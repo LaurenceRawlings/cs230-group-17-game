@@ -21,7 +21,8 @@ public class LineFollowingEnemy extends Enemy {
      * @param direction starting direction.
      * @param level     reference to the parent level.
      */
-    public LineFollowingEnemy(Position position, Direction direction, Level level) {
+    public LineFollowingEnemy(Position position, Direction direction,
+                              Level level) {
         super(EnemyType.line, position, direction, level);
     }
 
@@ -29,7 +30,8 @@ public class LineFollowingEnemy extends Enemy {
     public void move(Player player) {
         if (!move(Position.nextPosition(position, direction))) {
             direction = direction.flip();
-            move(Position.nextPosition(position, Objects.requireNonNull(direction)));
+            move(Position
+                    .nextPosition(position, Objects.requireNonNull(direction)));
         }
     }
 }
