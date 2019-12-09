@@ -1,14 +1,12 @@
-/**
- * This is the class for the key item. This class allows distinction between
- * all the different coloured keys.
- * @author
- */
 package com.group17.game.model.entity.item;
 
 import com.group17.game.controller.SceneController;
-
 import java.util.Objects;
 
+/**
+ * Models key item.
+ * @author Vlad Kashtelyanov
+ */
 public class Key extends Item {
     public enum KeyType{
         red,

@@ -1,12 +1,16 @@
-/**
- * Class defining the fire boots item
- * @author
- */
 package com.group17.game.model.entity.item;
 
 import com.group17.game.controller.SceneController;
 
-public class FireBoots extends Item{
+/**
+ * Models fireboots item.
+ * @author Sam Murphy, Alex Hughes
+ * @version 1.0
+ */
+public class FireBoots extends Item {
+    /**
+     * Create new instance of fireboots.
+     */
     public FireBoots() {
         super(SceneController.getLanguageBundle().getString("item_fireBoots"), "item_fireboots");
     }
