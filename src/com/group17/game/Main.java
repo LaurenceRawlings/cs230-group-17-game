@@ -25,7 +25,7 @@ public class Main extends Application {
      */
     public static void main(String[] args) {
         File profilesDirectory = new File(ProfileManager.getProfileDir());
-        if (!profilesDirectory.exists()){
+        if (!profilesDirectory.exists()) {
             profilesDirectory.mkdir();
         }
         launch(args);
