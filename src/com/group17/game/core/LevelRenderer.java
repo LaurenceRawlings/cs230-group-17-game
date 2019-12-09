@@ -51,7 +51,7 @@ public class LevelRenderer {
      * Get a sprite's image according to the sprite's filename and set its width and height.
      * @param spriteName the sprites filename.
      * @param height height to load the image.
-     * @param width widdth to load the image.
+     * @param width width to load the image.
      * @return image object loaded from the sprite file.
      */
     public static Image getSprite(String spriteName, int width, int height) {
