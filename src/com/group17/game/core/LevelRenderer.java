@@ -1,8 +1,3 @@
-/**
- * The purpose of this class is to draw out the game itself. Defines the size of sprite's
- * and of the canvas.
- * @author
- */
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Player;
@@ -14,36 +9,31 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+/**
+ * The purpose of this class is to draw out the game itself. Defines the size of sprite's
+ * and of the canvas.
+ * @author Laurence Rawlings
+ * @version 2.0
+ */
 public class LevelRenderer {
     private static final String SPRITE_DIR = "com/group17/game/resources/sprites";
     private static final String SPRITE_FILE_EXTENSION = "png";
     private static int SPRITE_WIDTH = 100;
     private static int SPRITE_HEIGHT = 100;
 
-    /**
-	 * Method to set a sprite's width
-	 * @param spriteWidth
-	 */
-    
     private static void setSpriteWidth(int spriteWidth) {
         SPRITE_WIDTH = spriteWidth;
     }
-    
-    /**
-	 * Method to set a sprite's height
-	 * @param spriteHeight
-	 */
 
     private static void setSpriteHeight(int spriteHeight) {
         SPRITE_HEIGHT = spriteHeight;
     }
 
     /**
-	 * Method to get a sprite's image according to the sprite's name
-	 * @param spriteName
-	 * @return image of the sprite
+	 * Get a sprite's image according to the sprite's filename
+	 * @param spriteName the sprites filename.
+	 * @return image object loaded from the sprite file.
 	 */
-    
     public static Image getSprite(String spriteName) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, SPRITE_WIDTH, SPRITE_HEIGHT, false, true);
@@ -57,6 +47,13 @@ public class LevelRenderer {
         return null;
     }
 
+    /**
+     * Get a sprite's image according to the sprite's filename and set its width and height.
+     * @param spriteName the sprites filename.
+     * @param height height to load the image.
+     * @param width widdth to load the image.
+     * @return image object loaded from the sprite file.
+     */
     public static Image getSprite(String spriteName, int width, int height) {
         try {
             return new Image(SPRITE_DIR + "/" + spriteName + "." + SPRITE_FILE_EXTENSION, width, height, false, true);
@@ -71,12 +68,10 @@ public class LevelRenderer {
     }
     
     /**
-	 * Method to render the game canvas by drawing the sprite's and cells aswell as
-	 * Colour filling and font setting.
-	 * @param game
-	 * @param canvas
+	 * Render the game canvas by drawing on all the sprites and writing required text.
+	 * @param game the game to render the state of.
+	 * @param canvas the canvas to draw the frame to.
 	 */
-
     public static void render(Game game, Canvas canvas) {
         LevelRenderer.setSpriteHeight((int) canvas.getHeight() / (game.getFov() * 2 + 1));
         LevelRenderer.setSpriteWidth((int) canvas.getWidth() / (game.getFov() * 2 + 1));
@@ -100,7 +95,7 @@ public class LevelRenderer {
                         if (level.getCell(new Position(x, y)) instanceof TokenDoor) {
                             gc.setFill(Color.web("#ffffff"));
                             gc.setFont(Font.font("Segoe UI", 18));
-                            gc.fillText(Integer.toString(((TokenDoor) level.getCell(new Position(x, y))).getTokenCost()), drawX * SPRITE_WIDTH + SPRITE_WIDTH/2, drawY * SPRITE_HEIGHT + SPRITE_HEIGHT/2);
+                            gc.fillText(Integer.toString(((TokenDoor) level.getCell(new Position(x, y))).getTokenCost()), drawX * SPRITE_WIDTH + (float) SPRITE_WIDTH/2, drawY * SPRITE_HEIGHT + (float) SPRITE_HEIGHT/2);
                         }
                     } else {
                         gc.drawImage(getSprite("null"), drawX * SPRITE_WIDTH, drawY * SPRITE_HEIGHT);
