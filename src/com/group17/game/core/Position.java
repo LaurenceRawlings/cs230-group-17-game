@@ -1,53 +1,35 @@
-/**
- * Class defining position. Used for objects in game to set and get their x and y coordinates. 
- * @author
- */
-
 package com.group17.game.core;
 
 import com.group17.game.model.entity.Direction;
-
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Models a position on the game grid. Assigned to objects in the game to get and set their x and y coordinates.
+ * @author Oscar Howard
+ * @version 1.0
+ */
 public class Position implements Serializable {
     private final int x;
     private final int y;
     
     /**
-	 * Method setting the position
-	 * @param x
-	 * @param y
+	 * Create a position.
+	 * @param x x coordinate.
+	 * @param y y coordinate.
 	 */
-
     public Position(int x, int y) {
         this.x = x;
         this.y = y;
     }
-
-    /**
-	 * Method to get x coordinate
-	 * @return x
-	 */
     
     public int x() {
         return x;
     }
-    
-    /**
-	 * Method to get y coordinate
-	 * @return y
-	 */
 
     public int y() {
         return y;
     }
-    
-    /**
-	 * Method to determine if coordinates of different objects are the same
-	 * @param o is the other object to be compared
-	 * @return true or false
-	 */
 
     @Override
     public boolean equals(Object o) {
@@ -56,11 +38,6 @@ public class Position implements Serializable {
         Position position = (Position) o;
         return x == position.x && y == position.y;
     }
-    
-    /**
-	 * Method to get the hash code of the x and y coordinates
-	 * @return hash(x, y) of an object
-	 */
 
     @Override
     public int hashCode() {
@@ -68,13 +45,11 @@ public class Position implements Serializable {
     }
     
     /**
-	 * Method gets the next position for an entity to go based on the direction input
-	 * and the current position
-	 * @param currentPosition
-	 * @param direction
-	 * @return next which is the next position
+	 * Given a position and direction to move, determine the next position.
+	 * @param currentPosition position to move from.
+	 * @param direction direction in which to move.
+	 * @return the next position.
 	 */
-
     public static Position nextPosition(Position currentPosition, Direction direction) {
         Position next = null;
         switch (direction) {
@@ -94,5 +69,4 @@ public class Position implements Serializable {
 
         return next;
     }
-
 }
