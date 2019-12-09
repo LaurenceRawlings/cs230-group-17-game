@@ -8,12 +8,20 @@ import java.util.Objects;
  * @author Vlad Kashtelyanov
  */
 public class Key extends Item {
+    /**
+     * Enum for all the different key colours.
+     */
     public enum KeyType{
         red,
         green,
         blue;
 
-        String getLabel() {
+        /**
+         * Gets the corresponding label for the key colour.
+         * @return the colour string.
+         */
+        @Override
+        public String toString() {
             switch (this) {
                 case red:
                     return SceneController.getLanguageBundle().getString("colour_red");
@@ -34,7 +42,7 @@ public class Key extends Item {
     * @param keyType
     */
     public Key(KeyType keyType) {
-        super(keyType.getLabel() + " " + SceneController.getLanguageBundle().getString("item_key"), "missing_item");
+        super(keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key"), "missing_item");
         this.keyType = keyType;
         switch (keyType) {
             case red:
@@ -73,6 +81,6 @@ public class Key extends Item {
 
     @Override
     public String toString() {
-        return keyType.getLabel() + " " + SceneController.getLanguageBundle().getString("item_key");
+        return keyType.toString() + " " + SceneController.getLanguageBundle().getString("item_key");
     }
 }
