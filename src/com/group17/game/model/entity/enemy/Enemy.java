@@ -1,8 +1,3 @@
-/**
- * This class is the father class for all enemy types. Icludes elements common to all enemy types
- * including an enemys ability to rotate and move position.
- * @author
- */
 package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
@@ -10,12 +5,21 @@ import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.Player;
 import com.group17.game.model.world.Ground;
 import com.group17.game.model.world.Level;
-
 import java.io.Serializable;
 
+/**
+ * Parent abstract class for all enemy entities. Includes methods for core functionality of enemies.
+ * @author Laurence Rawlings
+ * @version 1.0
+ */
 public abstract class Enemy implements Serializable {
     public abstract void move(Player player);
 
+    /**
+     * Enum for the type of enemy with the corresponding sprite file name attached.
+     * @author Laurence Rawlings
+     * @version 1.0
+     */
     public enum EnemyType {
         smart("enemy_smart"),
         dumb("enemy_dumb"),
@@ -24,8 +28,8 @@ public abstract class Enemy implements Serializable {
 
         private final String spriteName;
 
-        EnemyType(String label) {
-            this.spriteName = label;
+        EnemyType(String spriteName) {
+            this.spriteName = spriteName;
         }
 
         public String getSpriteName() {
@@ -33,19 +37,26 @@ public abstract class Enemy implements Serializable {
         }
     }
 
-    Position position;
-    Direction direction;
-    private final EnemyType enemyType;
     final Level level;
-    
-    /**
-     * Method to set an enemys position, direction, enum and level
-     * @param enemyType
-     * @param position
-     * @param direction
-     * @param level
-     */
+    private final EnemyType enemyType;
+    protected Position position;
+    protected Direction direction;
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public EnemyType getEnemyType() {
+        return enemyType;
+    }
+
+    /**
+     * Abstract constructor to set the attributes of the enemy.
+     * @param enemyType type of enemy.
+     * @param position start position.
+     * @param direction starting direction.
+     * @param level reference to the parent level.
+     */
     Enemy(EnemyType enemyType, Position position, Direction direction, Level level) {
         this.position = position;
         this.direction = direction;
@@ -53,6 +64,11 @@ public abstract class Enemy implements Serializable {
         this.level = level;
     }
 
+    /**
+     * Updates the enemies' position.
+     * @param nextPosition the position to move to.
+     * @return true iff the enemy moved successfully.
+     */
     boolean move(Position nextPosition) {
         if (canMove(nextPosition)) {
             position = nextPosition;
@@ -62,25 +78,12 @@ public abstract class Enemy implements Serializable {
         }
     }
 
+    /**
+     * Check if the enemy can move to the specified position.
+     * @param nextPosition position to check.
+     * @return true iff the enemy can move to the specified position.
+     */
     boolean canMove(Position nextPosition){
         return level.getCell(nextPosition) instanceof Ground;
-    }
-    
-    /**
-     * Method to get the current position of an enemy
-     * @return position
-     */
-
-    public Position getPosition() {
-        return position;
-    }
-    
-    /**
-     * Method to get the enemy type
-     * @return enemyType
-     */
-
-    public EnemyType getEnemyType() {
-        return enemyType;
     }
 }

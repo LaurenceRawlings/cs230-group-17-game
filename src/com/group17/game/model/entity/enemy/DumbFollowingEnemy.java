@@ -1,9 +1,3 @@
-/**
- * This class defines the dumb enemys movement. This class contains calculations that allows the enemy type to
- * follow the player in a basic manner.
- * @author
- */
-
 package com.group17.game.model.entity.enemy;
 
 import com.group17.game.core.Position;
@@ -11,18 +5,25 @@ import com.group17.game.model.entity.Direction;
 import com.group17.game.model.entity.Player;
 import com.group17.game.model.world.Level;
 
+/**
+ * Models the dumb following enemy in the game.
+ * @author Vlad Kashtelynov
+ * @version 2.0
+ */
 public class DumbFollowingEnemy extends Enemy {
     private Position nextDumbPosition;
+
+    /**
+     * Create a new dumb enemy.
+     * @param position start position.
+     * @param direction starting direction.
+     * @param level reference to the parent level.
+     * @param initialTarget initial target i.e. the spawn of the player.
+     */
     public DumbFollowingEnemy(Position position, Direction direction, Level level, Position initialTarget) {
         super(EnemyType.dumb, position, direction, level);
         moveDumb(new Player(initialTarget));
     }
-
-    /**
-     * Method to move the enemy in the direction of the player by calculating the difference
-     * in position between the enemy and the player.
-     * @param player
-     */
     
     @Override
     public void move(Player player) {
